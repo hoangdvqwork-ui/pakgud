@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PakGud — The Hidden Team That Fulfills the Fan Experience</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F0EFE9;
+    --paper-dim:#E7E5DC;
+    --ink:#17170F;
+    --steel:#6E6E63;
+    --steel-light:#a3a297;
+    --accent:#2451E0;
+    --case:#1C1C16;
+    --line:#D3D1C5;
+    --line-dark:#3A3A30;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  h1,h2,h3{font-family:'Oswald', sans-serif; text-transform:uppercase; letter-spacing:0.01em; font-weight:600; line-height:1.2;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--accent);
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:""; width:16px; height:1px; background:var(--accent); display:inline-block;}
+  button, .btn{cursor:pointer; font-family:'IBM Plex Mono', monospace;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(240,239,233,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{display:flex; align-items:center; justify-content:space-between; height:72px;}
+  .logo{
+    font-family:'Oswald', sans-serif; font-weight:700; font-size:20px;
+    letter-spacing:0.02em; text-transform:uppercase;
+    display:flex; align-items:center; gap:8px;
+  }
+  .logo .dot{width:8px; height:8px; background:var(--accent); display:inline-block; border-radius:1px;}
+  .nav-links{display:flex; gap:36px; font-size:13px; letter-spacing:0.04em; text-transform:uppercase; font-family:'IBM Plex Mono', monospace;}
+  .nav-links a{position:relative; padding-bottom:4px;}
+  .nav-links a::after{content:""; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--ink); transition:width .25s ease;}
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    border:1px solid var(--ink); padding:9px 18px; font-size:12px;
+    letter-spacing:0.08em; text-transform:uppercase; background:transparent;
+    transition:background .2s ease, color .2s ease;
+  }
+  .nav-cta:hover{background:var(--ink); color:var(--paper);}
+  @media (max-width:820px){ .nav-links{display:none;} }
+
+  .lang-toggle{
+    display:flex; align-items:center; gap:6px;
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.06em;
+    border:1px solid var(--line-dark); padding:6px 10px; background:transparent;
+  }
+  .lang-toggle button{
+    background:none; border:none; padding:2px 4px; font-family:'IBM Plex Mono', monospace;
+    font-size:12px; letter-spacing:0.06em; color:var(--steel); cursor:pointer;
+  }
+  .lang-toggle button.active{color:var(--ink); font-weight:600; text-decoration:underline; text-underline-offset:3px; text-decoration-color:var(--accent);}
+  .lang-toggle .sep{color:var(--line-dark);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:96px 0 60px;
+    position:relative;
+  }
+  .hero-grid{display:grid; grid-template-columns:1.5fr 0.8fr; gap:60px; align-items:end;}
+  .hero h1{
+    font-size:clamp(40px, 4.7vw, 68px);
+    margin-top:20px;
+  }
+  .hero h1 .accent{color:var(--accent);}
+  .hero p.lede{
+    font-size:18px; color:var(--steel); max-width:480px; margin-top:22px; line-height:1.55;
+  }
+  .hero-actions{display:flex; gap:16px; margin-top:34px; align-items:center;}
+  .btn-primary{
+    display:inline-block;
+    background:var(--ink); color:var(--paper); border:1px solid var(--ink);
+    padding:14px 26px; font-size:13px; letter-spacing:0.06em; text-transform:uppercase;
+    transition:background .2s ease, transform .15s ease;
+  }
+  .btn-primary:hover{background:var(--accent); border-color:var(--accent); transform:translateY(-1px);}
+  .btn-text{font-size:13px; letter-spacing:0.04em; text-transform:uppercase; border-bottom:1px solid var(--line-dark); padding-bottom:3px;}
+
+  /* routing tag — signature element */
+  .tag{
+    background:var(--paper-dim);
+    border:1px solid var(--ink);
+    position:relative;
+    padding:22px 24px 26px;
+    font-family:'IBM Plex Mono', monospace;
+    transform:rotate(1.2deg);
+    box-shadow:6px 6px 0 rgba(23,23,15,0.08);
+    opacity:0;
+    animation: tagDrop .7s cubic-bezier(.2,.8,.25,1) .25s forwards;
+  }
+  @keyframes tagDrop{
+    0%{opacity:0; transform:rotate(1.2deg) translateY(-14px) scale(.98);}
+    100%{opacity:1; transform:rotate(1.2deg) translateY(0) scale(1);}
+  }
+  .tag::before{ /* punch hole */
+    content:""; position:absolute; top:14px; right:16px;
+    width:12px; height:12px; border-radius:50%;
+    background:var(--paper); border:1px solid var(--ink);
+  }
+  .tag::after{ /* stitched notch edge */
+    content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px;
+    background-image:linear-gradient(to right, var(--ink) 60%, transparent 0%);
+    background-size:8px 1px; background-repeat:repeat-x;
+  }
+  .tag-label{font-size:10px; letter-spacing:0.16em; color:var(--steel); text-transform:uppercase;}
+  .tag-row{display:flex; justify-content:space-between; margin-top:14px; padding-top:10px; border-top:1px dashed var(--line-dark);}
+  .tag-row:first-of-type{border-top:none; padding-top:0; margin-top:16px;}
+  .tag-row .k{font-size:10px; color:var(--steel); letter-spacing:0.1em; text-transform:uppercase;}
+  .tag-row .v{font-size:13px; font-weight:500;}
+  .tag-stamp{
+    margin-top:18px; display:inline-block; border:2px solid var(--accent); color:var(--accent);
+    font-size:11px; letter-spacing:0.12em; padding:5px 10px; transform:rotate(-3deg);
+    text-transform:uppercase; font-weight:500;
+  }
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .tag{margin-top:20px; transform:rotate(0.6deg);}
+  }
+
+  /* ---------- MARQUEE / STRIP ---------- */
+  .strip{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background:var(--paper-dim);
+    padding:14px 0; overflow:hidden; white-space:nowrap;
+  }
+  .strip-inner{display:inline-flex; gap:48px; animation:scroll 26s linear infinite;}
+  .strip span{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--steel);
+  }
+  .strip span b{color:var(--ink);}
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* ---------- SECTION HEADERS ---------- */
+  section{padding:100px 0;}
+  .sec-head{display:flex; justify-content:space-between; align-items:flex-end; gap:40px; margin-bottom:56px; flex-wrap:wrap;}
+  .sec-head h2{font-size:clamp(30px,3.6vw,44px);}
+  .sec-head p{color:var(--steel); max-width:360px; font-size:15px; line-height:1.5;}
+
+  /* ---------- SERVICES ---------- */
+  .services{border-top:1px solid var(--line);}
+  .service-list{border-top:1px solid var(--line-dark);}
+  .service-row{
+    display:grid; grid-template-columns:70px 1fr 1.4fr 160px;
+    align-items:center; gap:24px;
+    padding:26px 0; border-bottom:1px solid var(--line);
+    transition:background .2s ease;
+  }
+  .service-row:hover{background:rgba(255,78,31,0.05);}
+  .service-num{font-family:'IBM Plex Mono', monospace; color:var(--steel-light); font-size:13px;}
+  .service-row h3{font-size:19px; text-transform:none; font-family:'IBM Plex Sans', sans-serif; font-weight:600; letter-spacing:0;}
+  .service-row p{color:var(--steel); font-size:14px; line-height:1.5;}
+  .service-tag{
+    justify-self:end; font-family:'IBM Plex Mono', monospace; font-size:10px;
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--ink);
+    border:1px solid var(--line-dark); padding:5px 10px;
+  }
+  @media (max-width:760px){
+    .service-row{grid-template-columns:1fr; gap:8px; padding:22px 0;}
+    .service-tag{justify-self:start;}
+  }
+
+  .service-category{padding:40px 0; border-bottom:1px solid var(--line); display:grid; grid-template-columns:70px 1fr 1fr; gap:24px;}
+  .service-category:first-child{border-top:1px solid var(--line-dark);}
+  .cat-num{font-family:'IBM Plex Mono', monospace; color:var(--steel-light); font-size:13px;}
+  .cat-head h3{font-size:24px; text-transform:none; font-family:'IBM Plex Sans', sans-serif; font-weight:600; letter-spacing:0;}
+  .cat-desc{color:var(--steel); font-size:15px; line-height:1.55; margin-top:10px; max-width:340px;}
+  .cat-tags{display:flex; flex-wrap:wrap; gap:10px; align-content:flex-start;}
+  .chip{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.06em; text-transform:uppercase;
+    border:1px solid var(--line-dark); padding:7px 12px; color:var(--ink);
+  }
+  @media (max-width:760px){
+    .service-category{grid-template-columns:1fr; gap:14px;}
+  }
+
+  /* ---------- HOW IT WORKS (dark case section) ---------- */
+  .process{background:var(--case); color:var(--paper);}
+  .process .eyebrow{color:var(--accent);}
+  .process .sec-head h2{color:var(--paper);}
+  .process .sec-head p{color:var(--steel-light);}
+  .process-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line-dark); border:1px solid var(--line-dark);}
+  .process-step{background:var(--case); padding:34px 26px; min-height:220px; display:flex; flex-direction:column; align-items:flex-start;}
+  .process-step .step-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--accent);}
+  .process-step h3{font-size:19px; color:var(--paper); margin-top:24px; font-family:'IBM Plex Sans', sans-serif; text-transform:none; font-weight:600; letter-spacing:0;}
+  .process-step p{font-size:13.5px; color:var(--steel-light); margin-top:10px; line-height:1.5;}
+  @media (max-width:900px){ .process-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:560px){ .process-grid{grid-template-columns:1fr;} }
+
+  /* ---------- CLIENTS / WHO WE WORK WITH ---------- */
+  .who-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .who-cell{background:var(--paper); padding:30px 26px; min-height:130px; display:flex; flex-direction:column; justify-content:space-between;}
+  .who-cell .mono{font-size:11px; color:var(--steel); letter-spacing:0.1em; text-transform:uppercase;}
+  .who-cell h3{font-size:17px; font-family:'IBM Plex Sans', sans-serif; text-transform:none; font-weight:600; letter-spacing:0; margin-top:auto;}
+  @media (max-width:900px){ .who-grid{grid-template-columns:1fr 1fr;} }
+
+  /* ---------- STATS ---------- */
+  .stats{border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--paper-dim);}
+  .stats-grid{display:grid; grid-template-columns:repeat(4,1fr); text-align:left;}
+  .stat{padding:44px 26px; border-left:1px solid var(--line);}
+  .stat:first-child{border-left:none;}
+  .stat .num{font-family:'Oswald', sans-serif; font-size:clamp(32px,4vw,52px); font-weight:600;}
+  .stat .num .accent{color:var(--accent);}
+  .stat .lbl{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--steel); margin-top:8px;}
+  @media (max-width:760px){ .stats-grid{grid-template-columns:1fr 1fr;} .stat{border-left:1px solid var(--line);} .stat:nth-child(2n+1){border-left:none;} }
+
+  /* ---------- CTA ---------- */
+  .cta{
+    padding:110px 0; text-align:center; position:relative;
+  }
+  .cta h2{font-size:clamp(34px,5vw,58px); max-width:820px; margin:0 auto;}
+  .cta p{color:var(--steel); margin-top:18px; font-size:16px;}
+  .cta .btn-primary{margin-top:34px; padding:16px 34px; font-size:14px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line-dark); background:var(--case); color:var(--steel-light); padding:56px 0 30px;}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px;}
+  .foot-logo{font-family:'Oswald', sans-serif; color:var(--paper); font-size:20px; text-transform:uppercase; font-weight:700;}
+  .foot-grid p{font-size:13.5px; line-height:1.6; margin-top:14px; max-width:320px;}
+  .foot-col h4{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--paper); margin-bottom:14px;}
+  .foot-col a{display:block; font-size:13.5px; margin-bottom:10px; color:var(--steel-light); transition:color .2s ease;}
+  .foot-col a:hover{color:var(--accent);}
+  .foot-bottom{
+    margin-top:56px; padding-top:24px; border-top:1px solid var(--line-dark);
+    display:flex; justify-content:space-between; font-size:11px; font-family:'IBM Plex Mono', monospace;
+    color:var(--steel); letter-spacing:0.05em; flex-wrap:wrap; gap:10px;
+  }
+  @media (max-width:760px){ .foot-grid{grid-template-columns:1fr;} }
+
+  ::selection{background:var(--accent); color:var(--paper);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo"><span class="dot"></span>PakGud</div>
+    <div class="nav-links">
+      <a href="#services" data-i18n="navServices">Services</a>
+      <a href="#process" data-i18n="navProcess">Process</a>
+      <a href="#who" data-i18n="navWho">Clients</a>
+      <a href="#contact" data-i18n="navContact">Contact</a>
+    </div>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-set-lang="en" class="active">EN</button>
+        <span class="sep">/</span>
+        <button type="button" data-set-lang="vi">VI</button>
+      </div>
+      <a href="#contact" class="nav-cta" data-i18n="navCta">Work With Us</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow" data-i18n="heroEyebrow">Vietnam's First White-Label Fan-Experience Service</div>
+      <h1 data-i18n="heroH1">The hidden team<br>that fulfills the<br><span class="accent">fan experience.</span></h1>
+      <p class="lede" data-i18n="heroLede"><strong style="color:var(--ink);">Save a seat in your office. Free your mind from operational chaos.</strong><br><br>PakGud handles the operations so your team can stay focused on the artist — embedded as part of your crew, never as an outside vendor.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary" data-i18n="navCta">Work With Us</a>
+        <a href="#services" class="btn-text" data-i18n="heroSecondary">See what we handle ↓</a>
+      </div>
+    </div>
+    <div class="tag">
+      <div class="tag-label" data-i18n="tagLabel">Routing Tag — Show Day</div>
+      <div class="tag-row" style="border-top:none; margin-top:16px; padding-top:0;">
+        <div><div class="k" data-i18n="tagFromK">From</div><div class="v" data-i18n="tagFromV">Artist Camp</div></div>
+        <div><div class="k" data-i18n="tagToK">To</div><div class="v" data-i18n="tagToV">Venue Floor</div></div>
+      </div>
+      <div class="tag-row">
+        <div><div class="k" data-i18n="tagCrewK">Crew On-Site</div><div class="v" data-i18n="tagCrewV">6 Handlers</div></div>
+        <div><div class="k" data-i18n="tagFansK">Fans Routed</div><div class="v">1,240</div></div>
+      </div>
+      <div class="tag-row">
+        <div><div class="k" data-i18n="tagSkuK">Merch SKUs</div><div class="v">32</div></div>
+        <div><div class="k" data-i18n="tagLoadK">Load-Out</div><div class="v" data-i18n="tagLoadV">On Time</div></div>
+      </div>
+      <div class="tag-stamp" data-i18n="tagStamp">Reconciled ✓</div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-inner">
+    <span data-i18n="strip1">MERCH FULFILLMENT <b>·</b></span>
+    <span data-i18n="strip2">WAREHOUSING <b>·</b></span>
+    <span data-i18n="strip3">EVENT OPERATIONS <b>·</b></span>
+    <span data-i18n="strip4">ACCESS CONTROL <b>·</b></span>
+    <span data-i18n="strip5">SECURITY <b>·</b></span>
+    <span data-i18n="strip6">PERMIT ACQUISITION <b>·</b></span>
+    <span data-i18n="strip1">MERCH FULFILLMENT <b>·</b></span>
+    <span data-i18n="strip2">WAREHOUSING <b>·</b></span>
+    <span data-i18n="strip3">EVENT OPERATIONS <b>·</b></span>
+    <span data-i18n="strip4">ACCESS CONTROL <b>·</b></span>
+    <span data-i18n="strip5">SECURITY <b>·</b></span>
+    <span data-i18n="strip6">PERMIT ACQUISITION <b>·</b></span>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow" data-i18n="svcEyebrow">What We Handle</div>
+        <h2 style="margin-top:16px;" data-i18n="svcH2">Two disciplines, one embedded crew</h2>
+      </div>
+      <p data-i18n="svcP">Everything between the warehouse and the door, run by a team that sits inside yours.</p>
+    </div>
+    <div class="service-list">
+      <div class="service-category">
+        <div class="cat-num">01</div>
+        <div class="cat-head">
+          <h3 data-i18n="cat1Title">Merch Fulfillment &amp; Logistics</h3>
+          <p class="cat-desc" data-i18n="cat1Desc">Production coordination, warehousing, order fulfillment, and delivery — handled end to end so stock is where it needs to be, on time.</p>
+        </div>
+        <div class="cat-tags">
+          <span class="chip" data-i18n="cat1chip1">Production Coordination</span>
+          <span class="chip" data-i18n="cat1chip2">Warehousing</span>
+          <span class="chip" data-i18n="cat1chip3">On-Site Distribution</span>
+          <span class="chip" data-i18n="cat1chip4">Order Fulfillment</span>
+          <span class="chip" data-i18n="cat1chip5">Delivery</span>
+        </div>
+      </div>
+      <div class="service-category">
+        <div class="cat-num">02</div>
+        <div class="cat-head">
+          <h3 data-i18n="cat2Title">Event Operations</h3>
+          <p class="cat-desc" data-i18n="cat2Desc">Site planning, event staffing, access control, security, and permit acquisition — the ground work that lets the event just happen.</p>
+        </div>
+        <div class="cat-tags">
+          <span class="chip" data-i18n="cat2chip1">Site Planning</span>
+          <span class="chip" data-i18n="cat2chip2">Event Staffing</span>
+          <span class="chip" data-i18n="cat2chip3">Access Control</span>
+          <span class="chip" data-i18n="cat2chip4">Security</span>
+          <span class="chip" data-i18n="cat2chip5">Permit Acquisition</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow" data-i18n="procEyebrow">How We Work</div>
+        <h2 style="margin-top:16px;" data-i18n="procH2">From tangle to transparency, in four moves</h2>
+      </div>
+      <p data-i18n="procP">We're there with you through it all — without ever diluting your brand.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-num" data-i18n="step1Num">01 / The Tangle</div>
+        <div>
+          <h3 data-i18n="step1Title">Tell us the tangle</h3>
+          <p data-i18n="step1Desc">Walk us through your operational challenge — no matter how messy it looks from your side.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num" data-i18n="step2Num">02 / The Map</div>
+        <div>
+          <h3 data-i18n="step2Title">We map it out</h3>
+          <p data-i18n="step2Desc">A clear, step-by-step plan to coordinate every part of the fan experience.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num" data-i18n="step3Num">03 / The Step-In</div>
+        <div>
+          <h3 data-i18n="step3Title">We step in</h3>
+          <p data-i18n="step3Desc">Our crew embeds as part of your team — not as an outside vendor.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num" data-i18n="step4Num">04 / The Report</div>
+        <div>
+          <h3 data-i18n="step4Title">We deliver and report</h3>
+          <p data-i18n="step4Desc">Full execution, full transparency, every time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="who" id="who">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow" data-i18n="whoEyebrow">Who We Work With</div>
+        <h2 style="margin-top:16px;" data-i18n="whoH2">Built for the people behind the artist</h2>
+      </div>
+      <p data-i18n="whoP">We plug into your team as the operations crew on the ground.</p>
+    </div>
+    <div class="who-grid">
+      <div class="who-cell"><span class="mono">01</span><h3 data-i18n="who1">Artist Management</h3></div>
+      <div class="who-cell"><span class="mono">02</span><h3 data-i18n="who2">Record Labels</h3></div>
+      <div class="who-cell"><span class="mono">03</span><h3 data-i18n="who3">Festival Organizers</h3></div>
+      <div class="who-cell"><span class="mono">04</span><h3 data-i18n="who4">Talent Agencies</h3></div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat"><div class="num"><span class="accent">12</span></div><div class="lbl" data-i18n="statLbl1">Successful Events</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl" data-i18n="statLbl2">Cities</div></div>
+      <div class="stat"><div class="num">50,000+</div><div class="lbl" data-i18n="statLbl3">Items Fulfilled</div></div>
+      <div class="stat"><div class="num">99%</div><div class="lbl" data-i18n="statLbl4">Satisfied Fans</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <div class="eyebrow" style="justify-content:center;" data-i18n="ctaEyebrow">Save a Seat in Your Office</div>
+    <h2 style="margin-top:18px;" data-i18n="ctaH2">Tell us the tangle.<br>We'll build the plan.</h2>
+    <p data-i18n="ctaP">Free your mind from operational chaos — one conversation to walk through what your team needs.</p>
+    <a href="mailto:hello@pakgud.co" class="btn-primary">hello@pakgud.co</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <div class="foot-logo">PakGud</div>
+      <p data-i18n="footDesc">Vietnam's first white-label fan-experience service — merch fulfillment and event operations, embedded as part of your team.</p>
+    </div>
+    <div class="foot-col">
+      <h4 data-i18n="footCompanyH4">Company</h4>
+      <a href="#services" data-i18n="footServices">Services</a>
+      <a href="#process" data-i18n="footProcess">Process</a>
+      <a href="#who" data-i18n="footWho">Clients</a>
+    </div>
+    <div class="foot-col">
+      <h4 data-i18n="footContactH4">Contact</h4>
+      <a href="mailto:hello@pakgud.co">hello@pakgud.co</a>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span data-i18n="footCopyright">© 2026 PakGud. All rights reserved.</span>
+    <span data-i18n="footManifest">Powered by No Headliner</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var dict = {
+    navServices:   { en: "Services", vi: "Dịch Vụ" },
+    navProcess:    { en: "Process", vi: "Quy Trình" },
+    navWho:        { en: "Clients", vi: "Khách Hàng" },
+    navContact:    { en: "Contact", vi: "Liên Hệ" },
+    navCta:        { en: "Work With Us", vi: "Hợp Tác Cùng Chúng Tôi" },
+
+    heroEyebrow:   { en: "Vietnam's First White-Label Fan-Experience Service", vi: "Dịch Vụ White-Label Vận Hành Trải Nghiệm Fan Đầu Tiên Tại Việt Nam" },
+    heroH1:        { en: "The hidden team<br>that fulfills the<br><span class='accent'>fan experience.</span>", vi: "Đội ngũ thầm lặng<br>kiến tạo<br><span class='accent'>trải nghiệm fan.</span>" },
+    heroLede:      { en: "<strong style='color:var(--ink);'>Save a seat in your office. Free your mind from operational chaos.</strong><br><br>PakGud handles the operations so your team can stay focused on the artist — embedded as part of your crew, never as an outside vendor.", vi: "<strong style='color:var(--ink);'>Tiết kiệm không gian cho văn phòng bạn. Giải phóng tâm trí khỏi những cơn đau đầu vận hành.</strong><br><br>PakGud là dịch vụ white-label về vận hành trải nghiệm fan đầu tiên tại Việt Nam — chúng tôi lo phần vận hành để đội ngũ bạn tập trung trọn vẹn cho nghệ sĩ." },
+    heroSecondary: { en: "See what we handle ↓", vi: "Xem những gì chúng tôi phụ trách ↓" },
+
+    tagLabel:  { en: "Routing Tag — Show Day", vi: "Thẻ Điều Phối — Ngày Sự Kiện" },
+    tagFromK:  { en: "From", vi: "Từ" },
+    tagFromV:  { en: "Artist Camp", vi: "Khu Vực Nghệ Sĩ" },
+    tagToK:    { en: "To", vi: "Đến" },
+    tagToV:    { en: "Venue Floor", vi: "Sàn Sự Kiện" },
+    tagCrewK:  { en: "Crew On-Site", vi: "Nhân Sự Tại Chỗ" },
+    tagCrewV:  { en: "6 Handlers", vi: "6 Nhân Viên" },
+    tagFansK:  { en: "Fans Routed", vi: "Fan Được Điều Phối" },
+    tagSkuK:   { en: "Merch SKUs", vi: "Mã Sản Phẩm" },
+    tagLoadK:  { en: "Load-Out", vi: "Thu Dọn" },
+    tagLoadV:  { en: "On Time", vi: "Đúng Giờ" },
+    tagStamp:  { en: "Reconciled ✓", vi: "Đã Đối Soát ✓" },
+
+    strip1: { en: "MERCH FULFILLMENT <b>·</b>", vi: "HOÀN THÀNH MERCHANDISE <b>·</b>" },
+    strip2: { en: "WAREHOUSING <b>·</b>", vi: "LƯU KHO <b>·</b>" },
+    strip3: { en: "EVENT OPERATIONS <b>·</b>", vi: "VẬN HÀNH SỰ KIỆN <b>·</b>" },
+    strip4: { en: "ACCESS CONTROL <b>·</b>", vi: "KIỂM SOÁT RA VÀO <b>·</b>" },
+    strip5: { en: "SECURITY <b>·</b>", vi: "AN NINH <b>·</b>" },
+    strip6: { en: "PERMIT ACQUISITION <b>·</b>", vi: "XIN GIẤY PHÉP <b>·</b>" },
+
+    svcEyebrow: { en: "What We Handle", vi: "Chúng Tôi Phụ Trách" },
+    svcH2:      { en: "Two disciplines, one embedded crew", vi: "Hai mảng vận hành, một đội ngũ đồng hành" },
+    svcP:       { en: "Everything between the warehouse and the door, run by a team that sits inside yours.", vi: "Mọi thứ từ kho hàng đến cửa sự kiện, được vận hành bởi đội ngũ đồng hành cùng bạn." },
+
+    cat1Title: { en: "Merch Fulfillment &amp; Logistics", vi: "Hoàn Thành Merchandise &amp; Benefits" },
+    cat1Desc:  { en: "Production coordination, warehousing, on-site distribution, order fulfillment, and delivery — handled end to end so stock is where it needs to be, on time.", vi: "Điều phối sản xuất, lưu kho, điều phối phân phối tại sự kiện, xử lý đơn hàng và giao hàng." },
+    cat1chip1: { en: "Production Coordination", vi: "Điều Phối Sản Xuất" },
+    cat1chip2: { en: "Warehousing", vi: "Lưu Kho" },
+    cat1chip3: { en: "On-Site Distribution", vi: "Phân Phối Tại Sự Kiện" },
+    cat1chip4: { en: "Order Fulfillment", vi: "Xử Lý Đơn Hàng" },
+    cat1chip5: { en: "Delivery", vi: "Giao Hàng" },
+
+    cat2Title: { en: "Event Operations", vi: "Vận Hành Sự Kiện" },
+    cat2Desc:  { en: "Site planning, event staffing, access control, security, and permit acquisition — the ground work that lets the event just happen.", vi: "Lên kế hoạch địa điểm, nhân sự sự kiện, kiểm soát ra vào, an ninh và xin giấy phép." },
+    cat2chip1: { en: "Site Planning", vi: "Lên Kế Hoạch Địa Điểm" },
+    cat2chip2: { en: "Event Staffing", vi: "Nhân Sự Sự Kiện" },
+    cat2chip3: { en: "Access Control", vi: "Kiểm Soát Ra Vào" },
+    cat2chip4: { en: "Security", vi: "An Ninh" },
+    cat2chip5: { en: "Permit Acquisition", vi: "Xin Giấy Phép" },
+
+    procEyebrow: { en: "How We Work", vi: "Cách Chúng Tôi Làm Việc" },
+    procH2:      { en: "From tangle to transparency, in four moves", vi: "Từ bài toán đến minh bạch, trong bốn bước" },
+    procP:       { en: "We're there with you through it all — without ever diluting your brand.", vi: "Chúng tôi đồng hành cùng bạn xuyên suốt hành trình — mà không làm loãng thương hiệu của bạn." },
+
+    step1Num: { en: "01 / The Tangle", vi: "01 / Bài Toán" },
+    step1Title: { en: "Tell us the tangle", vi: "Chia sẻ bài toán của bạn" },
+    step1Desc: { en: "Walk us through your operational challenge — no matter how messy it looks from your side.", vi: "Kể cho chúng tôi nghe những khó khăn vận hành bạn đang gặp — dù rối đến đâu." },
+
+    step2Num: { en: "02 / The Map", vi: "02 / Lộ Trình" },
+    step2Title: { en: "We map it out", vi: "Chúng tôi lên kế hoạch" },
+    step2Desc: { en: "A clear, step-by-step plan to coordinate every part of the fan experience.", vi: "Một lộ trình rõ ràng, từng bước, để phối hợp mọi khía cạnh trải nghiệm fan." },
+
+    step3Num: { en: "03 / The Step-In", vi: "03 / Vào Cuộc" },
+    step3Title: { en: "We step in", vi: "Đội ngũ chúng tôi vào cuộc" },
+    step3Desc: { en: "Our crew embeds as part of your team — not as an outside vendor.", vi: "Không dưới hình thức một nhà cung cấp bên ngoài, mà là một phần của chính đội ngũ bạn." },
+
+    step4Num: { en: "04 / The Report", vi: "04 / Báo Cáo" },
+    step4Title: { en: "We deliver and report", vi: "Thực thi và báo cáo" },
+    step4Desc: { en: "Full execution, full transparency, every time.", vi: "Triển khai trọn vẹn, minh bạch tuyệt đối, mỗi lần đều như vậy." },
+
+    whoEyebrow: { en: "Who We Work With", vi: "Chúng Tôi Đồng Hành Cùng" },
+    whoH2:      { en: "Built for the people behind the artist", vi: "Được xây dựng cho những người đứng sau nghệ sĩ" },
+    whoP:       { en: "We plug into your team as the operations crew on the ground.", vi: "Chúng tôi hòa vào đội ngũ bạn như một đội vận hành thực địa." },
+    who1: { en: "Artist Management", vi: "Quản Lý Nghệ Sĩ" },
+    who2: { en: "Record Labels", vi: "Hãng Đĩa" },
+    who3: { en: "Festival Organizers", vi: "Ban Tổ Chức Lễ Hội" },
+    who4: { en: "Talent Agencies", vi: "Công Ty Quản Lý Tài Năng" },
+
+    statLbl1: { en: "Successful Events", vi: "Sự Kiện Thành Công" },
+    statLbl2: { en: "Cities", vi: "Thành Phố" },
+    statLbl3: { en: "Items Fulfilled", vi: "Sản Phẩm Đã Xử Lý" },
+    statLbl4: { en: "Satisfied Fans", vi: "Fan Hài Lòng" },
+
+    ctaEyebrow: { en: "Save a Seat in Your Office", vi: "Tiết Kiệm Không Gian Cho Văn Phòng Bạn" },
+    ctaH2:      { en: "Tell us the tangle.<br>We'll build the plan.", vi: "Chia sẻ bài toán của bạn.<br>Chúng tôi sẽ lên kế hoạch." },
+    ctaP:       { en: "Free your mind from operational chaos — one conversation to walk through what your team needs.", vi: "Giải phóng tâm trí khỏi những cơn đau đầu vận hành — chỉ một cuộc trò chuyện để hiểu điều đội ngũ bạn cần." },
+
+    footDesc:       { en: "Vietnam's first white-label fan-experience service — merch fulfillment and event operations, embedded as part of your team.", vi: "Dịch vụ white-label về vận hành trải nghiệm fan đầu tiên tại Việt Nam — hoàn thành merchandise và vận hành sự kiện, đồng hành cùng đội ngũ bạn." },
+    footCompanyH4:  { en: "Company", vi: "Công Ty" },
+    footServices:   { en: "Services", vi: "Dịch Vụ" },
+    footProcess:    { en: "Process", vi: "Quy Trình" },
+    footWho:        { en: "Clients", vi: "Khách Hàng" },
+    footContactH4:  { en: "Contact", vi: "Liên Hệ" },
+    footCopyright:  { en: "© 2026 PakGud. All rights reserved.", vi: "© 2026 PakGud. Đã đăng ký bản quyền." },
+    footManifest:   { en: "Manifest No. PK-2026-0711", vi: "Số Vận Đơn PK-2026-0711" }
+  };
+
+  var nodes = document.querySelectorAll('[data-i18n]');
+
+  function setLang(lang){
+    nodes.forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      var entry = dict[key];
+      if(entry && entry[lang] !== undefined){
+        el.innerHTML = entry[lang];
+      }
+    });
+    document.documentElement.setAttribute('lang', lang);
+    document.querySelectorAll('.lang-toggle button').forEach(function(btn){
+      btn.classList.toggle('active', btn.getAttribute('data-set-lang') === lang);
+    });
+  }
+
+  document.querySelectorAll('.lang-toggle button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      setLang(btn.getAttribute('data-set-lang'));
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
