@@ -129,6 +129,14 @@
   }
   .btn-primary:hover{background:var(--accent); border-color:var(--accent); transform:translateY(-1px);}
   .btn-text{font-size:13px; letter-spacing:0.04em; text-transform:uppercase; border-bottom:1px solid var(--line-dark); padding-bottom:3px;}
+  .btn-outline{
+    display:inline-block;
+    background:transparent; color:var(--ink); border:1px solid var(--ink);
+    padding:14px 26px; font-size:13px; letter-spacing:0.06em; text-transform:uppercase;
+    font-family:'IBM Plex Mono', monospace;
+    transition:background .2s ease, color .2s ease, transform .15s ease;
+  }
+  .btn-outline:hover{background:var(--ink); color:var(--paper); transform:translateY(-1px);}
 
   .hero-proof{display:flex; align-items:center; gap:10px; margin-top:30px; font-family:'IBM Plex Mono', monospace; font-size:12.5px; letter-spacing:0.03em; color:var(--steel);}
   .hero-proof .star{color:var(--accent); font-size:14px;}
@@ -555,8 +563,9 @@
         <div class="service-tag" data-i18n="add3Tag">Free Pricing Consultation</div>
       </div>
     </div>
-    <div style="margin-top:28px;">
-      <a href="services.html#addons" class="btn-text" data-i18n="addFullLink">See all add-on services →</a>
+    <div style="margin-top:36px; display:flex; gap:18px; flex-wrap:wrap;">
+      <a href="services.html#addons" class="btn-primary" data-i18n="addFullLink">All Services</a>
+      <a href="faq.html" class="btn-outline" data-i18n="addFaqLink">FAQ</a>
     </div>
   </div>
 </section>
@@ -806,7 +815,8 @@
     add3Title: { en: "Tour Planning &amp; Strategy", vi: "Lập Kế Hoạch &amp; Chiến Lược Tour" },
     add3Desc:  { en: "P&amp;L projection, cost and logistics optimization consulting, venue sourcing, and sponsor sourcing.", vi: "Dự trù P&amp;L, tư vấn tối ưu chi phí và logistics, tìm kiếm địa điểm và tìm kiếm nhà tài trợ." },
     add3Tag:   { en: "Free Pricing Consultation", vi: "Tư Vấn Chi Phí<br>Miễn Phí" },
-    addFullLink: { en: "See all add-on services →", vi: "Xem tất cả dịch vụ mở rộng →" },
+    addFullLink: { en: "All Services", vi: "Tất Cả Dịch Vụ" },
+    addFaqLink: { en: "FAQ", vi: "Câu Hỏi Thường Gặp" },
 
     whyEyebrow: { en: "Why Now", vi: "Vì Sao Là Lúc Này" },
     whyH2:      { en: "The gap between artist and operations, closed.", vi: "Khoảng trống giữa nghệ sĩ và vận hành, được lấp đầy." },
