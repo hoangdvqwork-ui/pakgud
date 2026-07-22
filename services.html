@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PakGud — Rate Card &amp; Services</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%232451E0'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -130,6 +131,14 @@
   }
   .btn-primary:hover{background:var(--accent); border-color:var(--accent); transform:translateY(-1px);}
   .btn-text{font-size:13px; letter-spacing:0.04em; text-transform:uppercase; border-bottom:1px solid var(--line-dark); padding-bottom:3px;}
+  .btn-outline{
+    display:inline-block;
+    background:transparent; color:var(--ink); border:1px solid var(--ink);
+    padding:16px 34px; font-size:14px; letter-spacing:0.06em; text-transform:uppercase;
+    font-family:'IBM Plex Mono', monospace;
+    transition:background .2s ease, color .2s ease, transform .15s ease;
+  }
+  .btn-outline:hover{background:var(--ink); color:var(--paper); transform:translateY(-1px);}
 
   /* ---------- FOOTER ---------- */
   footer{border-top:1px solid var(--line-dark); background:var(--case); color:var(--steel-light); padding:56px 0 30px;}
@@ -185,6 +194,12 @@
   .tier-table tr:last-child td{border-bottom:none;}
   .tier-table td:last-child, .tier-table th:last-child{font-family:'IBM Plex Mono', monospace; text-align:right;}
   .tier-note{margin-top:18px; font-size:14px; color:var(--steel);}
+
+  .group-divider{background:var(--case); color:var(--paper); padding:22px 0;}
+  .group-divider .wrap{display:flex; align-items:baseline; gap:16px; flex-wrap:wrap;}
+  .group-divider .g-num{font-family:'IBM Plex Mono', monospace; color:var(--accent); font-size:13px; flex-shrink:0;}
+  .group-divider h3{color:var(--paper); font-size:14px; letter-spacing:0.1em; text-transform:uppercase; font-family:'IBM Plex Mono', monospace; font-weight:600;}
+  .group-divider p{color:var(--steel-light); font-size:13px;}
 
   .addon-grid-full{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:10px;}
   .addon-cell{background:var(--paper); padding:26px 24px; display:flex; flex-direction:column; gap:10px;}
@@ -284,6 +299,14 @@
   </div>
 </section>
 
+<div class="group-divider">
+  <div class="wrap">
+    <span class="g-num">01</span>
+    <h3 data-i18n="groupEventH3">Event Production — Fanmeeting &amp; Fancon</h3>
+    <p data-i18n="groupEventP">Packages 1–2 below cover show-day production and staffing.</p>
+  </div>
+</div>
+
 <section class="package" id="package-1">
   <div class="wrap">
     <div class="pkg-label" data-i18n="pkg1Label">Package 1 / Under 500 Guests</div>
@@ -310,7 +333,7 @@
     <div class="pkg-price-bar">
       <div>
         <div class="p-label" data-i18n="priceLabel">Starting From</div>
-        <div class="p-price">90,000,000 – 115,000,000 VND</div>
+        <div class="p-price">90,000,000 VND</div>
       </div>
       <div class="p-note" data-i18n="pkg1Note">Covers venue basics, sound/lighting, printing, staff, and a 15% management fee.</div>
     </div>
@@ -343,12 +366,20 @@
     <div class="pkg-price-bar">
       <div>
         <div class="p-label" data-i18n="priceLabel">Starting From</div>
-        <div class="p-price">575,000,000 – 977,500,000 VND</div>
+        <div class="p-price">575,000,000 VND</div>
       </div>
       <div class="p-note" data-i18n="pkg2Note">Covers venue, pro sound/lighting, security, printing, staff, transport, and the 15% agency fee.</div>
     </div>
   </div>
 </section>
+
+<div class="group-divider">
+  <div class="wrap">
+    <span class="g-num">02</span>
+    <h3 data-i18n="groupMerchH3">Merch Production &amp; Fulfillment</h3>
+    <p data-i18n="groupMerchP">A separate service line — production, warehousing, and order fulfillment, independent of any event.</p>
+  </div>
+</div>
 
 <section class="package" id="package-3">
   <div class="wrap">
@@ -455,8 +486,8 @@
     <h2 style="margin-top:18px;" data-i18n="ctaH2">Not sure which package fits your event?</h2>
     <p data-i18n="ctaP">Tell us your event size and goals — we'll recommend the right package and give you an accurate quote.</p>
     <div class="cta-actions">
-      <a href="mailto:hello@pakgud.co" class="btn-primary" data-i18n="ctaBtn">Get a Free Consultation</a>
-      <a href="tel:+84328721486" class="btn-text"><span data-i18n="ctaPhoneLabel">Call Ms. Minh for a free consult</span> — +84 32 8721486</a>
+      <a href="mailto:hello@pakgud.co" class="btn-primary">hello@pakgud.co</a>
+      <a href="tel:+84328721486" class="btn-outline">Ms. Minh — +84 32 8721486</a>
     </div>
   </div>
 </section>
@@ -493,7 +524,7 @@
     navGuide:   { en: "Which Package?", vi: "Chọn Gói Nào?" },
     navAddons:  { en: "Add-Ons", vi: "Dịch Vụ Mở Rộng" },
     navContact: { en: "Contact", vi: "Liên Hệ" },
-    navFaq:     { en: "FAQ", vi: "Câu Hỏi Thường Gặp" },
+    navFaq:     { en: "FAQ", vi: "FAQ" },
     navCta:     { en: "Work With Us", vi: "Hợp Tác Cùng Chúng Tôi" },
 
     heroEyebrow: { en: "Rate Card", vi: "Bảng Giá" },
@@ -515,7 +546,11 @@
     guideRow4a: { en: "Something extra like artist hospitality, media coverage, or tour planning", vi: "Cần thêm dịch vụ như chăm sóc nghệ sĩ, truyền thông, hoặc lập kế hoạch tour" },
     guideRow4b: { en: "Add-on Services", vi: "Dịch Vụ Mở Rộng" },
 
-    priceLabel: { en: "Starting From", vi: "Khởi Điểm Từ" },
+    priceLabel: { en: "Starting From", vi: "Mức Giá Khởi Điểm" },
+    groupEventH3: { en: "Event Production — Fanmeeting &amp; Fancon", vi: "Sản Xuất Sự Kiện — Fanmeeting &amp; Fancon" },
+    groupEventP: { en: "Packages 1–2 below cover show-day production and staffing.", vi: "Gói 1–2 bên dưới bao gồm sản xuất và nhân sự cho ngày diễn ra sự kiện." },
+    groupMerchH3: { en: "Merch Production &amp; Fulfillment", vi: "Sản Xuất &amp; Xử Lý Merch" },
+    groupMerchP: { en: "A separate service line — production, warehousing, and order fulfillment, independent of any event.", vi: "Một dòng dịch vụ riêng biệt — sản xuất, lưu kho, và xử lý đơn hàng, độc lập với bất kỳ sự kiện nào." },
 
     pkg1Label: { en: "Package 1 / Under 500 Guests", vi: "Gói 1 / Dưới 500 Khách" },
     pkg1H2: { en: "Small &amp; Intimate Events", vi: "Sự Kiện Nhỏ &amp; Thân Mật" },
@@ -587,13 +622,11 @@
     ctaEyebrow: { en: "Get a Free Consultation", vi: "Nhận Tư Vấn Miễn Phí" },
     ctaH2: { en: "Not sure which package fits your event?", vi: "Chưa Chắc Gói Nào Phù Hợp Với Sự Kiện Của Bạn?" },
     ctaP: { en: "Tell us your event size and goals — we'll recommend the right package and give you an accurate quote.", vi: "Cho chúng tôi biết quy mô và mục tiêu sự kiện — chúng tôi sẽ tư vấn gói phù hợp và báo giá chính xác." },
-    ctaBtn: { en: "Get a Free Consultation", vi: "Nhận Tư Vấn Miễn Phí" },
-    ctaPhoneLabel: { en: "Call Ms. Minh for a free consult", vi: "Gọi cho Chị Minh để được tư vấn miễn phí" },
 
     footDesc: { en: "Vietnam's transparent fan-experience operator — fanmeetings, fancons, and merch fulfillment, run with published rates and an itemized paper trail.", vi: "Đối tác vận hành trải nghiệm fan minh bạch tại Việt Nam — fanmeeting, fancon và merch fulfillment, vận hành với mức giá công khai và chứng từ minh bạch." },
     footCompanyH4: { en: "Company", vi: "Công Ty" },
     footWho: { en: "Who It's For", vi: "Dành Cho Ai" },
-    footFaq: { en: "FAQ", vi: "Câu Hỏi Thường Gặp" },
+    footFaq: { en: "FAQ", vi: "FAQ" },
     footWhy: { en: "Why Us", vi: "Vì Sao Chọn Chúng Tôi" },
     footContactH4: { en: "Contact", vi: "Liên Hệ" },
     footCopyright: { en: "© 2026 PakGud. All rights reserved.", vi: "© 2026 PakGud. Đã đăng ký bản quyền." },

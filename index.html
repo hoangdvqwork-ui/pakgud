@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PakGud — The Hidden Team That Fulfills the Fan Experience</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%232451E0'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -235,7 +236,18 @@
   .price-card .p-label{font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--steel);}
   .price-card .p-price{font-family:'Oswald', sans-serif; font-size:28px; font-weight:600; color:var(--ink); margin-top:6px;}
   .price-card .p-note{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--steel-light); margin-top:6px;}
+  .price-card .p-more{display:inline-block; margin-top:14px; font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--accent); border-bottom:1px solid var(--accent); padding-bottom:2px; width:fit-content;}
   @media (max-width:900px){ .price-grid{grid-template-columns:1fr;} }
+  .price-grid-2col{grid-template-columns:repeat(2,1fr);}
+  .price-grid-1col{grid-template-columns:1fr;}
+  @media (max-width:900px){ .price-grid-2col{grid-template-columns:1fr;} }
+  .rate-group{margin-top:44px;}
+  .rate-group:first-of-type{margin-top:0;}
+  .rate-group-label{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--steel); padding-bottom:12px; margin-bottom:0; border-bottom:1px solid var(--line-dark);
+  }
+  .rate-group-label b{color:var(--ink); font-weight:600;}
   /* ---------- OFFER SPOTLIGHT ---------- */
   .offer-spotlight{background:var(--accent); color:var(--paper); padding:110px 0; text-align:center;}
   .offer-spotlight .eyebrow{justify-content:center; color:var(--paper);}
@@ -318,6 +330,7 @@
   .cta .btn-primary{margin-top:34px; padding:16px 34px; font-size:14px;}
   .cta-actions{display:flex; gap:22px; margin-top:34px; align-items:center; justify-content:center; flex-wrap:wrap;}
   .cta-actions .btn-primary{margin-top:0; padding:16px 34px; font-size:14px;}
+  .cta-actions .btn-outline{padding:16px 34px; font-size:14px;}
   .cta-actions .btn-text{font-size:13px;}
 
   /* ---------- FOOTER ---------- */
@@ -477,47 +490,57 @@
     <div class="sec-head">
       <div>
         <div class="eyebrow" data-i18n="priceEyebrow">Rate Card</div>
-        <h2 style="margin-top:16px;" data-i18n="priceH2">Three services. Starting rates published up front.</h2>
+        <h2 style="margin-top:16px;" data-i18n="priceH2">Two service lines. Starting rates published up front.</h2>
       </div>
       <p data-i18n="priceP">Final scope always shapes the final quote — but you'll never wonder where the floor is.</p>
     </div>
-    <div class="price-grid">
-      <a class="price-card" href="services.html#package-1">
-        <div class="cat-num">01</div>
-        <div class="p-scale" data-i18n="price1Scale">Under 500 Fans</div>
-        <h3 data-i18n="price1Title">Fanmeeting</h3>
-        <p class="p-desc" data-i18n="price1Desc">Minimal decor and stage production — built for intimate, high-touch fan moments.</p>
-        <div class="p-price-wrap">
-          <div class="p-label" data-i18n="priceLabel">Starting From</div>
-          <div class="p-price">90,000,000 – 115,000,000 VND</div>
-          <div class="p-note" data-i18n="priceNote">+ scope-based final quote</div>
+
+    <div class="rate-group">
+      <div class="rate-group-label" data-i18n="rateGroupEvent">Group 1 — <b>Event Production</b> (Fanmeeting &amp; Fancon)</div>
+      <div class="price-grid price-grid-2col">
+        <div class="price-card">
+          <div class="cat-num">01</div>
+          <div class="p-scale" data-i18n="price1Scale">Under 500 Fans</div>
+          <h3 data-i18n="price1Title">Fanmeeting</h3>
+          <p class="p-desc" data-i18n="price1Desc">Minimal decor and stage production — built for intimate, high-touch fan moments.</p>
+          <div class="p-price-wrap">
+            <div class="p-label" data-i18n="priceLabel">Starting From</div>
+            <div class="p-price">90,000,000 VND</div>
+            <div class="p-note" data-i18n="priceNote">+ scope-based final quote</div>
+            <a href="services.html#package-1" class="p-more" data-i18n="priceCardLink">Xem bảng giá mở rộng →</a>
+          </div>
         </div>
-      </a>
-      <a class="price-card" href="services.html#package-2">
-        <div class="cat-num">02</div>
-        <div class="p-scale" data-i18n="price2Scale">500–2,000 Fans</div>
-        <h3 data-i18n="price2Title">Fancon</h3>
-        <p class="p-desc" data-i18n="price2Desc">Moderate decor and stage production — our core capability, built to run at scale.</p>
-        <div class="p-price-wrap">
-          <div class="p-label" data-i18n="priceLabel">Starting From</div>
-          <div class="p-price">575,000,000 – 977,500,000 VND</div>
-          <div class="p-note" data-i18n="priceNote">+ scope-based final quote</div>
+        <div class="price-card">
+          <div class="cat-num">02</div>
+          <div class="p-scale" data-i18n="price2Scale">500–2,000 Fans</div>
+          <h3 data-i18n="price2Title">Fancon</h3>
+          <p class="p-desc" data-i18n="price2Desc">Moderate decor and stage production — our core capability, built to run at scale.</p>
+          <div class="p-price-wrap">
+            <div class="p-label" data-i18n="priceLabel">Starting From</div>
+            <div class="p-price">575,000,000 VND</div>
+            <div class="p-note" data-i18n="priceNote">+ scope-based final quote</div>
+            <a href="services.html#package-2" class="p-more" data-i18n="priceCardLink">Xem bảng giá mở rộng →</a>
+          </div>
         </div>
-      </a>
-      <a class="price-card" href="services.html#package-3">
-        <div class="cat-num">03</div>
-        <div class="p-scale" data-i18n="price3Scale">Order-Volume Based</div>
-        <h3 data-i18n="price3Title">Merch Fulfillment Logistics</h3>
-        <p class="p-desc" data-i18n="price3Desc">Production coordination, warehousing, and order fulfillment — the operational backbone, whether or not there's a show attached.</p>
-        <div class="p-price-wrap">
-          <div class="p-label" data-i18n="priceLabel">Starting From</div>
-          <div class="p-price">17,000,000 VND</div>
-          <div class="p-note" data-i18n="priceNote">+ scope-based final quote</div>
-        </div>
-      </a>
+      </div>
     </div>
-    <div style="margin-top:28px;">
-      <a href="services.html" class="btn-text" data-i18n="priceFullLink">See the full rate card &amp; add-ons →</a>
+
+    <div class="rate-group">
+      <div class="rate-group-label" data-i18n="rateGroupMerch">Group 2 — <b>Merch Production &amp; Fulfillment</b></div>
+      <div class="price-grid price-grid-1col">
+        <div class="price-card">
+          <div class="cat-num">03</div>
+          <div class="p-scale" data-i18n="price3Scale">Order-Volume Based</div>
+          <h3 data-i18n="price3Title">Merch Fulfillment Logistics</h3>
+          <p class="p-desc" data-i18n="price3Desc">Production coordination, warehousing, and order fulfillment — the operational backbone, whether or not there's a show attached.</p>
+          <div class="p-price-wrap">
+            <div class="p-label" data-i18n="priceLabel">Starting From</div>
+            <div class="p-price">17,000,000 VND</div>
+            <div class="p-note" data-i18n="priceNote">+ scope-based final quote</div>
+            <a href="services.html#package-3" class="p-more" data-i18n="priceCardLink">Xem bảng giá mở rộng →</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -683,11 +706,7 @@
     <p data-i18n="ctaP">Free your mind from operational chaos — one conversation to walk through what your team needs.</p>
     <div class="cta-actions">
       <a href="mailto:hello@pakgud.co" class="btn-primary">hello@pakgud.co</a>
-      <a href="tel:+84328721486" class="btn-text"><span data-i18n="ctaPhoneLabel">Call for a free consult</span> — +84 32 8721486</a>
-    </div>
-    <div class="cta-actions" style="margin-top:20px;">
-      <a href="services.html" class="btn-text" data-i18n="ctaServicesLink">View Full Rate Card →</a>
-      <a href="faq.html" class="btn-text" data-i18n="ctaFaqLink">View FAQ →</a>
+      <a href="tel:+84328721486" class="btn-outline">Ms. Minh — +84 32 8721486</a>
     </div>
   </div>
 </section>
@@ -721,7 +740,7 @@
 (function(){
   var dict = {
     navServices: { en: "Rate Card", vi: "Bảng Giá" },
-    navFaq:      { en: "FAQ", vi: "Câu Hỏi Thường Gặp" },
+    navFaq:      { en: "FAQ", vi: "FAQ" },
     navWho:      { en: "Who It's For", vi: "Dành Cho Ai" },
     navWhy:      { en: "Why Us", vi: "Vì Sao Chọn" },
     navContact:  { en: "Contact", vi: "Liên Hệ" },
@@ -778,11 +797,13 @@
     aud2chip4: { en: "Discreet &amp; Vetted Crew", vi: "Đội Ngũ Kín Đáo &amp; Đã Thẩm Định" },
 
     priceEyebrow: { en: "Rate Card", vi: "Bảng Giá" },
-    priceH2:      { en: "Three services. Starting rates published up front.", vi: "Ba dịch vụ. Mức giá khởi điểm công khai ngay từ đầu." },
+    priceH2:      { en: "Two service lines. Starting rates published up front.", vi: "Hai nhóm dịch vụ. Mức giá khởi điểm công khai ngay từ đầu." },
     priceP:       { en: "Final scope always shapes the final quote — but you'll never wonder where the floor is.", vi: "Phạm vi công việc thực tế luôn quyết định báo giá cuối cùng — nhưng bạn sẽ không bao giờ phải đoán mức sàn." },
-    priceLabel:   { en: "Starting From", vi: "Khởi Điểm Từ" },
+    priceLabel:   { en: "Starting From", vi: "Mức Giá Khởi Điểm" },
     priceNote:    { en: "+ scope-based final quote", vi: "+ báo giá cuối theo phạm vi thực tế" },
-    priceFullLink: { en: "See the full rate card &amp; add-ons →", vi: "Xem bảng giá đầy đủ &amp; dịch vụ mở rộng →" },
+    rateGroupEvent: { en: "Group 1 — <b>Event Production</b> (Fanmeeting &amp; Fancon)", vi: "Nhóm 1 — <b>Sản Xuất Sự Kiện</b> (Fanmeeting &amp; Fancon)" },
+    rateGroupMerch: { en: "Group 2 — <b>Merch Production &amp; Fulfillment</b>", vi: "Nhóm 2 — <b>Sản Xuất &amp; Xử Lý Merch</b>" },
+    priceCardLink: { en: "View Full Pricing →", vi: "Xem Bảng Giá Mở Rộng →" },
     offerEyebrow: { en: "100% Client Confidentiality Guaranteed", vi: "Chúng tôi đảm bảo bảo mật 100% danh tính khách hàng" },
     offerTitle:   { en: "Try working with us — at the best rate in the market.", vi: "Hãy thử làm việc với chúng tôi với mức ưu đãi tốt nhất thị trường" },
     offerLbl1:    { en: "First Project", vi: "Dự Án Đầu Tiên" },
@@ -816,7 +837,7 @@
     add3Desc:  { en: "P&amp;L projection, cost and logistics optimization consulting, venue sourcing, and sponsor sourcing.", vi: "Dự trù P&amp;L, tư vấn tối ưu chi phí và logistics, tìm kiếm địa điểm và tìm kiếm nhà tài trợ." },
     add3Tag:   { en: "Free Pricing Consultation", vi: "Tư Vấn Chi Phí<br>Miễn Phí" },
     addFullLink: { en: "All Services", vi: "Tất Cả Dịch Vụ" },
-    addFaqLink: { en: "FAQ", vi: "Câu Hỏi Thường Gặp" },
+    addFaqLink: { en: "FAQ", vi: "FAQ" },
 
     whyEyebrow: { en: "Why Now", vi: "Vì Sao Là Lúc Này" },
     whyH2:      { en: "The gap between artist and operations, closed.", vi: "Khoảng trống giữa nghệ sĩ và vận hành, được lấp đầy." },
@@ -870,15 +891,12 @@
     ctaEyebrow: { en: "Save a Seat in Your Office", vi: "Tiết Kiệm Không Gian Cho Văn Phòng Bạn" },
     ctaH2:      { en: "Tell us the tangle.<br>We'll build the plan.", vi: "Chia sẻ bài toán của bạn.<br>Chúng tôi sẽ lên kế hoạch." },
     ctaP:       { en: "Free your mind from operational chaos — one conversation to walk through what your team needs.", vi: "Giải phóng tâm trí khỏi những cơn đau đầu vận hành — chỉ một cuộc trò chuyện để hiểu điều đội ngũ bạn cần." },
-    ctaPhoneLabel: { en: "Call for a free consult", vi: "Gọi điện để nhận tư vấn" },
-    ctaServicesLink: { en: "View Full Rate Card →", vi: "Xem Bảng Giá Đầy Đủ →" },
-    ctaFaqLink: { en: "View FAQ →", vi: "Xem Câu Hỏi Thường Gặp →" },
 
     footDesc:      { en: "Vietnam's transparent fan-experience operator — fanmeetings, fancons, and merch fulfillment, run with published rates and an itemized paper trail.", vi: "Đối tác vận hành trải nghiệm fan minh bạch tại Việt Nam — fanmeeting, fancon và merch fulfillment, vận hành với mức giá công khai và chứng từ minh bạch." },
     footCompanyH4: { en: "Company", vi: "Công Ty" },
     footWho:       { en: "Who It's For", vi: "Dành Cho Ai" },
     footServices:  { en: "Rate Card", vi: "Bảng Giá" },
-    footFaq:       { en: "FAQ", vi: "Câu Hỏi Thường Gặp" },
+    footFaq:       { en: "FAQ", vi: "FAQ" },
     footWhy:       { en: "Why Us", vi: "Vì Sao Chọn Chúng Tôi" },
     footContactH4: { en: "Contact", vi: "Liên Hệ" },
     footCopyright: { en: "© 2026 PakGud. All rights reserved.", vi: "© 2026 PakGud. Đã đăng ký bản quyền." },
