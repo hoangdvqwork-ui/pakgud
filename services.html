@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PakGud — Rate Card &amp; Services</title>
+<title>PakGud — Fan Fulfillment Service</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%232451E0'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -115,7 +115,7 @@
 
   .chip{
     font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.06em; text-transform:uppercase;
-    border:1px solid var(--line-dark); padding:7px 12px; color:var(--ink);
+    border:1px solid var(--line-dark); padding:7px 12px; color:var(--ink); display:inline-block;
   }
 
   /* ---------- CTA (reused for closing section) ---------- */
@@ -157,20 +157,26 @@
 
   /* ---------- SERVICES PAGE EXTRAS ---------- */
   .page-hero{padding:96px 0 60px; border-bottom:1px solid var(--line);}
-  .page-hero h1{font-size:clamp(30px,4.2vw,52px); margin-top:20px; max-width:920px;}
-  .page-hero p.lede{font-size:17px; color:var(--steel); max-width:640px; margin-top:20px; line-height:1.6;}
-  .quick-links{display:flex; gap:16px; margin-top:40px; flex-wrap:wrap;}
+  .page-hero h1{font-size:clamp(32px,4.6vw,58px); margin-top:20px;}
+  .page-hero .tagline{
+    font-family:'Oswald', sans-serif; font-size:clamp(16px,1.8vw,20px); text-transform:none;
+    font-weight:500; color:var(--ink); margin-top:14px; letter-spacing:0.01em;
+  }
+  .page-hero .gloss{font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--steel); margin-top:8px; font-style:italic;}
+  .page-hero p.lede{font-size:17px; color:var(--steel); max-width:680px; margin-top:26px; line-height:1.65;}
+  .page-hero p.lede + p.lede{margin-top:16px;}
+  .hero-quote{
+    border-left:3px solid var(--accent); background:var(--paper-dim);
+    padding:22px 28px; margin-top:32px; max-width:640px;
+  }
+  .hero-quote p{font-family:'Oswald', sans-serif; font-size:16px; text-transform:none; font-weight:600; line-height:1.5; letter-spacing:0;}
+  .hero-quote p + p{color:var(--steel); font-size:14px; font-weight:400; margin-top:8px; font-family:'IBM Plex Sans', sans-serif;}
+
+  .quick-links{display:flex; gap:16px; margin-top:36px; flex-wrap:wrap;}
   .quick-link{display:flex; align-items:center; gap:12px; border:1px solid var(--line-dark); padding:16px 20px; transition:background .2s ease, transform .15s ease;}
   .quick-link:hover{background:var(--paper-dim); transform:translateY(-1px);}
   .quick-link .q-num{font-family:'IBM Plex Mono', monospace; color:var(--accent); font-size:14px;}
   .quick-link .q-label{font-size:13.5px; font-weight:600;}
-
-  .guide-table-wrap{border:1px solid var(--line-dark); margin-top:10px; overflow-x:auto;}
-  .guide-table{width:100%; border-collapse:collapse; min-width:560px;}
-  .guide-table td{padding:22px 24px; border-bottom:1px solid var(--line); font-size:14.5px; vertical-align:top;}
-  .guide-table tr:last-child td{border-bottom:none;}
-  .guide-table td:last-child{font-family:'IBM Plex Mono', monospace; font-weight:600; color:var(--accent); white-space:nowrap; text-align:right;}
-  @media (max-width:640px){ .guide-table td:last-child{text-align:left;} }
 
   .package{border-top:1px solid var(--line);}
   .pkg-label{font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent);}
@@ -181,33 +187,46 @@
   .bullet-cell p{color:var(--steel); font-size:13.8px; line-height:1.55;}
   @media (max-width:760px){ .bullet-grid{grid-template-columns:1fr;} }
 
-  .pkg-price-bar{border:1px solid var(--line-dark); background:var(--paper-dim); padding:28px 32px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; margin-top:36px;}
-  .pkg-price-bar .p-label{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--steel);}
-  .pkg-price-bar .p-price{font-family:'Oswald', sans-serif; font-size:clamp(22px,3vw,32px); font-weight:600; margin-top:6px;}
-  .pkg-price-bar .p-note{font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--steel); max-width:360px; text-align:right;}
-  @media (max-width:640px){ .pkg-price-bar .p-note{text-align:left;} }
+  .pkg-callout{
+    border-left:3px solid var(--accent); background:var(--paper-dim);
+    padding:22px 26px; margin-top:32px; font-size:14px; color:var(--steel); line-height:1.65; max-width:760px;
+  }
+  .pkg-callout b{color:var(--ink);}
 
-  .tier-table-wrap{border:1px solid var(--line-dark); margin-top:36px; overflow-x:auto;}
-  .tier-table{width:100%; border-collapse:collapse; min-width:520px;}
-  .tier-table th{text-align:left; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--steel); padding:16px 24px; border-bottom:1px solid var(--line-dark); background:var(--paper-dim);}
-  .tier-table td{padding:18px 24px; border-bottom:1px solid var(--line); font-size:14px;}
-  .tier-table tr:last-child td{border-bottom:none;}
-  .tier-table td:last-child, .tier-table th:last-child{font-family:'IBM Plex Mono', monospace; text-align:right;}
-  .tier-note{margin-top:18px; font-size:14px; color:var(--steel);}
+  /* ---------- PRICING TABLE ---------- */
+  .pricing-intro{border-top:1px solid var(--line);}
+  .tier-def-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); margin-top:40px;}
+  .tier-def-cell{background:var(--paper); padding:28px 26px;}
+  .tier-def-cell h4{font-size:15px; font-family:'IBM Plex Sans', sans-serif; font-weight:600; margin-bottom:10px;}
+  .tier-def-cell p{color:var(--steel); font-size:13.8px; line-height:1.55;}
+  @media (max-width:760px){ .tier-def-grid{grid-template-columns:1fr;} }
 
-  .group-divider{background:var(--case); color:var(--paper); padding:22px 0;}
-  .group-divider .wrap{display:flex; align-items:baseline; gap:16px; flex-wrap:wrap;}
-  .group-divider .g-num{font-family:'IBM Plex Mono', monospace; color:var(--accent); font-size:13px; flex-shrink:0;}
-  .group-divider h3{color:var(--paper); font-size:14px; letter-spacing:0.1em; text-transform:uppercase; font-family:'IBM Plex Mono', monospace; font-weight:600;}
-  .group-divider p{color:var(--steel-light); font-size:13px;}
+  .price-table-wrap{border:1px solid var(--line-dark); margin-top:40px; overflow-x:auto;}
+  .price-table{width:100%; border-collapse:collapse; min-width:720px;}
+  .price-table th{
+    text-align:left; font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--steel); padding:16px 22px; border-bottom:1px solid var(--line-dark); background:var(--paper-dim);
+  }
+  .price-table td{padding:22px; border-bottom:1px solid var(--line); font-size:14px; vertical-align:top;}
+  .price-table tr:last-child td{border-bottom:none;}
+  .price-table td:nth-child(3), .price-table td:nth-child(4),
+  .price-table th:nth-child(3), .price-table th:nth-child(4){
+    font-family:'Oswald', sans-serif; font-weight:600; font-size:16px; text-align:right; white-space:nowrap;
+  }
+  .price-table td:first-child{font-weight:600;}
+  .price-table td:nth-child(2){color:var(--steel); font-size:13px;}
+  .pricing-footnote{margin-top:18px; font-size:13.5px; color:var(--steel); max-width:680px; line-height:1.6;}
+  .pricing-note{
+    border:1px solid var(--line-dark); background:var(--paper-dim); padding:20px 24px;
+    margin-top:24px; font-size:13.5px; color:var(--steel); line-height:1.6; max-width:820px;
+  }
+  .pricing-note b{color:var(--ink);}
 
-  .addon-grid-full{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:10px;}
-  .addon-cell{background:var(--paper); padding:26px 24px; display:flex; flex-direction:column; gap:10px;}
-  .addon-cell h4{font-size:14.5px; font-weight:600; font-family:'IBM Plex Sans', sans-serif;}
-  .addon-cell p{color:var(--steel); font-size:13px; line-height:1.5; flex:1;}
-  .addon-tag{align-self:flex-start; font-family:'IBM Plex Mono', monospace; font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--steel); border:1px solid var(--line-dark); padding:4px 8px;}
-  @media (max-width:900px){ .addon-grid-full{grid-template-columns:1fr 1fr;} }
-  @media (max-width:560px){ .addon-grid-full{grid-template-columns:1fr;} }
+  /* ---------- ADD-ONS TEASER ---------- */
+  .addons-teaser{border-top:1px solid var(--line);}
+  .addons-teaser h2{font-size:clamp(24px,2.8vw,34px);}
+  .addons-teaser p{color:var(--steel); font-size:15.5px; max-width:760px; margin-top:18px; line-height:1.7;}
+  .addons-chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:24px;}
 
   /* ---------- MOBILE TUNING ---------- */
   @media (max-width:760px){
@@ -234,10 +253,10 @@
     <a href="index.html" class="logo"><span class="dot"></span>PakGud</a>
     <div class="nav-links" id="navLinks">
       <a href="index.html" data-i18n="navHome">Home</a>
-      <a href="#guide" data-i18n="navGuide">Which Package?</a>
+      <a href="#scope" data-i18n="navScope">Service Scope</a>
+      <a href="#pricing" data-i18n="navPricing">Pricing</a>
       <a href="#addons" data-i18n="navAddons">Add-Ons</a>
       <a href="faq.html" data-i18n="navFaq">FAQ</a>
-      <a href="#contact" data-i18n="navContact">Contact</a>
       <a href="#contact" class="nav-links-cta" data-i18n="navCta">Work With Us</a>
     </div>
     <div style="display:flex; align-items:center; gap:16px;">
@@ -254,237 +273,215 @@
 
 <section class="page-hero">
   <div class="wrap">
-    <div class="eyebrow" data-i18n="heroEyebrow">Rate Card</div>
-    <h1 data-i18n="heroH1">3 Ways PakGud Makes Your Event Happen — Pick the One That Fits Your Show</h1>
-    <p class="lede" data-i18n="heroLede">From an intimate 200-person fan meeting to a 2,000-person concert to shipping 20,000 merch orders nationwide — here's exactly what's included and what it starts at.</p>
+    <div class="eyebrow" data-i18n="heroEyebrow">Fan Fulfillment Service</div>
+    <h1 data-i18n="heroH1">Fan Fulfillment Service</h1>
+    <div class="tagline">"Vận hành trải nghiệm tốt nhất cho fan"</div>
+    <div class="gloss" data-i18n="heroGloss">(Delivering the ultimate fan experience)</div>
+    <p class="lede" data-i18n="heroP1">Every touchpoint between an idol and their fandom is a moment that can't be redone. PakGud's Fan Fulfillment Service is the operational backbone that makes sure it goes right the first time — from the merch in a fan's hands, to the line they wait in, to the seconds they spend face-to-face with the artist.</p>
+    <p class="lede" data-i18n="heroP2">We handle the logistics, the crowd, and the choreography of every fan interaction — so agencies and production teams can focus on the show, not the swarm.</p>
+    <div class="hero-quote">
+      <p data-i18n="heroQuote1">Flawless execution. Airtight safety. Zero wasted seconds.</p>
+      <p data-i18n="heroQuote2">That's the standard we operate to on every fan touchpoint, at every scale.</p>
+    </div>
+    <div class="hero-actions" style="margin-top:34px;">
+      <a href="#contact" class="btn-primary" data-i18n="heroCta">Request a Fan Fulfillment Consultation →</a>
+    </div>
     <div class="quick-links">
-      <a class="quick-link" href="#package-1"><span class="q-num">01</span><span class="q-label" data-i18n="qlink1">Small &amp; Intimate Events</span></a>
-      <a class="quick-link" href="#package-2"><span class="q-num">02</span><span class="q-label" data-i18n="qlink2">Concerts &amp; Large-Scale Shows</span></a>
-      <a class="quick-link" href="#package-3"><span class="q-num">03</span><span class="q-label" data-i18n="qlink3">Merch Production &amp; Fulfillment</span></a>
+      <a class="quick-link" href="#merch-fulfillment"><span class="q-num">01</span><span class="q-label" data-i18n="qlink1">Merch Fulfillment</span></a>
+      <a class="quick-link" href="#crowd-queue"><span class="q-num">02</span><span class="q-label" data-i18n="qlink2">Crowd &amp; Queue Management</span></a>
+      <a class="quick-link" href="#benefit-execution"><span class="q-num">03</span><span class="q-label" data-i18n="qlink3">Benefit Execution</span></a>
     </div>
   </div>
 </section>
 
-<section id="guide">
+<section id="scope">
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <div class="eyebrow" data-i18n="guideEyebrow">Quick Guide</div>
-        <h2 style="margin-top:16px;" data-i18n="guideH2">Which One Do I Need?</h2>
+        <div class="eyebrow" data-i18n="scopeEyebrow">Service Scope</div>
+        <h2 style="margin-top:16px;" data-i18n="scopeH2">Service Scope &amp; Operational Breakdown</h2>
       </div>
-      <p data-i18n="guideP">Not sure where to start? Match your event below.</p>
-    </div>
-    <div class="guide-table-wrap">
-      <table class="guide-table">
-        <tbody>
-          <tr>
-            <td data-i18n="guideRow1a">A fan meeting, showcase, mini live, or press conference under 500 people</td>
-            <td data-i18n="guideRow1b">Package 1</td>
-          </tr>
-          <tr>
-            <td data-i18n="guideRow2a">A concert, fan-con, or music festival with 500–2,000 people</td>
-            <td data-i18n="guideRow2b">Package 2</td>
-          </tr>
-          <tr>
-            <td data-i18n="guideRow3a">You need to produce, store, or ship merchandise (albums, lightsticks, apparel)</td>
-            <td data-i18n="guideRow3b">Package 3</td>
-          </tr>
-          <tr>
-            <td data-i18n="guideRow4a">Something extra like artist hospitality, media coverage, or tour planning</td>
-            <td data-i18n="guideRow4b">Add-on Services</td>
-          </tr>
-        </tbody>
-      </table>
+      <p data-i18n="scopeP">PakGud's Fan Fulfillment Service is built on three integrated pillars. Each one can stand alone or work together as a single, seamlessly coordinated operation.</p>
     </div>
   </div>
 </section>
 
-<div class="group-divider">
+<section class="package" id="merch-fulfillment">
   <div class="wrap">
-    <span class="g-num">01</span>
-    <h3 data-i18n="groupEventH3">Event Production — Fanmeeting &amp; Fancon</h3>
-    <p data-i18n="groupEventP">Packages 1–2 below cover show-day production and staffing.</p>
-  </div>
-</div>
-
-<section class="package" id="package-1">
-  <div class="wrap">
-    <div class="pkg-label" data-i18n="pkg1Label">Package 1 / Under 500 Guests</div>
-    <h2 style="margin-top:14px;" data-i18n="pkg1H2">Small &amp; Intimate Events</h2>
-    <p class="pkg-intro" data-i18n="pkg1Intro">For close, personal shows — think fan meetings, showcases, and mini concerts where the focus is connection, not spectacle.</p>
+    <div class="pkg-label" data-i18n="pillar1Label">Pillar 1 / Merch Fulfillment</div>
+    <h2 style="margin-top:14px;" data-i18n="pillar1H2">Merch Fulfillment</h2>
+    <p class="pkg-intro" data-i18n="pillar1Intro">From factory to fan's hands, we manage the full merchandise lifecycle:</p>
     <div class="bullet-grid">
       <div class="bullet-cell">
-        <h4 data-i18n="pkg1B1T">Check-in &amp; Crowd Flow</h4>
-        <p data-i18n="pkg1B1D">Staff manage the line, scan QR tickets, hand out wristbands/passes, and give out gifts — so entry is smooth, not chaotic.</p>
+        <h4 data-i18n="pillar1B1T">Inventory Control</h4>
+        <p data-i18n="pillar1B1D">Professional warehousing with full stock tracking, before, during, and after the event.</p>
       </div>
       <div class="bullet-cell">
-        <h4 data-i18n="pkg1B2T">Basic Sound &amp; Stage Setup</h4>
-        <p data-i18n="pkg1B2D">Standard audio/lighting for the venue (not concert-grade rigs), plus someone managing props backstage.</p>
+        <h4 data-i18n="pillar1B2T">Packaging (đóng gói)</h4>
+        <p data-i18n="pillar1B2D">Multi-layer protective packing for albums, lightsticks, and apparel, built to survive high-volume handling.</p>
       </div>
       <div class="bullet-cell">
-        <h4 data-i18n="pkg1B3T">Legal Paperwork Handled</h4>
-        <p data-i18n="pkg1B3D">PakGud handles the performance permit and required government notifications, so the show is fully legal.</p>
+        <h4 data-i18n="pillar1B3T">Pick-up &amp; Distribution (phân phát cho fan)</h4>
+        <p data-i18n="pillar1B3D">Organized on-site booth operations that get official merch and fan-kits into fans' hands quickly, without bottlenecks.</p>
       </div>
       <div class="bullet-cell">
-        <h4 data-i18n="pkg1B4T">Overall Event Management</h4>
-        <p data-i18n="pkg1B4D">One team plans the whole show, manages vendors, and gives you a wrap-up report after.</p>
+        <h4 data-i18n="pillar1B4T">Order Coordination</h4>
+        <p data-i18n="pillar1B4D">Syncing orders across your website, Shopee, and TikTok Shop, with reliable last-mile delivery for anything not claimed on-site.</p>
       </div>
     </div>
-    <div class="pkg-price-bar">
+    <div class="pkg-callout" data-i18n="pillar1Callout"><b>Why it matters:</b> A slow or disorganized merch line is the first thing fans complain about. We make sure it isn't yours.</div>
+  </div>
+</section>
+
+<section class="package" id="crowd-queue">
+  <div class="wrap">
+    <div class="pkg-label" data-i18n="pillar2Label">Pillar 2 / Crowd &amp; Queue Management</div>
+    <h2 style="margin-top:14px;" data-i18n="pillar2H2">Crowd &amp; Queue Management</h2>
+    <p class="pkg-intro" data-i18n="pillar2Intro">Every fan event lives or dies by its flow. We design and run the systems that keep thousands of people moving safely and smoothly:</p>
+    <div class="bullet-grid">
+      <div class="bullet-cell">
+        <h4 data-i18n="pillar2B1T">Entry &amp; Exit Flow Design</h4>
+        <p data-i18n="pillar2B1D">Zoned floor plans and wayfinding built around your venue's actual layout.</p>
+      </div>
+      <div class="bullet-cell">
+        <h4 data-i18n="pillar2B2T">Access Control</h4>
+        <p data-i18n="pillar2B2D">QR ticket scanning, wristband/pass distribution, and VIP segmentation handled by trained on-site leads.</p>
+      </div>
+      <div class="bullet-cell">
+        <h4 data-i18n="pillar2B3T">Wait-Time Minimization</h4>
+        <p data-i18n="pillar2B3D">Queue structuring and staff deployment calibrated to your expected crowd density.</p>
+      </div>
+      <div class="bullet-cell">
+        <h4 data-i18n="pillar2B4T">Scalable Security</h4>
+        <p data-i18n="pillar2B4D">From light-touch check-in staff at intimate showcases to full barrier systems and professional security teams at large-scale concerts.</p>
+      </div>
+    </div>
+    <div class="pkg-callout" data-i18n="pillar2Callout"><b>Why it matters:</b> Crowd mismanagement isn't just a bad look — it's a safety liability. Our queue systems are built to scale with your audience size, not improvised on the day.</div>
+  </div>
+</section>
+
+<section class="package" id="benefit-execution">
+  <div class="wrap">
+    <div class="pkg-label" data-i18n="pillar3Label">Pillar 3 / Benefit Execution</div>
+    <h2 style="margin-top:14px;" data-i18n="pillar3H2">Benefit Execution</h2>
+    <p class="pkg-intro" data-i18n="pillar3Intro">The highest-stakes minutes of any fan event are the direct artist-fan interactions. We run these on a locked schedule, with artist safety and fan satisfaction held in equal priority:</p>
+    <div class="bullet-grid">
+      <div class="bullet-cell">
+        <h4 data-i18n="pillar3B1T">Photo Sessions (Chụp ảnh)</h4>
+        <p data-i18n="pillar3B1D">1:1, Group Photo 1:10, and 1:50 formats, each with dedicated flow choreography.</p>
+      </div>
+      <div class="bullet-cell">
+        <h4 data-i18n="pillar3B2T">Hi-Bye / Send-off (Chào nghệ sĩ / Tiễn nghệ sĩ)</h4>
+        <p data-i18n="pillar3B2D">Arrival and departure moments, managed for both energy and safety.</p>
+      </div>
+      <div class="bullet-cell">
+        <h4 data-i18n="pillar3B3T">Hi-Touch / Handshake (Bắt tay)</h4>
+        <p data-i18n="pillar3B3D">High-throughput, close-contact interactions run with strict timing and physical safety protocols.</p>
+      </div>
+      <div class="bullet-cell">
+        <h4 data-i18n="pillar3B4T">Fansign / Autograph Sessions (Xin chữ ký / Ký tặng)</h4>
+        <p data-i18n="pillar3B4D">Signing sessions coordinated end-to-end, from fan queueing to item hand-off.</p>
+      </div>
+    </div>
+    <div class="pkg-callout" data-i18n="pillar3Callout"><b>Why it matters:</b> These are the moments fans travel for. A benefit session that runs late, runs unsafe, or runs out of time damages the fandom relationship — we exist to make sure it never does.</div>
+  </div>
+</section>
+
+<section class="pricing-intro" id="pricing">
+  <div class="wrap">
+    <div class="sec-head">
       <div>
-        <div class="p-label" data-i18n="priceLabel">Starting From</div>
-        <div class="p-price">90,000,000 VND</div>
+        <div class="eyebrow" data-i18n="pricingEyebrow">Pricing &amp; Event Package Structure</div>
+        <h2 style="margin-top:16px;" data-i18n="pricingH2">Priced by Scale, Not Guesswork</h2>
       </div>
-      <div class="p-note" data-i18n="pkg1Note">Covers venue basics, sound/lighting, printing, staff, and a 15% management fee.</div>
+      <p data-i18n="pricingP">Every event is priced by scale, with two tiers available depending on how much of the operation you need PakGud to run.</p>
     </div>
-  </div>
-</section>
 
-<section class="package" id="package-2">
-  <div class="wrap">
-    <div class="pkg-label" data-i18n="pkg2Label">Package 2 / 500–2,000 Guests</div>
-    <h2 style="margin-top:14px;" data-i18n="pkg2H2">Concerts &amp; Large-Scale Shows</h2>
-    <p class="pkg-intro" data-i18n="pkg2Intro">Everything in Package 1, plus the heavy-duty production and safety measures a real concert crowd requires.</p>
-    <div class="bullet-grid">
-      <div class="bullet-cell">
-        <h4 data-i18n="pkg2B1T">Security &amp; Risk Management</h4>
-        <p data-i18n="pkg2B1D">Metal barriers, crowd control fencing, professional security staff, and an emergency response plan.</p>
+    <div class="tier-def-grid">
+      <div class="tier-def-cell">
+        <h4 data-i18n="tierFullH4">Full Minimum Tier</h4>
+        <p data-i18n="tierFullP">Our complete operational package for that event size — check-in, crowd control, benefit execution, staffing, and coordination.</p>
       </div>
-      <div class="bullet-cell">
-        <h4 data-i18n="pkg2B2T">Pro-Level Stage &amp; Sound</h4>
-        <p data-i18n="pkg2B2D">Bigger sound systems, upgraded lighting, load-bearing truss structures, large stage flooring, and big LED screens.</p>
-      </div>
-      <div class="bullet-cell">
-        <h4 data-i18n="pkg2B3T">Experience Touches</h4>
-        <p data-i18n="pkg2B3D">Concept-matched stage decoration, an on-site photo booth with instant printing, and wayfinding signage.</p>
-      </div>
-      <div class="bullet-cell">
-        <h4 data-i18n="pkg2B4T">Heavy Logistics</h4>
-        <p data-i18n="pkg2B4D">Dedicated crews for loading/unloading equipment and coordinating delivery trucks.</p>
+      <div class="tier-def-cell">
+        <h4 data-i18n="tierBaseH4">Base Operational Tier</h4>
+        <p data-i18n="tierBaseP">Our lighter operational package — covering essential Fan Fulfillment staffing and queue management only, for teams who need core crowd/fulfillment support without the full production layer.</p>
       </div>
     </div>
-    <div class="pkg-price-bar">
-      <div>
-        <div class="p-label" data-i18n="priceLabel">Starting From</div>
-        <div class="p-price">575,000,000 VND</div>
-      </div>
-      <div class="p-note" data-i18n="pkg2Note">Covers venue, pro sound/lighting, security, printing, staff, transport, and the 15% agency fee.</div>
-    </div>
-  </div>
-</section>
 
-<div class="group-divider">
-  <div class="wrap">
-    <span class="g-num">02</span>
-    <h3 data-i18n="groupMerchH3">Merch Production &amp; Fulfillment</h3>
-    <p data-i18n="groupMerchP">A separate service line — production, warehousing, and order fulfillment, independent of any event.</p>
-  </div>
-</div>
-
-<section class="package" id="package-3">
-  <div class="wrap">
-    <div class="pkg-label" data-i18n="pkg3Label">Package 3 / Order-Volume Based</div>
-    <h2 style="margin-top:14px;" data-i18n="pkg3H2">Merchandise Production &amp; Fulfillment</h2>
-    <p class="pkg-intro" data-i18n="pkg3Intro">You have merch. We handle everything from factory to fan's doorstep — production, storage, packing, and shipping — anywhere in the country.</p>
-    <div class="bullet-grid">
-      <div class="bullet-cell">
-        <h4 data-i18n="pkg3B1T">Sourcing &amp; Quality Control</h4>
-        <p data-i18n="pkg3B1D">PakGud finds and negotiates with factories/printers, tracks production timelines, and checks every batch for defects before it ships.</p>
-      </div>
-      <div class="bullet-cell">
-        <h4 data-i18n="pkg3B2T">Warehousing</h4>
-        <p data-i18n="pkg3B2D">Climate-controlled storage so products don't get damaged sitting around.</p>
-      </div>
-      <div class="bullet-cell">
-        <h4 data-i18n="pkg3B3T">Professional Packing</h4>
-        <p data-i18n="pkg3B3D">Shock-proof wrapping for albums/CDs/lightsticks, sturdy tubes for posters, sealed bags for apparel.</p>
-      </div>
-      <div class="bullet-cell">
-        <h4 data-i18n="pkg3B4T">Order Coordination</h4>
-        <p data-i18n="pkg3B4D">Pulls orders from your website, Shopee, and TikTok Shop, packs them, ships via major carriers (GHTK, Viettel Post), and handles returns for shipping damage.</p>
-      </div>
-    </div>
-    <div class="tier-table-wrap">
-      <table class="tier-table">
+    <div class="price-table-wrap">
+      <table class="price-table">
         <thead>
           <tr>
-            <th data-i18n="tierColA">Order Volume</th>
-            <th data-i18n="tierColB">Starting Price</th>
+            <th data-i18n="ptColScale">Event Scale</th>
+            <th data-i18n="ptColExamples">Event Type Examples</th>
+            <th data-i18n="ptColFull">Full Minimum Tier</th>
+            <th data-i18n="ptColBase">Base Operational Tier</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td data-i18n="tierRow1a">Under 5,000 products</td>
-            <td data-i18n="tierRow1b">17,000,000 VND (flat)</td>
+            <td data-i18n="ptRow1Scale">Under 500 guests</td>
+            <td data-i18n="ptRow1Examples">Fanmeeting, Showcase, Minishow, Press Conference</td>
+            <td>90,000,000+ VND</td>
+            <td>30,000,000+ VND</td>
           </tr>
           <tr>
-            <td data-i18n="tierRow2a">5,000 – 9,999 products</td>
-            <td data-i18n="tierRow2b">17,000,000 VND + 1,600 VND per product over 5,000</td>
+            <td data-i18n="ptRow2Scale">500 – 1,000 guests</td>
+            <td data-i18n="ptRow2Examples">Fancon, Mini Concert, Special Showcase</td>
+            <td>400,000,000+ VND</td>
+            <td>50,000,000+ VND</td>
           </tr>
           <tr>
-            <td data-i18n="tierRow3a">10,000 – 14,999 products</td>
-            <td data-i18n="tierRow3b">17,000,000 VND (flat — special bulk rate)</td>
+            <td data-i18n="ptRow3Scale">1,000 – 2,000 guests</td>
+            <td data-i18n="ptRow3Examples">Live Concert, Fancon, Mini Music Festival</td>
+            <td data-i18n="ptCustom">Custom Consultation</td>
+            <td data-i18n="ptCustom">Custom Consultation</td>
           </tr>
           <tr>
-            <td data-i18n="tierRow4a">15,000 – 20,000 products</td>
-            <td data-i18n="tierRow4b">25,000,000 VND + 2,000 VND per product over 15,000</td>
+            <td data-i18n="ptRow4Scale">Merch Fulfillment Only</td>
+            <td data-i18n="ptRow4Examples">Order-Volume Based</td>
+            <td>17,000,000+ VND</td>
+            <td data-i18n="ptDash">—</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <p class="tier-note" data-i18n="tierTakeaway">The more you ship, the more efficient the pricing gets — with a flat, predictable starting rate.</p>
+    <p class="pricing-footnote" data-i18n="pricingFootnote">At this scale, pricing depends heavily on venue, security requirements, and technical complexity — our team will provide a tailored quote after a scoping call.</p>
+
+    <div class="pricing-note" data-i18n="pricingNote"><b>Note:</b> Base prices cover Fan Fulfillment operational services only and strictly exclude Stage Production (Sound, Lighting, Stage setup) and Site/Venue Decoration.</div>
+
+    <div class="tier-def-grid" style="margin-top:24px; grid-template-columns:1fr;">
+      <div class="tier-def-cell">
+        <h4 data-i18n="merchOnlyH4">Merch Fulfillment Only — 17,000,000+ VND Includes:</h4>
+        <ul style="margin-top:10px; padding-left:20px; color:var(--steel); font-size:13.8px; line-height:1.7;">
+          <li data-i18n="merchOnlyB1">Full cost of bulk packing personnel.</li>
+          <li data-i18n="merchOnlyB2">Two-way merch/materials shipping between warehouse ↔ event venue.</li>
+          <li data-i18n="merchOnlyB3">Cost of on-site coordination and booth-running staff.</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="addons">
+<section class="addons-teaser" id="addons">
   <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <div class="eyebrow" data-i18n="addonsEyebrow">Add-On Services</div>
-        <h2 style="margin-top:16px;" data-i18n="addonsH2">Need Something Extra?</h2>
-      </div>
-      <p data-i18n="addonsP">These plug into any package above.</p>
-    </div>
-    <div class="addon-grid-full">
-      <div class="addon-cell">
-        <h4 data-i18n="addon1T">Artist Care &amp; Hospitality</h4>
-        <p data-i18n="addon1D">Green room setup, food/drinks per rider, airport-hotel-venue transport, hotel booking for the whole crew.</p>
-        <span class="addon-tag" data-i18n="addonTag">Custom Quote</span>
-      </div>
-      <div class="addon-cell">
-        <h4 data-i18n="addon2T">Media &amp; Communication</h4>
-        <p data-i18n="addon2D">Poster/social media design, professional event photography, and an aftermovie recap video.</p>
-        <span class="addon-tag" data-i18n="addonTag">Custom Quote</span>
-      </div>
-      <div class="addon-cell">
-        <h4 data-i18n="addon3T">Fanmeeting &amp; Fandom Extras</h4>
-        <p data-i18n="addon3D">Ticketing &amp; seating chart setup, VIP check-in area, hi-touch/handshake zone, matching door gifts.</p>
-        <span class="addon-tag" data-i18n="addonTag">Custom Quote</span>
-      </div>
-      <div class="addon-cell">
-        <h4 data-i18n="addon4T">Fan-Project Coordinating</h4>
-        <p data-i18n="addon4D">Reviews and approves fan-made banners/standees, manages food truck parking &amp; power, oversees post-event cleanup by fan groups.</p>
-        <span class="addon-tag" data-i18n="addonTag">Custom Quote</span>
-      </div>
-      <div class="addon-cell">
-        <h4 data-i18n="addon5T">Tour Planning &amp; Strategy</h4>
-        <p data-i18n="addon5D">Budget/break-even planning, multi-city logistics advice, venue scouting, and help securing sponsors.</p>
-        <span class="addon-tag" data-i18n="addonTag">Custom Quote</span>
-      </div>
-      <div class="addon-cell">
-        <h4 data-i18n="addon6T">Vendor &amp; Tax Management</h4>
-        <p data-i18n="addon6D">PakGud deals directly with all third-party vendors, invoices, and tax paperwork — so the artist's team doesn't have to.</p>
-        <span class="addon-tag" data-i18n="addonTag">Custom Quote</span>
-      </div>
+    <h2 data-i18n="addonsH2">Need more than Fan Fulfillment?</h2>
+    <p data-i18n="addonsP">PakGud also offers add-on services that plug directly into any tier above. Ask your consultant to bundle these into your quote.</p>
+    <div class="addons-chips">
+      <span class="chip" data-i18n="addon1">Artist Care &amp; Hospitality</span>
+      <span class="chip" data-i18n="addon2">Media &amp; Communication</span>
+      <span class="chip" data-i18n="addon3">Fan-Project Coordinating</span>
+      <span class="chip" data-i18n="addon4">Tour Planning &amp; Strategy</span>
+      <span class="chip" data-i18n="addon5">Vendor &amp; Tax Management</span>
     </div>
   </div>
 </section>
 
 <section class="cta" id="contact">
   <div class="wrap">
-    <div class="eyebrow" style="justify-content:center;" data-i18n="ctaEyebrow">Get a Free Consultation</div>
-    <h2 style="margin-top:18px;" data-i18n="ctaH2">Not sure which package fits your event?</h2>
-    <p data-i18n="ctaP">Tell us your event size and goals — we'll recommend the right package and give you an accurate quote.</p>
+    <div class="eyebrow" style="justify-content:center;" data-i18n="ctaEyebrow">Talk to Our Team</div>
+    <h2 style="margin-top:18px;" data-i18n="ctaH2">Talk to Our Team About Your Event</h2>
+    <p data-i18n="ctaP">Tell us your event size and goals — we'll recommend the right tier and give you an accurate quote.</p>
     <div class="cta-actions">
       <a href="mailto:hello@pakgud.co" class="btn-primary">hello@pakgud.co</a>
       <a href="tel:+84328721486" class="btn-outline">Ms. Minh — +84 32 8721486</a>
@@ -496,7 +493,7 @@
   <div class="wrap foot-grid">
     <div>
       <div class="foot-logo">PakGud</div>
-      <p data-i18n="footDesc">Vietnam's transparent fan-experience operator — fanmeetings, fancons, and merch fulfillment, run with published rates and an itemized paper trail.</p>
+      <p data-i18n="footDesc">Vietnam's Fan Fulfillment operator — merch fulfillment, crowd &amp; queue management, and benefit execution, run with published rates and an itemized paper trail.</p>
     </div>
     <div class="foot-col">
       <h4 data-i18n="footCompanyH4">Company</h4>
@@ -521,109 +518,111 @@
 (function(){
   var dict = {
     navHome:    { en: "Home", vi: "Trang Chủ" },
-    navGuide:   { en: "Which Package?", vi: "Chọn Gói Nào?" },
+    navScope:   { en: "Service Scope", vi: "Phạm Vi Dịch Vụ" },
+    navPricing: { en: "Pricing", vi: "Bảng Giá" },
     navAddons:  { en: "Add-Ons", vi: "Dịch Vụ Mở Rộng" },
-    navContact: { en: "Contact", vi: "Liên Hệ" },
     navFaq:     { en: "FAQ", vi: "FAQ" },
     navCta:     { en: "Work With Us", vi: "Hợp Tác Cùng Chúng Tôi" },
 
-    heroEyebrow: { en: "Rate Card", vi: "Bảng Giá" },
-    heroH1: { en: "3 Ways PakGud Makes Your Event Happen — Pick the One That Fits Your Show", vi: "3 Cách PakGud Hiện Thực Hoá Sự Kiện Của Bạn — Chọn Gói Phù Hợp Với Chương Trình" },
-    heroLede: { en: "From an intimate 200-person fan meeting to a 2,000-person concert to shipping 20,000 merch orders nationwide — here's exactly what's included and what it starts at.", vi: "Từ buổi fan meeting thân mật 200 người, đến concert 2.000 khán giả, đến xử lý 20.000 đơn hàng merch trên toàn quốc — đây là những gì được bao gồm và mức giá khởi điểm." },
-    qlink1: { en: "Small &amp; Intimate Events", vi: "Sự Kiện Nhỏ &amp; Thân Mật" },
-    qlink2: { en: "Concerts &amp; Large-Scale Shows", vi: "Concert &amp; Sự Kiện Quy Mô Lớn" },
-    qlink3: { en: "Merch Production &amp; Fulfillment", vi: "Sản Xuất &amp; Xử Lý Merch" },
+    heroEyebrow: { en: "Fan Fulfillment Service", vi: "Fan Fulfillment Service" },
+    heroH1: { en: "Fan Fulfillment Service", vi: "Fan Fulfillment Service" },
+    heroGloss: { en: "(Delivering the ultimate fan experience)", vi: "(Delivering the ultimate fan experience)" },
+    heroP1: { en: "Every touchpoint between an idol and their fandom is a moment that can't be redone. PakGud's Fan Fulfillment Service is the operational backbone that makes sure it goes right the first time — from the merch in a fan's hands, to the line they wait in, to the seconds they spend face-to-face with the artist.", vi: "Mỗi khoảnh khắc giữa thần tượng và người hâm mộ đều là duy nhất, không thể làm lại. Fan Fulfillment Service của PakGud là nền tảng vận hành đảm bảo mọi thứ diễn ra đúng ngay từ lần đầu — từ món merch trong tay fan, đến hàng người họ xếp chờ, đến từng giây họ được đối diện trực tiếp với nghệ sĩ." },
+    heroP2: { en: "We handle the logistics, the crowd, and the choreography of every fan interaction — so agencies and production teams can focus on the show, not the swarm.", vi: "Chúng tôi xử lý hậu cần, đám đông, và từng bước phối hợp của mọi tương tác với fan — để các agency và ê-kíp sản xuất tập trung vào chương trình, không phải đám đông." },
+    heroQuote1: { en: "Flawless execution. Airtight safety. Zero wasted seconds.", vi: "Thực thi hoàn hảo. An toàn tuyệt đối. Không lãng phí một giây nào." },
+    heroQuote2: { en: "That's the standard we operate to on every fan touchpoint, at every scale.", vi: "Đó là tiêu chuẩn chúng tôi vận hành cho mọi điểm chạm với fan, ở mọi quy mô." },
+    heroCta: { en: "Request a Fan Fulfillment Consultation →", vi: "Yêu Cầu Tư Vấn Fan Fulfillment →" },
 
-    guideEyebrow: { en: "Quick Guide", vi: "Hướng Dẫn Nhanh" },
-    guideH2: { en: "Which One Do I Need?", vi: "Bạn Cần Gói Nào?" },
-    guideP: { en: "Not sure where to start? Match your event below.", vi: "Chưa biết bắt đầu từ đâu? Đối chiếu sự kiện của bạn bên dưới." },
-    guideRow1a: { en: "A fan meeting, showcase, mini live, or press conference under 500 people", vi: "Fan meeting, showcase, mini live hoặc họp báo dưới 500 người" },
-    guideRow1b: { en: "Package 1", vi: "Gói 1" },
-    guideRow2a: { en: "A concert, fan-con, or music festival with 500–2,000 people", vi: "Concert, fan-con hoặc music festival từ 500–2.000 người" },
-    guideRow2b: { en: "Package 2", vi: "Gói 2" },
-    guideRow3a: { en: "You need to produce, store, or ship merchandise (albums, lightsticks, apparel)", vi: "Bạn cần sản xuất, lưu kho hoặc vận chuyển merchandise (album, lightstick, áo thun...)" },
-    guideRow3b: { en: "Package 3", vi: "Gói 3" },
-    guideRow4a: { en: "Something extra like artist hospitality, media coverage, or tour planning", vi: "Cần thêm dịch vụ như chăm sóc nghệ sĩ, truyền thông, hoặc lập kế hoạch tour" },
-    guideRow4b: { en: "Add-on Services", vi: "Dịch Vụ Mở Rộng" },
+    qlink1: { en: "Merch Fulfillment", vi: "Vận Hành &amp; Phân Phát Merch" },
+    qlink2: { en: "Crowd &amp; Queue Management", vi: "Tối Ưu Dòng Người &amp; Quản Lý Xếp Hàng" },
+    qlink3: { en: "Benefit Execution", vi: "Vận Hành Fan Benefits" },
 
-    priceLabel: { en: "Starting From", vi: "Mức Giá Khởi Điểm" },
-    groupEventH3: { en: "Event Production — Fanmeeting &amp; Fancon", vi: "Sản Xuất Sự Kiện — Fanmeeting &amp; Fancon" },
-    groupEventP: { en: "Packages 1–2 below cover show-day production and staffing.", vi: "Gói 1–2 bên dưới bao gồm sản xuất và nhân sự cho ngày diễn ra sự kiện." },
-    groupMerchH3: { en: "Merch Production &amp; Fulfillment", vi: "Sản Xuất &amp; Xử Lý Merch" },
-    groupMerchP: { en: "A separate service line — production, warehousing, and order fulfillment, independent of any event.", vi: "Một dòng dịch vụ riêng biệt — sản xuất, lưu kho, và xử lý đơn hàng, độc lập với bất kỳ sự kiện nào." },
+    scopeEyebrow: { en: "Service Scope", vi: "Phạm Vi Dịch Vụ" },
+    scopeH2: { en: "Service Scope &amp; Operational Breakdown", vi: "Phạm Vi Dịch Vụ &amp; Cơ Cấu Vận Hành" },
+    scopeP: { en: "PakGud's Fan Fulfillment Service is built on three integrated pillars. Each one can stand alone or work together as a single, seamlessly coordinated operation.", vi: "Fan Fulfillment Service của PakGud được xây dựng trên ba trụ cột tích hợp. Mỗi trụ cột có thể vận hành độc lập hoặc phối hợp liền mạch thành một hệ thống vận hành thống nhất." },
 
-    pkg1Label: { en: "Package 1 / Under 500 Guests", vi: "Gói 1 / Dưới 500 Khách" },
-    pkg1H2: { en: "Small &amp; Intimate Events", vi: "Sự Kiện Nhỏ &amp; Thân Mật" },
-    pkg1Intro: { en: "For close, personal shows — think fan meetings, showcases, and mini concerts where the focus is connection, not spectacle.", vi: "Dành cho những chương trình gần gũi, riêng tư — fan meeting, showcase, mini concert — nơi sự kết nối quan trọng hơn quy mô hoành tráng." },
-    pkg1B1T: { en: "Check-in &amp; Crowd Flow", vi: "Check-in &amp; Điều Phối Dòng Khách" },
-    pkg1B1D: { en: "Staff manage the line, scan QR tickets, hand out wristbands/passes, and give out gifts — so entry is smooth, not chaotic.", vi: "Nhân sự quản lý hàng chờ, quét vé QR, phát vòng tay/thẻ và quà tặng — để việc vào cửa diễn ra suôn sẻ, không hỗn loạn." },
-    pkg1B2T: { en: "Basic Sound &amp; Stage Setup", vi: "Âm Thanh &amp; Sân Khấu Cơ Bản" },
-    pkg1B2D: { en: "Standard audio/lighting for the venue (not concert-grade rigs), plus someone managing props backstage.", vi: "Âm thanh/ánh sáng tiêu chuẩn phù hợp địa điểm (không phải dàn concert), cùng nhân sự quản lý đạo cụ hậu trường." },
-    pkg1B3T: { en: "Legal Paperwork Handled", vi: "Xử Lý Thủ Tục Pháp Lý" },
-    pkg1B3D: { en: "PakGud handles the performance permit and required government notifications, so the show is fully legal.", vi: "PakGud xin giấy phép biểu diễn và thực hiện các thông báo bắt buộc với cơ quan chức năng, đảm bảo chương trình hợp pháp." },
-    pkg1B4T: { en: "Overall Event Management", vi: "Quản Lý Sự Kiện Tổng Thể" },
-    pkg1B4D: { en: "One team plans the whole show, manages vendors, and gives you a wrap-up report after.", vi: "Một đội ngũ lên kế hoạch toàn bộ chương trình, quản lý nhà cung cấp, và gửi báo cáo tổng kết sau sự kiện." },
-    pkg1Note: { en: "Covers venue basics, sound/lighting, printing, staff, and a 15% management fee.", vi: "Bao gồm chi phí địa điểm cơ bản, âm thanh/ánh sáng, in ấn, nhân sự, và phí quản lý 15%." },
+    pillar1Label: { en: "Pillar 1 / Merch Fulfillment", vi: "Trụ Cột 1 / Vận Hành &amp; Phân Phát Merch" },
+    pillar1H2: { en: "Merch Fulfillment", vi: "Vận Hành &amp; Phân Phát Merch" },
+    pillar1Intro: { en: "From factory to fan's hands, we manage the full merchandise lifecycle:", vi: "Từ nhà máy đến tay fan, chúng tôi quản lý toàn bộ vòng đời sản phẩm merch:" },
+    pillar1B1T: { en: "Inventory Control", vi: "Kiểm Soát Tồn Kho" },
+    pillar1B1D: { en: "Professional warehousing with full stock tracking, before, during, and after the event.", vi: "Lưu kho chuyên nghiệp với theo dõi tồn kho đầy đủ, trước, trong, và sau sự kiện." },
+    pillar1B2T: { en: "Packaging (đóng gói)", vi: "Đóng Gói (Packaging)" },
+    pillar1B2D: { en: "Multi-layer protective packing for albums, lightsticks, and apparel, built to survive high-volume handling.", vi: "Đóng gói bảo vệ nhiều lớp cho album, lightstick, và áo thun, chịu được xử lý khối lượng lớn." },
+    pillar1B3T: { en: "Pick-up &amp; Distribution (phân phát cho fan)", vi: "Phân Phát Cho Fan (Pick-up &amp; Distribution)" },
+    pillar1B3D: { en: "Organized on-site booth operations that get official merch and fan-kits into fans' hands quickly, without bottlenecks.", vi: "Vận hành quầy tại chỗ có tổ chức, đưa merch chính hãng và fan-kit đến tay fan nhanh chóng, không ùn tắc." },
+    pillar1B4T: { en: "Order Coordination", vi: "Điều Phối Đơn Hàng" },
+    pillar1B4D: { en: "Syncing orders across your website, Shopee, and TikTok Shop, with reliable last-mile delivery for anything not claimed on-site.", vi: "Đồng bộ đơn hàng từ website, Shopee, và TikTok Shop, cùng giao hàng chặng cuối đáng tin cậy cho phần chưa nhận tại chỗ." },
+    pillar1Callout: { en: "<b>Why it matters:</b> A slow or disorganized merch line is the first thing fans complain about. We make sure it isn't yours.", vi: "<b>Vì sao điều này quan trọng:</b> Một hàng chờ merch chậm hoặc lộn xộn là điều đầu tiên fan phàn nàn. Chúng tôi đảm bảo đó không phải là hàng chờ của bạn." },
 
-    pkg2Label: { en: "Package 2 / 500–2,000 Guests", vi: "Gói 2 / 500–2.000 Khách" },
-    pkg2H2: { en: "Concerts &amp; Large-Scale Shows", vi: "Concert &amp; Sự Kiện Quy Mô Lớn" },
-    pkg2Intro: { en: "Everything in Package 1, plus the heavy-duty production and safety measures a real concert crowd requires.", vi: "Bao gồm toàn bộ Gói 1, cộng thêm hạ tầng sản xuất và các biện pháp an toàn cần thiết cho một concert quy mô lớn." },
-    pkg2B1T: { en: "Security &amp; Risk Management", vi: "An Ninh &amp; Quản Lý Rủi Ro" },
-    pkg2B1D: { en: "Metal barriers, crowd control fencing, professional security staff, and an emergency response plan.", vi: "Rào chắn kim loại, hàng rào kiểm soát đám đông, đội an ninh chuyên nghiệp, và kế hoạch ứng phó khẩn cấp." },
-    pkg2B2T: { en: "Pro-Level Stage &amp; Sound", vi: "Sân Khấu &amp; Âm Thanh Chuyên Nghiệp" },
-    pkg2B2D: { en: "Bigger sound systems, upgraded lighting, load-bearing truss structures, large stage flooring, and big LED screens.", vi: "Hệ thống âm thanh lớn hơn, ánh sáng nâng cấp, kết cấu truss chịu lực, sàn sân khấu lớn, và màn hình LED cỡ lớn." },
-    pkg2B3T: { en: "Experience Touches", vi: "Trải Nghiệm Điểm Nhấn" },
-    pkg2B3D: { en: "Concept-matched stage decoration, an on-site photo booth with instant printing, and wayfinding signage.", vi: "Trang trí sân khấu theo concept, photo booth in ảnh tức thì tại chỗ, và biển chỉ dẫn." },
-    pkg2B4T: { en: "Heavy Logistics", vi: "Hậu Cần Quy Mô Lớn" },
-    pkg2B4D: { en: "Dedicated crews for loading/unloading equipment and coordinating delivery trucks.", vi: "Đội ngũ chuyên trách bốc dỡ thiết bị và điều phối xe vận chuyển." },
-    pkg2Note: { en: "Covers venue, pro sound/lighting, security, printing, staff, transport, and the 15% agency fee.", vi: "Bao gồm địa điểm, âm thanh/ánh sáng chuyên nghiệp, an ninh, in ấn, nhân sự, vận chuyển, và phí quản lý 15%." },
+    pillar2Label: { en: "Pillar 2 / Crowd &amp; Queue Management", vi: "Trụ Cột 2 / Tối Ưu Dòng Người &amp; Quản Lý Xếp Hàng" },
+    pillar2H2: { en: "Crowd &amp; Queue Management", vi: "Tối Ưu Dòng Người &amp; Quản Lý Xếp Hàng" },
+    pillar2Intro: { en: "Every fan event lives or dies by its flow. We design and run the systems that keep thousands of people moving safely and smoothly:", vi: "Mọi sự kiện fan sống hay chết nhờ vào dòng di chuyển. Chúng tôi thiết kế và vận hành hệ thống giữ cho hàng ngàn người di chuyển an toàn và suôn sẻ:" },
+    pillar2B1T: { en: "Entry &amp; Exit Flow Design", vi: "Thiết Kế Luồng Ra Vào" },
+    pillar2B1D: { en: "Zoned floor plans and wayfinding built around your venue's actual layout.", vi: "Sơ đồ phân khu và biển chỉ dẫn được xây dựng theo bố cục thực tế của địa điểm." },
+    pillar2B2T: { en: "Access Control", vi: "Kiểm Soát Ra Vào" },
+    pillar2B2D: { en: "QR ticket scanning, wristband/pass distribution, and VIP segmentation handled by trained on-site leads.", vi: "Quét vé QR, phát vòng tay/thẻ, và phân khu VIP do đội trưởng thực địa đã qua đào tạo phụ trách." },
+    pillar2B3T: { en: "Wait-Time Minimization", vi: "Tối Ưu Thời Gian Chờ" },
+    pillar2B3D: { en: "Queue structuring and staff deployment calibrated to your expected crowd density.", vi: "Cơ cấu hàng chờ và bố trí nhân sự được hiệu chỉnh theo mật độ đám đông dự kiến." },
+    pillar2B4T: { en: "Scalable Security", vi: "An Ninh Có Thể Mở Rộng" },
+    pillar2B4D: { en: "From light-touch check-in staff at intimate showcases to full barrier systems and professional security teams at large-scale concerts.", vi: "Từ nhân sự check-in nhẹ nhàng tại showcase thân mật đến hệ thống rào chắn đầy đủ và đội an ninh chuyên nghiệp tại concert quy mô lớn." },
+    pillar2Callout: { en: "<b>Why it matters:</b> Crowd mismanagement isn't just a bad look — it's a safety liability. Our queue systems are built to scale with your audience size, not improvised on the day.", vi: "<b>Vì sao điều này quan trọng:</b> Quản lý đám đông kém không chỉ là hình ảnh xấu — đó là rủi ro an toàn. Hệ thống xếp hàng của chúng tôi được xây dựng để mở rộng theo quy mô khán giả, không phải ứng biến trong ngày." },
 
-    pkg3Label: { en: "Package 3 / Order-Volume Based", vi: "Gói 3 / Theo Khối Lượng Đơn Hàng" },
-    pkg3H2: { en: "Merchandise Production &amp; Fulfillment", vi: "Sản Xuất &amp; Xử Lý Merchandise" },
-    pkg3Intro: { en: "You have merch. We handle everything from factory to fan's doorstep — production, storage, packing, and shipping — anywhere in the country.", vi: "Bạn có merch. Chúng tôi lo mọi thứ từ nhà máy đến tay fan — sản xuất, lưu kho, đóng gói, và vận chuyển — trên toàn quốc." },
-    pkg3B1T: { en: "Sourcing &amp; Quality Control", vi: "Tìm Nguồn &amp; Kiểm Soát Chất Lượng" },
-    pkg3B1D: { en: "PakGud finds and negotiates with factories/printers, tracks production timelines, and checks every batch for defects before it ships.", vi: "PakGud tìm kiếm và đàm phán với nhà máy/xưởng in, theo dõi tiến độ sản xuất, và kiểm tra từng lô hàng trước khi xuất kho." },
-    pkg3B2T: { en: "Warehousing", vi: "Lưu Kho" },
-    pkg3B2D: { en: "Climate-controlled storage so products don't get damaged sitting around.", vi: "Kho lưu trữ có kiểm soát nhiệt độ để sản phẩm không bị hư hại khi lưu trữ lâu dài." },
-    pkg3B3T: { en: "Professional Packing", vi: "Đóng Gói Chuyên Nghiệp" },
-    pkg3B3D: { en: "Shock-proof wrapping for albums/CDs/lightsticks, sturdy tubes for posters, sealed bags for apparel.", vi: "Bọc chống sốc cho album/CD/lightstick, ống cứng cho poster, túi niêm phong cho áo thun." },
-    pkg3B4T: { en: "Order Coordination", vi: "Điều Phối Đơn Hàng" },
-    pkg3B4D: { en: "Pulls orders from your website, Shopee, and TikTok Shop, packs them, ships via major carriers (GHTK, Viettel Post), and handles returns for shipping damage.", vi: "Tổng hợp đơn từ website, Shopee, và TikTok Shop, đóng gói, giao qua các đơn vị vận chuyển lớn (GHTK, Viettel Post), và xử lý đổi trả khi hàng hư hỏng do vận chuyển." },
+    pillar3Label: { en: "Pillar 3 / Benefit Execution", vi: "Trụ Cột 3 / Vận Hành Fan Benefits" },
+    pillar3H2: { en: "Benefit Execution", vi: "Vận Hành Fan Benefits" },
+    pillar3Intro: { en: "The highest-stakes minutes of any fan event are the direct artist-fan interactions. We run these on a locked schedule, with artist safety and fan satisfaction held in equal priority:", vi: "Những phút giây quan trọng nhất của bất kỳ sự kiện fan nào là tương tác trực tiếp giữa nghệ sĩ và fan. Chúng tôi vận hành những khoảnh khắc này theo lịch trình cố định, với an toàn nghệ sĩ và sự hài lòng của fan được ưu tiên ngang nhau:" },
+    pillar3B1T: { en: "Photo Sessions (Chụp ảnh)", vi: "Chụp Ảnh (Photo Sessions)" },
+    pillar3B1D: { en: "1:1, Group Photo 1:10, and 1:50 formats, each with dedicated flow choreography.", vi: "Các hình thức 1:1, chụp nhóm 1:10, và 1:50, mỗi loại có luồng vận hành riêng." },
+    pillar3B2T: { en: "Hi-Bye / Send-off (Chào nghệ sĩ / Tiễn nghệ sĩ)", vi: "Chào &amp; Tiễn Nghệ Sĩ (Hi-Bye / Send-off)" },
+    pillar3B2D: { en: "Arrival and departure moments, managed for both energy and safety.", vi: "Khoảnh khắc đến và đi của nghệ sĩ, được quản lý cho cả không khí và an toàn." },
+    pillar3B3T: { en: "Hi-Touch / Handshake (Bắt tay)", vi: "Bắt Tay (Hi-Touch / Handshake)" },
+    pillar3B3D: { en: "High-throughput, close-contact interactions run with strict timing and physical safety protocols.", vi: "Tương tác tiếp xúc gần, lưu lượng cao, vận hành với thời gian nghiêm ngặt và quy trình an toàn thể chất." },
+    pillar3B4T: { en: "Fansign / Autograph Sessions (Xin chữ ký / Ký tặng)", vi: "Xin Chữ Ký (Fansign / Autograph)" },
+    pillar3B4D: { en: "Signing sessions coordinated end-to-end, from fan queueing to item hand-off.", vi: "Buổi ký tặng được điều phối trọn gói, từ fan xếp hàng đến bàn giao vật phẩm." },
+    pillar3Callout: { en: "<b>Why it matters:</b> These are the moments fans travel for. A benefit session that runs late, runs unsafe, or runs out of time damages the fandom relationship — we exist to make sure it never does.", vi: "<b>Vì sao điều này quan trọng:</b> Đây là những khoảnh khắc fan không quản đường xa để có được. Một buổi fan benefit trễ giờ, thiếu an toàn, hoặc hết giờ giữa chừng sẽ làm tổn hại mối quan hệ với fandom — chúng tôi tồn tại để đảm bảo điều đó không bao giờ xảy ra." },
 
-    tierColA: { en: "Order Volume", vi: "Khối Lượng Đơn Hàng" },
-    tierColB: { en: "Starting Price", vi: "Giá Khởi Điểm" },
-    tierRow1a: { en: "Under 5,000 products", vi: "Dưới 5.000 sản phẩm" },
-    tierRow1b: { en: "17,000,000 VND (flat)", vi: "17.000.000 VND (trọn gói)" },
-    tierRow2a: { en: "5,000 – 9,999 products", vi: "5.000 – 9.999 sản phẩm" },
-    tierRow2b: { en: "17,000,000 VND + 1,600 VND per product over 5,000", vi: "17.000.000 VND + 1.600 VND / sản phẩm vượt 5.000" },
-    tierRow3a: { en: "10,000 – 14,999 products", vi: "10.000 – 14.999 sản phẩm" },
-    tierRow3b: { en: "17,000,000 VND (flat — special bulk rate)", vi: "17.000.000 VND (trọn gói — mức giá ưu đãi số lượng lớn)" },
-    tierRow4a: { en: "15,000 – 20,000 products", vi: "15.000 – 20.000 sản phẩm" },
-    tierRow4b: { en: "25,000,000 VND + 2,000 VND per product over 15,000", vi: "25.000.000 VND + 2.000 VND / sản phẩm vượt 15.000" },
-    tierTakeaway: { en: "The more you ship, the more efficient the pricing gets — with a flat, predictable starting rate.", vi: "Xử lý càng nhiều, mức giá càng tối ưu — với một mức giá khởi điểm rõ ràng, dễ dự đoán." },
+    pricingEyebrow: { en: "Pricing &amp; Event Package Structure", vi: "Cơ Cấu Giá &amp; Gói Sự Kiện" },
+    pricingH2: { en: "Priced by Scale, Not Guesswork", vi: "Định Giá Theo Quy Mô, Không Đoán Mò" },
+    pricingP: { en: "Every event is priced by scale, with two tiers available depending on how much of the operation you need PakGud to run.", vi: "Mỗi sự kiện được định giá theo quy mô, với hai mức tuỳ theo phần vận hành bạn cần PakGud đảm nhận." },
 
-    addonsEyebrow: { en: "Add-On Services", vi: "Dịch Vụ Mở Rộng" },
-    addonsH2: { en: "Need Something Extra?", vi: "Cần Thêm Gì Đó?" },
-    addonsP: { en: "These plug into any package above.", vi: "Các dịch vụ này có thể kết hợp với bất kỳ gói nào ở trên." },
-    addonTag: { en: "Custom Quote", vi: "Báo Giá Theo Yêu Cầu" },
-    addon1T: { en: "Artist Care &amp; Hospitality", vi: "Chăm Sóc &amp; Hậu Cần Nghệ Sĩ" },
-    addon1D: { en: "Green room setup, food/drinks per rider, airport-hotel-venue transport, hotel booking for the whole crew.", vi: "Chuẩn bị phòng chờ, đồ ăn/thức uống theo rider, đưa đón sân bay-khách sạn-địa điểm, đặt phòng khách sạn cho cả ê-kíp." },
-    addon2T: { en: "Media &amp; Communication", vi: "Truyền Thông &amp; Media" },
-    addon2D: { en: "Poster/social media design, professional event photography, and an aftermovie recap video.", vi: "Thiết kế poster/mạng xã hội, chụp ảnh sự kiện chuyên nghiệp, và video aftermovie tổng kết." },
-    addon3T: { en: "Fanmeeting &amp; Fandom Extras", vi: "Fanmeeting &amp; Trải Nghiệm Fandom" },
-    addon3D: { en: "Ticketing &amp; seating chart setup, VIP check-in area, hi-touch/handshake zone, matching door gifts.", vi: "Setup vé &amp; sơ đồ chỗ ngồi, khu vực check-in VIP, khu hi-touch/bắt tay, quà tặng đồng bộ." },
-    addon4T: { en: "Fan-Project Coordinating", vi: "Điều Phối Dự Án Fan" },
-    addon4D: { en: "Reviews and approves fan-made banners/standees, manages food truck parking &amp; power, oversees post-event cleanup by fan groups.", vi: "Xét duyệt banner/standee do fan làm, quản lý bãi đỗ xe &amp; điện cho food truck, giám sát dọn dẹp sau sự kiện bởi nhóm fan." },
-    addon5T: { en: "Tour Planning &amp; Strategy", vi: "Lập Kế Hoạch &amp; Chiến Lược Tour" },
-    addon5D: { en: "Budget/break-even planning, multi-city logistics advice, venue scouting, and help securing sponsors.", vi: "Lập ngân sách/điểm hoà vốn, tư vấn logistics đa thành phố, khảo sát địa điểm, và hỗ trợ tìm nhà tài trợ." },
-    addon6T: { en: "Vendor &amp; Tax Management", vi: "Quản Lý Nhà Cung Cấp &amp; Thuế" },
-    addon6D: { en: "PakGud deals directly with all third-party vendors, invoices, and tax paperwork — so the artist's team doesn't have to.", vi: "PakGud làm việc trực tiếp với mọi nhà cung cấp bên thứ ba, hóa đơn, và thủ tục thuế — để đội ngũ nghệ sĩ không phải lo." },
+    tierFullH4: { en: "Full Minimum Tier", vi: "Full Minimum Tier" },
+    tierFullP: { en: "Our complete operational package for that event size — check-in, crowd control, benefit execution, staffing, and coordination.", vi: "Gói vận hành trọn vẹn cho quy mô sự kiện đó — check-in, kiểm soát đám đông, vận hành fan benefits, nhân sự, và điều phối." },
+    tierBaseH4: { en: "Base Operational Tier", vi: "Base Operational Tier" },
+    tierBaseP: { en: "Our lighter operational package — covering essential Fan Fulfillment staffing and queue management only, for teams who need core crowd/fulfillment support without the full production layer.", vi: "Gói vận hành nhẹ hơn — chỉ bao gồm nhân sự Fan Fulfillment thiết yếu và quản lý xếp hàng, dành cho đội ngũ cần hỗ trợ cốt lõi về đám đông/vận hành mà không cần lớp sản xuất đầy đủ." },
 
-    ctaEyebrow: { en: "Get a Free Consultation", vi: "Nhận Tư Vấn Miễn Phí" },
-    ctaH2: { en: "Not sure which package fits your event?", vi: "Chưa Chắc Gói Nào Phù Hợp Với Sự Kiện Của Bạn?" },
-    ctaP: { en: "Tell us your event size and goals — we'll recommend the right package and give you an accurate quote.", vi: "Cho chúng tôi biết quy mô và mục tiêu sự kiện — chúng tôi sẽ tư vấn gói phù hợp và báo giá chính xác." },
+    ptColScale: { en: "Event Scale", vi: "Quy Mô Sự Kiện" },
+    ptColExamples: { en: "Event Type Examples", vi: "Ví Dụ Loại Sự Kiện" },
+    ptColFull: { en: "Full Minimum Tier", vi: "Full Minimum Tier" },
+    ptColBase: { en: "Base Operational Tier", vi: "Base Operational Tier" },
+    ptRow1Scale: { en: "Under 500 guests", vi: "Dưới 500 khách" },
+    ptRow1Examples: { en: "Fanmeeting, Showcase, Minishow, Press Conference", vi: "Fanmeeting, Showcase, Minishow, Họp Báo" },
+    ptRow2Scale: { en: "500 – 1,000 guests", vi: "500 – 1.000 khách" },
+    ptRow2Examples: { en: "Fancon, Mini Concert, Special Showcase", vi: "Fancon, Mini Concert, Special Showcase" },
+    ptRow3Scale: { en: "1,000 – 2,000 guests", vi: "1.000 – 2.000 khách" },
+    ptRow3Examples: { en: "Live Concert, Fancon, Mini Music Festival", vi: "Live Concert, Fancon, Mini Music Festival" },
+    ptCustom: { en: "Custom Consultation", vi: "Tư Vấn Riêng" },
+    ptRow4Scale: { en: "Merch Fulfillment Only", vi: "Chỉ Merch Fulfillment" },
+    ptRow4Examples: { en: "Order-Volume Based", vi: "Theo Khối Lượng Đơn Hàng" },
+    ptDash: { en: "—", vi: "—" },
+    merchOnlyH4: { en: "Merch Fulfillment Only — 17,000,000+ VND Includes:", vi: "Chỉ Merch Fulfillment — 17.000.000+ VND Bao Gồm:" },
+    merchOnlyB1: { en: "Full cost of bulk packing personnel.", vi: "Toàn bộ chi phí nhân sự đóng gói số lượng lớn." },
+    merchOnlyB2: { en: "Two-way merch/materials shipping between warehouse ↔ event venue.", vi: "Chi phí vận chuyển vật tư/merch hai chiều từ kho vận ↔ venue sự kiện." },
+    merchOnlyB3: { en: "Cost of on-site coordination and booth-running staff.", vi: "Chi phí nhân sự điều phối và chạy onsite tại booth." },
+    pricingFootnote: { en: "At this scale, pricing depends heavily on venue, security requirements, and technical complexity — our team will provide a tailored quote after a scoping call.", vi: "Ở quy mô này, giá phụ thuộc nhiều vào địa điểm, yêu cầu an ninh, và độ phức tạp kỹ thuật — đội ngũ chúng tôi sẽ đưa ra báo giá riêng sau buổi khảo sát phạm vi." },
+    pricingNote: { en: "<b>Note:</b> Base prices cover Fan Fulfillment operational services only and strictly exclude Stage Production (Sound, Lighting, Stage setup) and Site/Venue Decoration.", vi: "<b>Lưu ý:</b> Mức giá cơ bản chỉ bao gồm dịch vụ vận hành Fan Fulfillment và hoàn toàn không bao gồm Stage Production (Âm thanh, Ánh sáng, Dựng sân khấu) và Trang Trí Địa Điểm/Sự Kiện." },
 
-    footDesc: { en: "Vietnam's transparent fan-experience operator — fanmeetings, fancons, and merch fulfillment, run with published rates and an itemized paper trail.", vi: "Đối tác vận hành trải nghiệm fan minh bạch tại Việt Nam — fanmeeting, fancon và merch fulfillment, vận hành với mức giá công khai và chứng từ minh bạch." },
+    addonsH2: { en: "Need more than Fan Fulfillment?", vi: "Cần Nhiều Hơn Fan Fulfillment?" },
+    addonsP: { en: "PakGud also offers add-on services that plug directly into any tier above. Ask your consultant to bundle these into your quote.", vi: "PakGud còn cung cấp các dịch vụ mở rộng có thể kết hợp trực tiếp với bất kỳ mức nào ở trên. Hãy yêu cầu tư vấn viên gộp các dịch vụ này vào báo giá của bạn." },
+    addon1: { en: "Artist Care &amp; Hospitality", vi: "Chăm Sóc &amp; Hậu Cần Nghệ Sĩ" },
+    addon2: { en: "Media &amp; Communication", vi: "Truyền Thông &amp; Media" },
+    addon3: { en: "Fan-Project Coordinating", vi: "Điều Phối Dự Án Fan" },
+    addon4: { en: "Tour Planning &amp; Strategy", vi: "Lập Kế Hoạch &amp; Chiến Lược Tour" },
+    addon5: { en: "Vendor &amp; Tax Management", vi: "Quản Lý Nhà Cung Cấp &amp; Thuế" },
+
+    ctaEyebrow: { en: "Talk to Our Team", vi: "Trao Đổi Với Đội Ngũ" },
+    ctaH2: { en: "Talk to Our Team About Your Event", vi: "Trao Đổi Với Đội Ngũ Về Sự Kiện Của Bạn" },
+    ctaP: { en: "Tell us your event size and goals — we'll recommend the right tier and give you an accurate quote.", vi: "Cho chúng tôi biết quy mô và mục tiêu sự kiện — chúng tôi sẽ tư vấn mức phù hợp và báo giá chính xác." },
+
+    footDesc: { en: "Vietnam's Fan Fulfillment operator — merch fulfillment, crowd &amp; queue management, and benefit execution, run with published rates and an itemized paper trail.", vi: "Đối tác vận hành Fan Fulfillment tại Việt Nam — vận hành merch, quản lý đám đông &amp; xếp hàng, và vận hành fan benefits, với mức giá công khai và chứng từ minh bạch." },
     footCompanyH4: { en: "Company", vi: "Công Ty" },
     footWho: { en: "Who It's For", vi: "Dành Cho Ai" },
     footFaq: { en: "FAQ", vi: "FAQ" },

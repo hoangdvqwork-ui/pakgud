@@ -237,17 +237,12 @@
   .price-card .p-price{font-family:'Oswald', sans-serif; font-size:28px; font-weight:600; color:var(--ink); margin-top:6px;}
   .price-card .p-note{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--steel-light); margin-top:6px;}
   .price-card .p-more{display:inline-block; margin-top:14px; font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--accent); border-bottom:1px solid var(--accent); padding-bottom:2px; width:fit-content;}
+  .p-tier-row{display:flex; justify-content:space-between; align-items:baseline; gap:10px; padding:9px 0; border-bottom:1px dashed var(--line-dark);}
+  .p-tier-row:last-of-type{border-bottom:none;}
+  .p-tier-row .p-tier-label{font-family:'IBM Plex Mono', monospace; font-size:10px; text-transform:uppercase; letter-spacing:0.06em; color:var(--steel);}
+  .p-tier-row .p-tier-value{font-family:'Oswald', sans-serif; font-weight:600; font-size:16px; text-align:right;}
+  .p-bullets{padding-left:20px; color:var(--steel); font-size:13px; line-height:1.6;}
   @media (max-width:900px){ .price-grid{grid-template-columns:1fr;} }
-  .price-grid-2col{grid-template-columns:repeat(2,1fr);}
-  .price-grid-1col{grid-template-columns:1fr;}
-  @media (max-width:900px){ .price-grid-2col{grid-template-columns:1fr;} }
-  .rate-group{margin-top:44px;}
-  .rate-group:first-of-type{margin-top:0;}
-  .rate-group-label{
-    font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase;
-    color:var(--steel); padding-bottom:12px; margin-bottom:0; border-bottom:1px solid var(--line-dark);
-  }
-  .rate-group-label b{color:var(--ink); font-weight:600;}
   /* ---------- OFFER SPOTLIGHT ---------- */
   .offer-spotlight{background:var(--accent); color:var(--paper); padding:110px 0; text-align:center;}
   .offer-spotlight .eyebrow{justify-content:center; color:var(--paper);}
@@ -489,56 +484,81 @@
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <div class="eyebrow" data-i18n="priceEyebrow">Rate Card</div>
-        <h2 style="margin-top:16px;" data-i18n="priceH2">Two service lines. Starting rates published up front.</h2>
+        <div class="eyebrow" data-i18n="priceEyebrow">Fan Fulfillment Service</div>
+        <h2 style="margin-top:16px;" data-i18n="priceH2">Priced by scale. Two tiers, published up front.</h2>
       </div>
-      <p data-i18n="priceP">Final scope always shapes the final quote — but you'll never wonder where the floor is.</p>
+      <p data-i18n="priceP">Full Minimum Tier covers the complete operation; Base Operational Tier covers core Fan Fulfillment staffing only.</p>
     </div>
-
-    <div class="rate-group">
-      <div class="rate-group-label" data-i18n="rateGroupEvent">Group 1 — <b>Event Production</b> (Fanmeeting &amp; Fancon)</div>
-      <div class="price-grid price-grid-2col">
-        <div class="price-card">
-          <div class="cat-num">01</div>
-          <div class="p-scale" data-i18n="price1Scale">Under 500 Fans</div>
-          <h3 data-i18n="price1Title">Fanmeeting</h3>
-          <p class="p-desc" data-i18n="price1Desc">Minimal decor and stage production — built for intimate, high-touch fan moments.</p>
-          <div class="p-price-wrap">
-            <div class="p-label" data-i18n="priceLabel">Starting From</div>
-            <div class="p-price">90,000,000 VND</div>
-            <div class="p-note" data-i18n="priceNote">+ scope-based final quote</div>
-            <a href="services.html#package-1" class="p-more" data-i18n="priceCardLink">Xem bảng giá mở rộng →</a>
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="cat-num">01</div>
+        <div class="p-scale" data-i18n="price1Scale">Under 500 Guests</div>
+        <h3 data-i18n="price1Title">Fanmeeting, Showcase, Minishow</h3>
+        <p class="p-desc" data-i18n="price1Desc">Press conferences and intimate fan moments — core crowd, queue, and merch fulfillment.</p>
+        <div class="p-price-wrap">
+          <div class="p-tier-row">
+            <span class="p-tier-label" data-i18n="tierFullLabel">Full Minimum</span>
+            <span class="p-tier-value">90,000,000+ VND</span>
           </div>
-        </div>
-        <div class="price-card">
-          <div class="cat-num">02</div>
-          <div class="p-scale" data-i18n="price2Scale">500–2,000 Fans</div>
-          <h3 data-i18n="price2Title">Fancon</h3>
-          <p class="p-desc" data-i18n="price2Desc">Moderate decor and stage production — our core capability, built to run at scale.</p>
-          <div class="p-price-wrap">
-            <div class="p-label" data-i18n="priceLabel">Starting From</div>
-            <div class="p-price">575,000,000 VND</div>
-            <div class="p-note" data-i18n="priceNote">+ scope-based final quote</div>
-            <a href="services.html#package-2" class="p-more" data-i18n="priceCardLink">Xem bảng giá mở rộng →</a>
+          <div class="p-tier-row">
+            <span class="p-tier-label" data-i18n="tierBaseLabel">Base Operational</span>
+            <span class="p-tier-value">45,000,000+ VND</span>
           </div>
+          <a href="services.html#pricing" class="p-more" data-i18n="priceCardLink">Xem bảng giá mở rộng →</a>
         </div>
       </div>
-    </div>
-
-    <div class="rate-group">
-      <div class="rate-group-label" data-i18n="rateGroupMerch">Group 2 — <b>Merch Production &amp; Fulfillment</b></div>
-      <div class="price-grid price-grid-1col">
-        <div class="price-card">
-          <div class="cat-num">03</div>
-          <div class="p-scale" data-i18n="price3Scale">Order-Volume Based</div>
-          <h3 data-i18n="price3Title">Merch Fulfillment Logistics</h3>
-          <p class="p-desc" data-i18n="price3Desc">Production coordination, warehousing, and order fulfillment — the operational backbone, whether or not there's a show attached.</p>
-          <div class="p-price-wrap">
-            <div class="p-label" data-i18n="priceLabel">Starting From</div>
-            <div class="p-price">17,000,000 VND</div>
-            <div class="p-note" data-i18n="priceNote">+ scope-based final quote</div>
-            <a href="services.html#package-3" class="p-more" data-i18n="priceCardLink">Xem bảng giá mở rộng →</a>
+      <div class="price-card">
+        <div class="cat-num">02</div>
+        <div class="p-scale" data-i18n="price2Scale">500–1,000 Guests</div>
+        <h3 data-i18n="price2Title">Fancon, Mini Concert</h3>
+        <p class="p-desc" data-i18n="price2Desc">Special showcases at scale — full crowd control and benefit execution.</p>
+        <div class="p-price-wrap">
+          <div class="p-tier-row">
+            <span class="p-tier-label" data-i18n="tierFullLabel">Full Minimum</span>
+            <span class="p-tier-value">400,000,000+ VND</span>
           </div>
+          <div class="p-tier-row">
+            <span class="p-tier-label" data-i18n="tierBaseLabel">Base Operational</span>
+            <span class="p-tier-value">200,000,000+ VND</span>
+          </div>
+          <a href="services.html#pricing" class="p-more" data-i18n="priceCardLink">Xem bảng giá mở rộng →</a>
+        </div>
+      </div>
+      <div class="price-card">
+        <div class="cat-num">03</div>
+        <div class="p-scale" data-i18n="price3Scale">1,000–2,000 Guests</div>
+        <h3 data-i18n="price3Title">Live Concert, Mini Music Festival</h3>
+        <p class="p-desc" data-i18n="price3Desc">Full-scale productions — venue, security, and technical complexity vary too much for a fixed floor.</p>
+        <div class="p-price-wrap">
+          <div class="p-tier-row">
+            <span class="p-tier-label" data-i18n="tierFullLabel">Full Minimum</span>
+            <span class="p-tier-value" data-i18n="ptCustom">Custom Consultation</span>
+          </div>
+          <div class="p-tier-row">
+            <span class="p-tier-label" data-i18n="tierBaseLabel">Base Operational</span>
+            <span class="p-tier-value" data-i18n="ptCustom">Custom Consultation</span>
+          </div>
+          <a href="services.html#pricing" class="p-more" data-i18n="priceCardLink">Xem bảng giá mở rộng →</a>
+        </div>
+      </div>
+    </div>
+    <div class="price-grid" style="grid-template-columns:1fr; margin-top:1px;">
+      <div class="price-card">
+        <div class="cat-num">04</div>
+        <div class="p-scale" data-i18n="price4Scale">Order-Volume Based</div>
+        <h3 data-i18n="price4Title">Merch Fulfillment Only</h3>
+        <p class="p-desc" data-i18n="price4Desc">Standalone merch production &amp; fulfillment — no event attached.</p>
+        <ul class="p-bullets">
+          <li data-i18n="price4B1">Full cost of bulk packing personnel.</li>
+          <li data-i18n="price4B2">Two-way merch/materials shipping between warehouse ↔ event venue.</li>
+          <li data-i18n="price4B3">Cost of on-site coordination and booth-running staff.</li>
+        </ul>
+        <div class="p-price-wrap">
+          <div class="p-tier-row">
+            <span class="p-tier-label" data-i18n="tierFullLabel">Full Minimum</span>
+            <span class="p-tier-value">17,000,000+ VND</span>
+          </div>
+          <a href="services.html#pricing" class="p-more" data-i18n="priceCardLink">Xem bảng giá mở rộng →</a>
         </div>
       </div>
     </div>
@@ -796,30 +816,36 @@
     aud2chip3: { en: "Low-Commitment Entry", vi: "Khởi Đầu Ít Cam Kết" },
     aud2chip4: { en: "Discreet &amp; Vetted Crew", vi: "Đội Ngũ Kín Đáo &amp; Đã Thẩm Định" },
 
-    priceEyebrow: { en: "Rate Card", vi: "Bảng Giá" },
-    priceH2:      { en: "Two service lines. Starting rates published up front.", vi: "Hai nhóm dịch vụ. Mức giá khởi điểm công khai ngay từ đầu." },
-    priceP:       { en: "Final scope always shapes the final quote — but you'll never wonder where the floor is.", vi: "Phạm vi công việc thực tế luôn quyết định báo giá cuối cùng — nhưng bạn sẽ không bao giờ phải đoán mức sàn." },
-    priceLabel:   { en: "Starting From", vi: "Mức Giá Khởi Điểm" },
-    priceNote:    { en: "+ scope-based final quote", vi: "+ báo giá cuối theo phạm vi thực tế" },
-    rateGroupEvent: { en: "Group 1 — <b>Event Production</b> (Fanmeeting &amp; Fancon)", vi: "Nhóm 1 — <b>Sản Xuất Sự Kiện</b> (Fanmeeting &amp; Fancon)" },
-    rateGroupMerch: { en: "Group 2 — <b>Merch Production &amp; Fulfillment</b>", vi: "Nhóm 2 — <b>Sản Xuất &amp; Xử Lý Merch</b>" },
+    priceEyebrow: { en: "Fan Fulfillment Service", vi: "Fan Fulfillment Service" },
+    priceH2:      { en: "Priced by scale. Two tiers, published up front.", vi: "Định giá theo quy mô. Hai mức giá, công khai ngay từ đầu." },
+    priceP:       { en: "Full Minimum Tier covers the complete operation; Base Operational Tier covers core Fan Fulfillment staffing only.", vi: "Full Minimum Tier bao gồm toàn bộ vận hành; Base Operational Tier chỉ bao gồm nhân sự Fan Fulfillment cốt lõi." },
+    tierFullLabel: { en: "Full Minimum", vi: "Full Minimum" },
+    tierBaseLabel: { en: "Base Operational", vi: "Base Operational" },
+    ptCustom:     { en: "Custom Consultation", vi: "Tư Vấn Riêng" },
     priceCardLink: { en: "View Full Pricing →", vi: "Xem Bảng Giá Mở Rộng →" },
     offerEyebrow: { en: "100% Client Confidentiality Guaranteed", vi: "Chúng tôi đảm bảo bảo mật 100% danh tính khách hàng" },
     offerTitle:   { en: "Try working with us — at the best rate in the market.", vi: "Hãy thử làm việc với chúng tôi với mức ưu đãi tốt nhất thị trường" },
     offerLbl1:    { en: "First Project", vi: "Dự Án Đầu Tiên" },
     offerLbl2:    { en: "3rd+ Project, For Life", vi: "Từ Dự Án Thứ 3, Trọn Đời" },
 
-    price1Scale: { en: "Under 500 Fans", vi: "Dưới 500 Người" },
-    price1Title: { en: "Fanmeeting", vi: "Fanmeeting" },
-    price1Desc:  { en: "Minimal decor and stage production — built for intimate, high-touch fan moments.", vi: "Decor và sản xuất sân khấu tối giản — dành cho những khoảnh khắc gần gũi cùng fan." },
+    price1Scale: { en: "Under 500 Guests", vi: "Dưới 500 Khách" },
+    price1Title: { en: "Fanmeeting, Showcase, Minishow", vi: "Fanmeeting, Showcase, Minishow" },
+    price1Desc:  { en: "Press conferences and intimate fan moments — core crowd, queue, and merch fulfillment.", vi: "Họp báo và những khoảnh khắc gần gũi cùng fan — vận hành đám đông, xếp hàng, và merch cốt lõi." },
 
-    price2Scale: { en: "500–2,000 Fans", vi: "500–2.000 Người" },
-    price2Title: { en: "Fancon", vi: "Fancon" },
-    price2Desc:  { en: "Moderate decor and stage production — our core capability, built to run at scale.", vi: "Decor và sản xuất sân khấu vừa phải — năng lực chủ lực, vận hành ở quy mô lớn." },
+    price2Scale: { en: "500–1,000 Guests", vi: "500–1.000 Khách" },
+    price2Title: { en: "Fancon, Mini Concert", vi: "Fancon, Mini Concert" },
+    price2Desc:  { en: "Special showcases at scale — full crowd control and benefit execution.", vi: "Showcase đặc biệt ở quy mô lớn hơn — kiểm soát đám đông và vận hành fan benefits đầy đủ." },
 
-    price3Scale: { en: "Order-Volume Based", vi: "Theo Khối Lượng Đơn Hàng" },
-    price3Title: { en: "Merch Fulfillment Logistics", vi: "Merch Fulfillment Logistics" },
-    price3Desc:  { en: "Production coordination, warehousing, and order fulfillment — the operational backbone, whether or not there's a show attached.", vi: "Điều phối sản xuất, lưu kho và xử lý đơn hàng — nền tảng vận hành, dù có hay không đi kèm sự kiện." },
+    price3Scale: { en: "1,000–2,000 Guests", vi: "1.000–2.000 Khách" },
+    price3Title: { en: "Live Concert, Mini Music Festival", vi: "Live Concert, Mini Music Festival" },
+    price3Desc:  { en: "Full-scale productions — venue, security, and technical complexity vary too much for a fixed floor.", vi: "Sản xuất quy mô lớn — địa điểm, an ninh, và độ phức tạp kỹ thuật biến đổi quá nhiều để định mức sàn cố định." },
+
+    price4Scale: { en: "Order-Volume Based", vi: "Theo Khối Lượng Đơn Hàng" },
+    price4Title: { en: "Merch Fulfillment Only", vi: "Chỉ Merch Fulfillment" },
+    price4Desc:  { en: "Standalone merch production &amp; fulfillment — no event attached.", vi: "Sản xuất &amp; xử lý merch độc lập — không kèm sự kiện." },
+    price4B1: { en: "Full cost of bulk packing personnel.", vi: "Toàn bộ chi phí nhân sự đóng gói số lượng lớn." },
+    price4B2: { en: "Two-way merch/materials shipping between warehouse ↔ event venue.", vi: "Chi phí vận chuyển vật tư/merch hai chiều từ kho vận ↔ venue sự kiện." },
+    price4B3: { en: "Cost of on-site coordination and booth-running staff.", vi: "Chi phí nhân sự điều phối và chạy onsite tại booth." },
 
     addEyebrow: { en: "Add-On Services", vi: "Dịch Vụ Mở Rộng" },
     addH2:      { en: "Scale up when you're ready", vi: "Mở rộng khi bạn đã sẵn sàng" },
