@@ -110,6 +110,11 @@
   /* ---------- HERO ---------- */
   .hero{padding:96px 0 60px; position:relative;}
   .hero h1{font-size:clamp(36px, 4.4vw, 62px); margin-top:20px; max-width:900px;}
+  .hero h1 .accent{color:var(--accent);}
+  .hero-tagline{
+    font-family:'Oswald', sans-serif; font-size:clamp(18px,2vw,24px); text-transform:none;
+    font-weight:500; color:var(--ink); margin-top:18px; letter-spacing:0.01em;
+  }
   .hero p.lede{font-size:18px; color:var(--steel); max-width:680px; margin-top:22px; line-height:1.6;}
   .hero p.lede strong{color:var(--ink);}
   .hero-actions{display:flex; gap:16px; margin-top:34px; align-items:center; flex-wrap:wrap;}
@@ -129,8 +134,11 @@
     transition:background .2s ease, color .2s ease, transform .15s ease;
   }
   .btn-outline:hover{background:var(--ink); color:var(--paper); transform:translateY(-1px);}
-  .hero-proof{display:flex; align-items:center; gap:10px; margin-top:30px; font-family:'IBM Plex Mono', monospace; font-size:12.5px; letter-spacing:0.03em; color:var(--steel);}
-  .hero-proof .star{color:var(--accent); font-size:14px;}
+  /* ---------- CREDIBILITY HIGHLIGHT ---------- */
+  .credibility{padding:64px 0; text-align:center; border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--paper-dim);}
+  .credibility blockquote{font-family:'Oswald', sans-serif; font-size:clamp(20px,2.4vw,28px); text-transform:none; font-weight:500; max-width:800px; margin:0 auto; line-height:1.4;}
+  .credibility .cite{margin-top:18px; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--steel);}
+  .credibility .cite .star{color:var(--accent); margin-right:6px;}
 
   /* ---------- SECTION HEADERS ---------- */
   section{padding:100px 0;}
@@ -158,7 +166,7 @@
   @media (max-width:900px){ .scope-grid{grid-template-columns:1fr;} }
 
   /* ---------- PRICING TABLE ---------- */
-  .pricing{border-top:1px solid var(--line);}
+  .pricing{border-top:1px solid var(--line); background:var(--paper-dim);}
   .price-table-wrap{border:1px solid var(--line-dark); margin-top:10px; overflow-x:auto;}
   .price-table{width:100%; border-collapse:collapse; min-width:860px;}
   .price-table th{
@@ -173,12 +181,25 @@
   .price-table th:nth-child(3), .price-table th:nth-child(4){
     font-family:'Oswald', sans-serif; font-weight:600; font-size:15px; white-space:nowrap;
   }
+  .price-table td:nth-child(4){color:var(--accent);}
   .price-table td:nth-child(5){color:var(--steel); font-size:13px; max-width:260px;}
   .pricing-note{
     border:1px solid var(--line-dark); background:var(--paper-dim); padding:20px 24px;
     margin-top:24px; font-size:13.5px; color:var(--steel); line-height:1.6;
   }
   .pricing-note b{color:var(--ink);}
+
+  /* ---------- OFFER SPOTLIGHT ---------- */
+  .offer-spotlight{background:var(--accent); color:var(--paper); padding:110px 0; text-align:center;}
+  .offer-spotlight .eyebrow{justify-content:center; color:var(--paper);}
+  .offer-spotlight .eyebrow::before{background:var(--paper);}
+  .offer-spotlight h2{color:var(--paper); font-size:clamp(18px,2vw,24px); max-width:560px; margin:16px auto 0; font-weight:500;}
+  .offer-spotlight .offer-nums{display:flex; gap:72px; justify-content:center; margin-top:52px; flex-wrap:wrap;}
+  .offer-spotlight .offer-num .num{font-family:'Oswald', sans-serif; font-size:clamp(56px,9vw,100px); font-weight:700; color:var(--paper); line-height:1;}
+  .offer-spotlight .offer-num .lbl{font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(240,239,233,0.78); margin-top:10px;}
+  .offer-spotlight .btn-primary{margin-top:44px; background:var(--ink); border-color:var(--ink); display:inline-block;}
+  .offer-spotlight .btn-primary:hover{background:var(--paper); color:var(--ink); border-color:var(--paper);}
+  @media (max-width:600px){ .offer-spotlight{padding:80px 0;} .offer-spotlight .offer-nums{gap:32px;} }
 
   /* ---------- ADD-ONS (brief grid) ---------- */
   .addons{border-top:1px solid var(--line);}
@@ -190,7 +211,7 @@
   @media (max-width:560px){ .addon-grid{grid-template-columns:1fr;} }
 
   /* ---------- AUDIENCES / WHY WORK WITH US ---------- */
-  .audiences{border-top:1px solid var(--line);}
+  .audiences{border-top:1px solid var(--line); background:var(--paper-dim);}
   .audience-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line);}
   .audience-card{background:var(--paper); padding:42px 36px; display:flex; flex-direction:column;}
   .audience-card .a-label{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent);}
@@ -267,13 +288,20 @@
 <section class="hero">
   <div class="wrap">
     <div class="eyebrow" data-i18n="heroEyebrow">Vietnam's Trusted Fan-Experience Operator</div>
-    <h1 data-i18n="heroH1">The hidden team that fulfills the fan experience.</h1>
-    <p class="lede" data-i18n="heroLede">"Vận hành trải nghiệm tốt nhất cho fan." <strong>Save a seat in your office and free your mind from operational chaos.</strong> We handle fanmeetings, fancons, and merch fulfillment with published starting rates and an itemized paper trail—so your team stays focused on the artist.</p>
+    <h1 data-i18n="heroH1">The hidden team that fulfills the <span class="accent">fan experience.</span></h1>
+    <div class="hero-tagline" data-i18n="heroTagline">"Vận hành trải nghiệm tốt nhất cho fan."</div>
+    <p class="lede" data-i18n="heroLede"><strong>Save a seat in your office and free your mind from operational chaos.</strong> We handle fanmeetings, fancons, and merch fulfillment with published starting rates and an itemized paper trail—so your team stays focused on the artist.</p>
     <div class="hero-actions">
       <a href="#pricing" class="btn-primary" data-i18n="heroCta1">See Starting Rates ↓</a>
       <a href="#contact" class="btn-outline" data-i18n="navCta">Work With Us</a>
     </div>
-    <div class="hero-proof"><span class="star">★</span><span data-i18n="heroProof">Operations partner for 2 of the Top 10 artists in Anh Trai Say Hi 2025.</span></div>
+  </div>
+</section>
+
+<section class="credibility">
+  <div class="wrap">
+    <blockquote data-i18n="credQuote">Operations partner for 2 of the Top 10 artists in Anh Trai Say Hi 2025.</blockquote>
+    <div class="cite"><span class="star">★</span><span data-i18n="credCite">Verified Track Record</span></div>
   </div>
 </section>
 
@@ -377,14 +405,26 @@
           <tr>
             <td data-i18n="ptRow4Package">04. Merch Fulfillment</td>
             <td data-i18n="ptRow4Scale">Order-Volume Based</td>
-            <td>17,000,000+ VND</td>
             <td data-i18n="ptDash">—</td>
+            <td>17,000,000+ VND</td>
             <td data-i18n="ptRow4Scope">Packing personnel, 2-way venue shipping, &amp; onsite booth coordination staff.</td>
           </tr>
         </tbody>
       </table>
     </div>
     <div class="pricing-note" data-i18n="pricingNote">⚠️ <b>Note:</b> Base prices cover Fan Fulfillment operational services only and strictly exclude Stage Production (Sound, Lighting, Stage setup) and Site/Venue Decoration.</div>
+  </div>
+</section>
+
+<section class="offer-spotlight" id="offer">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="offerEyebrow">100% Client Confidentiality Guaranteed</div>
+    <h2 data-i18n="offerTitle">Try working with us — at the best rate in the market.</h2>
+    <div class="offer-nums">
+      <div class="offer-num"><div class="num">-30%</div><div class="lbl" data-i18n="offerLbl1">First Project</div></div>
+      <div class="offer-num"><div class="num">-15%</div><div class="lbl" data-i18n="offerLbl2">3rd+ Project, For Life</div></div>
+    </div>
+    <a href="#contact" class="btn-primary" data-i18n="navCta">Work With Us</a>
   </div>
 </section>
 
@@ -500,10 +540,18 @@
     navCta:     { en: "Work With Us", vi: "Hợp Tác Cùng Chúng Tôi" },
 
     heroEyebrow: { en: "Vietnam's Trusted Fan-Experience Operator", vi: "Đối Tác Vận Hành Trải Nghiệm Fan Đáng Tin Cậy Tại Việt Nam" },
-    heroH1: { en: "The hidden team that fulfills the fan experience.", vi: "Đội ngũ thầm lặng kiến tạo trải nghiệm fan." },
-    heroLede: { en: "\"Vận hành trải nghiệm tốt nhất cho fan.\" <strong>Save a seat in your office and free your mind from operational chaos.</strong> We handle fanmeetings, fancons, and merch fulfillment with published starting rates and an itemized paper trail—so your team stays focused on the artist.", vi: "\"Vận hành trải nghiệm tốt nhất cho fan.\" <strong>Tiết kiệm không gian cho văn phòng bạn và giải phóng tâm trí khỏi những cơn đau đầu vận hành.</strong> Chúng tôi phụ trách fanmeeting, fancon, và merch fulfillment với mức giá khởi điểm công khai và chứng từ minh bạch — để đội ngũ bạn luôn tập trung cho nghệ sĩ." },
+    heroH1: { en: "The hidden team that fulfills the <span class='accent'>fan experience.</span>", vi: "Đội ngũ thầm lặng kiến tạo <span class='accent'>trải nghiệm fan.</span>" },
+    heroTagline: { en: "\"Delivering the ultimate fan experience.\"", vi: "\"Vận hành trải nghiệm tốt nhất cho fan.\"" },
+    heroLede: { en: "<strong>Save a seat in your office and free your mind from operational chaos.</strong> We handle fanmeetings, fancons, and merch fulfillment with published starting rates and an itemized paper trail—so your team stays focused on the artist.", vi: "<strong>Tiết kiệm không gian cho văn phòng bạn và giải phóng tâm trí khỏi những cơn đau đầu vận hành.</strong> Chúng tôi phụ trách fanmeeting, fancon, và merch fulfillment với mức giá khởi điểm công khai và chứng từ minh bạch — để đội ngũ bạn luôn tập trung cho nghệ sĩ." },
     heroCta1: { en: "See Starting Rates ↓", vi: "Xem Giá Khởi Điểm ↓" },
-    heroProof: { en: "Operations partner for 2 of the Top 10 artists in Anh Trai Say Hi 2025.", vi: "Đối tác vận hành cho 2 trong Top 10 nghệ sĩ của Anh Trai Say Hi 2025." },
+
+    credQuote: { en: "Operations partner for 2 of the Top 10 artists in Anh Trai Say Hi 2025.", vi: "Đối tác vận hành cho 2 trong Top 10 nghệ sĩ của Anh Trai Say Hi 2025." },
+    credCite: { en: "Verified Track Record", vi: "Thành Tích Đã Xác Thực" },
+
+    offerEyebrow: { en: "100% Client Confidentiality Guaranteed", vi: "Chúng tôi đảm bảo bảo mật 100% danh tính khách hàng" },
+    offerTitle: { en: "Try working with us — at the best rate in the market.", vi: "Hãy thử làm việc với chúng tôi với mức ưu đãi tốt nhất thị trường" },
+    offerLbl1: { en: "First Project", vi: "Dự Án Đầu Tiên" },
+    offerLbl2: { en: "3rd+ Project, For Life", vi: "Từ Dự Án Thứ 3, Trọn Đời" },
 
     scopeEyebrow: { en: "Service Scope", vi: "Phạm Vi Dịch Vụ" },
     scopeH2: { en: "What We Handle On Show Day", vi: "Những Gì Chúng Tôi Đảm Nhận Trong Ngày Diễn Ra Sự Kiện" },
