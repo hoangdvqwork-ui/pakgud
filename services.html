@@ -180,7 +180,7 @@
 
   .package{border-top:1px solid var(--line);}
   .pkg-label{font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent);}
-  .pkg-intro{color:var(--steel); font-size:15.5px; max-width:680px; margin-top:16px; line-height:1.6;}
+  .pkg-intro{color:var(--steel); font-size:15.5px; max-width:680px; margin-top:24px; line-height:1.6;}
   .bullet-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); margin-top:40px;}
   .bullet-cell{background:var(--paper); padding:30px 28px;}
   .bullet-cell h4{font-family:'IBM Plex Sans', sans-serif; font-size:16px; font-weight:600; margin-bottom:10px;}
@@ -192,6 +192,13 @@
     padding:22px 26px; margin-top:32px; font-size:14px; color:var(--steel); line-height:1.65; max-width:760px;
   }
   .pkg-callout b{color:var(--ink);}
+
+  .pkg-quote{
+    border-left:3px solid var(--accent); background:var(--paper-dim);
+    padding:22px 28px; margin-top:24px; max-width:760px;
+  }
+  .pkg-quote p{font-family:'Oswald', sans-serif; font-size:16px; text-transform:none; font-weight:600; line-height:1.5; letter-spacing:0;}
+  .pkg-keywords{display:flex; flex-wrap:wrap; gap:10px; margin-top:20px;}
 
   /* ---------- PRICING TABLE ---------- */
   .pricing-intro{border-top:1px solid var(--line);}
@@ -216,7 +223,11 @@
   .price-table td:first-child{font-weight:600;}
   .price-table td:nth-child(2){color:var(--steel); font-size:13px;}
   .price-table td:nth-child(4){color:var(--accent);}
-  .pricing-footnote{margin-top:18px; font-size:13.5px; color:var(--steel); max-width:680px; line-height:1.6;}
+  .price-table tr.price-table-note td{
+    font-family:'IBM Plex Sans', sans-serif; font-weight:400; font-style:italic;
+    color:var(--steel); font-size:13px; background:var(--paper-dim);
+    padding:14px 22px 20px;
+  }
   .pricing-note{
     border:1px solid var(--line-dark); background:var(--paper-dim); padding:20px 24px;
     margin-top:24px; font-size:13.5px; color:var(--steel); line-height:1.6; max-width:820px;
@@ -277,19 +288,14 @@
     <div class="eyebrow" data-i18n="heroEyebrow">Fan Fulfillment Service</div>
     <h1 data-i18n="heroH1">Fan Fulfillment Service</h1>
     <div class="tagline" data-i18n="heroTagline">"Vận hành trải nghiệm tốt nhất cho fan"</div>
-    <p class="lede" data-i18n="heroP1">Every touchpoint between an idol and their fandom is a moment that can't be redone. PakGud's Fan Fulfillment Service is the operational backbone that makes sure it goes right the first time — from the merch in a fan's hands, to the line they wait in, to the seconds they spend face-to-face with the artist.</p>
-    <p class="lede" data-i18n="heroP2">We handle the logistics, the crowd, and the choreography of every fan interaction — so agencies and production teams can focus on the show, not the swarm.</p>
-    <div class="hero-quote">
-      <p data-i18n="heroQuote1">Flawless execution. Airtight safety. Zero wasted seconds.</p>
-      <p data-i18n="heroQuote2">That's the standard we operate to on every fan touchpoint, at every scale.</p>
-    </div>
+    <p class="lede" data-i18n="heroP1">PakGud partners with organizers to run every touchpoint — check-in, merchandise distribution, and audience-benefit execution — so your team can focus entirely on creativity and the artist experience.</p>
     <div class="hero-actions" style="margin-top:34px;">
       <a href="#contact" class="btn-primary" data-i18n="heroCta">Request a Fan Fulfillment Consultation →</a>
     </div>
     <div class="quick-links">
-      <a class="quick-link" href="#merch-fulfillment"><span class="q-num">01</span><span class="q-label" data-i18n="qlink1">Merch Fulfillment</span></a>
-      <a class="quick-link" href="#crowd-queue"><span class="q-num">02</span><span class="q-label" data-i18n="qlink2">Crowd &amp; Queue Management</span></a>
-      <a class="quick-link" href="#benefit-execution"><span class="q-num">03</span><span class="q-label" data-i18n="qlink3">Benefit Execution</span></a>
+      <a class="quick-link" href="#merch-fulfillment"><span class="q-num">01</span><span class="q-label" data-i18n="qlink1">Merchandise &amp; Giftset</span></a>
+      <a class="quick-link" href="#crowd-queue"><span class="q-num">02</span><span class="q-label" data-i18n="qlink2">Check-In &amp; Event Coordination</span></a>
+      <a class="quick-link" href="#benefit-execution"><span class="q-num">03</span><span class="q-label" data-i18n="qlink3">Fan Benefits</span></a>
     </div>
   </div>
 </section>
@@ -308,82 +314,105 @@
 
 <section class="package" id="merch-fulfillment">
   <div class="wrap">
-    <div class="pkg-label" data-i18n="pillar1Label">Pillar 1 / Merch Fulfillment</div>
-    <h2 style="margin-top:14px;" data-i18n="pillar1H2">Merch Fulfillment</h2>
-    <p class="pkg-intro" data-i18n="pillar1Intro">From factory to fan's hands, we manage the full merchandise lifecycle:</p>
+    <div class="pkg-label" data-i18n="pillar1Label">Pillar 1 / Merchandise &amp; Giftset</div>
+    <h2 style="margin-top:14px;" data-i18n="pillar1H2">Merchandise &amp; Giftset Management</h2>
+    <div class="pkg-quote">
+      <p data-i18n="pillar1Quote">"Reduce the worry around quality control and merchandise quantity errors."</p>
+    </div>
+    <div class="pkg-keywords">
+      <span class="chip" data-i18n="pillar1Kw1">Good Quality</span>
+      <span class="chip" data-i18n="pillar1Kw2">Accurate Quantity</span>
+      <span class="chip" data-i18n="pillar1Kw3">Hand-Delivered To Fans</span>
+    </div>
+    <p class="pkg-intro" data-i18n="pillar1Intro">We manage the full lifecycle from production to distribution, ensuring merchandise is tightly controlled, reaches guests on schedule, and takes the workload off the organizer's shoulders:</p>
     <div class="bullet-grid">
       <div class="bullet-cell">
-        <h4 data-i18n="pillar1B1T">Inventory Control</h4>
+        <h4 data-i18n="pillar1B1T">Warehousing &amp; Inventory Control</h4>
         <p data-i18n="pillar1B1D">Professional warehousing with full stock tracking, before, during, and after the event.</p>
       </div>
       <div class="bullet-cell">
-        <h4 data-i18n="pillar1B2T">Packaging (đóng gói)</h4>
-        <p data-i18n="pillar1B2D">Multi-layer protective packing for albums, lightsticks, and apparel, built to survive high-volume handling.</p>
+        <h4 data-i18n="pillar1B2T">Packaging</h4>
+        <p data-i18n="pillar1B2D">Products are packed to standard for absolute quality protection, sorted by category and benefit tier so on-site benefit hand-off is fast and simple.</p>
       </div>
       <div class="bullet-cell">
-        <h4 data-i18n="pillar1B3T">Pick-up &amp; Distribution (phân phát cho fan)</h4>
-        <p data-i18n="pillar1B3D">Organized on-site booth operations that get official merch and fan-kits into fans' hands quickly, without bottlenecks.</p>
+        <h4 data-i18n="pillar1B3T">On-Site Merchandise Operations</h4>
+        <p data-i18n="pillar1B3D">A dedicated giftset and merchandise pick-up area, matched against ticket-tier data for fast, accurate distribution with zero duplicates or losses.</p>
       </div>
       <div class="bullet-cell">
-        <h4 data-i18n="pillar1B4T">Order Coordination</h4>
-        <p data-i18n="pillar1B4D">Syncing orders across your website, Shopee, and TikTok Shop, with reliable last-mile delivery for anything not claimed on-site.</p>
+        <h4 data-i18n="pillar1B4T">Shipping &amp; Order Coordination</h4>
+        <p data-i18n="pillar1B4D">Synced order coordination from your sales platforms through to delivery at the buyer's door.</p>
       </div>
     </div>
-    <div class="pkg-callout" data-i18n="pillar1Callout"><b>Why it matters:</b> A slow or disorganized merch line is the first thing fans complain about. We make sure it isn't yours.</div>
   </div>
 </section>
 
 <section class="package" id="crowd-queue">
   <div class="wrap">
-    <div class="pkg-label" data-i18n="pillar2Label">Pillar 2 / Crowd &amp; Queue Management</div>
-    <h2 style="margin-top:14px;" data-i18n="pillar2H2">Crowd &amp; Queue Management</h2>
-    <p class="pkg-intro" data-i18n="pillar2Intro">Every fan event lives or dies by its flow. We design and run the systems that keep thousands of people moving safely and smoothly:</p>
-    <div class="bullet-grid">
+    <div class="pkg-label" data-i18n="pillar2Label">Pillar 2 / Check-In &amp; Event Coordination</div>
+    <h2 style="margin-top:14px;" data-i18n="pillar2H2">Check-In &amp; Event Coordination</h2>
+    <div class="pkg-quote">
+      <p data-i18n="pillar2Quote">"PakGud designs and runs systems that keep movement flowing smoothly, tightly controlled from the very first touchpoint, to deliver a clean, comfortable, and safe entry experience for every guest."</p>
+    </div>
+    <div class="pkg-keywords">
+      <span class="chip" data-i18n="pillar2Kw1">Fast Check-In</span>
+      <span class="chip" data-i18n="pillar2Kw2">Clear Crowd Flow</span>
+      <span class="chip" data-i18n="pillar2Kw3">Security Control</span>
+    </div>
+    <div class="bullet-grid" style="margin-top:40px;">
       <div class="bullet-cell">
         <h4 data-i18n="pillar2B1T">Entry &amp; Exit Flow Design</h4>
-        <p data-i18n="pillar2B1D">Zoned floor plans and wayfinding built around your venue's actual layout.</p>
+        <p data-i18n="pillar2B1D">Zoned floor plans, signage, and clearly split lines by guest group so crowds never bottleneck at one point — with remote staff coordination that takes pressure off the check-in desk itself.</p>
       </div>
       <div class="bullet-cell">
-        <h4 data-i18n="pillar2B2T">Access Control</h4>
-        <p data-i18n="pillar2B2D">QR ticket scanning, wristband/pass distribution, and VIP segmentation handled by trained on-site leads.</p>
+        <h4 data-i18n="pillar2B2T">On-The-Spot Verification &amp; Issue Handling</h4>
+        <p data-i18n="pillar2B2D">Direct QR scanning and reconciliation, with fast on-the-spot issue resolution to prevent check-in bottlenecks.</p>
       </div>
       <div class="bullet-cell">
         <h4 data-i18n="pillar2B3T">Wait-Time Minimization</h4>
-        <p data-i18n="pillar2B3D">Queue structuring and staff deployment calibrated to your expected crowd density.</p>
+        <p data-i18n="pillar2B3D">Extra staff during peak windows and additional lines opened as needed to keep check-in speed steady.</p>
       </div>
       <div class="bullet-cell">
-        <h4 data-i18n="pillar2B4T">Scalable Security</h4>
-        <p data-i18n="pillar2B4D">From light-touch check-in staff at intimate showcases to full barrier systems and professional security teams at large-scale concerts.</p>
+        <h4 data-i18n="pillar2B4T">Continuous Flow Past The Gate</h4>
+        <p data-i18n="pillar2B4D">Guests are guided further inside the venue, preventing clustering right after check-in that backs up the line and keeping the gate area clear.</p>
       </div>
     </div>
-    <div class="pkg-callout" data-i18n="pillar2Callout"><b>Why it matters:</b> Crowd mismanagement isn't just a bad look — it's a safety liability. Our queue systems are built to scale with your audience size, not improvised on the day.</div>
   </div>
 </section>
 
 <section class="package" id="benefit-execution">
   <div class="wrap">
-    <div class="pkg-label" data-i18n="pillar3Label">Pillar 3 / Benefit Execution</div>
-    <h2 style="margin-top:14px;" data-i18n="pillar3H2">Benefit Execution</h2>
-    <p class="pkg-intro" data-i18n="pillar3Intro">The highest-stakes minutes of any fan event are the direct artist-fan interactions. We run these on a locked schedule, with artist safety and fan satisfaction held in equal priority:</p>
-    <div class="bullet-grid">
+    <div class="pkg-label" data-i18n="pillar3Label">Pillar 3 / Fan Benefits Execution</div>
+    <h2 style="margin-top:14px;" data-i18n="pillar3H2">Fan Benefits Execution</h2>
+    <div class="pkg-quote">
+      <p data-i18n="pillar3Quote">"The moment every fan event is remembered for is always the direct interaction between artist and fan. We run these moments on a locked timeline, with artist safety and fan satisfaction held in equal priority."</p>
+    </div>
+    <div class="pkg-keywords">
+      <span class="chip" data-i18n="pillar3Kw1">Crowd Control</span>
+      <span class="chip" data-i18n="pillar3Kw2">Standardized Time Control</span>
+      <span class="chip" data-i18n="pillar3Kw3">Artist Security</span>
+    </div>
+    <div class="bullet-grid" style="margin-top:40px;">
       <div class="bullet-cell">
-        <h4 data-i18n="pillar3B1T">Photo Sessions (Chụp ảnh)</h4>
-        <p data-i18n="pillar3B1D">1:1, Group Photo 1:10, and 1:50 formats, each with dedicated flow choreography.</p>
+        <h4 data-i18n="pillar3B1T">Dedicated Interaction Zones</h4>
+        <p data-i18n="pillar3B1D">Hi-touch, soundcheck, and photo group areas are fully separated from the general audience flow, preventing intrusion or cross-flow interference.</p>
       </div>
       <div class="bullet-cell">
-        <h4 data-i18n="pillar3B2T">Hi-Bye / Send-off (Chào nghệ sĩ / Tiễn nghệ sĩ)</h4>
-        <p data-i18n="pillar3B2D">Arrival and departure moments, managed for both energy and safety.</p>
+        <h4 data-i18n="pillar3B2T">Group-By-Group Timeline Coordination</h4>
+        <p data-i18n="pillar3B2D">Each fan group's participation time is controlled against a detailed rundown, keeping every activity on schedule without affecting the artist's timeline.</p>
       </div>
       <div class="bullet-cell">
-        <h4 data-i18n="pillar3B3T">Hi-Touch / Handshake (Bắt tay)</h4>
-        <p data-i18n="pillar3B3D">High-throughput, close-contact interactions run with strict timing and physical safety protocols.</p>
+        <h4 data-i18n="pillar3B3T">Conduct &amp; Participation Rules</h4>
+        <p data-i18n="pillar3B3D">Clear rules on who can participate and in what format (1:1, 1:10...), with strict enforcement of interaction-zone conduct (filming/photography, contact, distance).</p>
       </div>
       <div class="bullet-cell">
-        <h4 data-i18n="pillar3B4T">Fansign / Autograph Sessions (Xin chữ ký / Ký tặng)</h4>
-        <p data-i18n="pillar3B4D">Signing sessions coordinated end-to-end, from fan queueing to item hand-off.</p>
+        <h4 data-i18n="pillar3B4T">Micro-Flow Coordination</h4>
+        <p data-i18n="pillar3B4D">Movement organized in small groups, with controlled stop points, photo points, and exit points for a continuous handoff with zero disruption.</p>
+      </div>
+      <div class="bullet-cell">
+        <h4 data-i18n="pillar3B5T">Security &amp; Artist Protection</h4>
+        <p data-i18n="pillar3B5D">Security personnel stationed at every interaction zone, with continuous monitoring to prevent situations that breach control or violate the rules.</p>
       </div>
     </div>
-    <div class="pkg-callout" data-i18n="pillar3Callout"><b>Why it matters:</b> These are the moments fans travel for. A benefit session that runs late, runs unsafe, or runs out of time damages the fandom relationship — we exist to make sure it never does.</div>
   </div>
 </section>
 
@@ -392,19 +421,19 @@
     <div class="sec-head">
       <div>
         <div class="eyebrow" data-i18n="pricingEyebrow">Pricing &amp; Event Package Structure</div>
-        <h2 style="margin-top:16px;" data-i18n="pricingH2">Priced by Scale, Not Guesswork</h2>
+        <h2 style="margin-top:16px;" data-i18n="pricingH2">Flexible Cost Structure By Scale</h2>
       </div>
-      <p data-i18n="pricingP">Every event is priced by scale, with two tiers available depending on how much of the operation you need PakGud to run.</p>
+      <p data-i18n="pricingP">Every event's cost structure is built around its real scale and operational scope. PakGud offers two flexible tiers of engagement so you can optimize resources while still guaranteeing operational effectiveness.</p>
     </div>
 
     <div class="tier-def-grid">
       <div class="tier-def-cell">
-        <h4 data-i18n="tierFullH4">Full Minimum Tier</h4>
-        <p data-i18n="tierFullP">Our complete operational package for that event size — check-in, crowd control, benefit execution, staffing, and coordination.</p>
+        <h4 data-i18n="tierFullH4">Full Operational Tier</h4>
+        <p data-i18n="tierFullP">A complete operational solution for the entire event experience. Covers every item from check-in, crowd control, and fan benefit execution through to staffing and overall operational flow — ensuring every touchpoint in the guest journey runs in sync, seamless, and on plan.</p>
       </div>
       <div class="tier-def-cell">
         <h4 data-i18n="tierBaseH4">Base Operational Tier</h4>
-        <p data-i18n="tierBaseP">Our lighter operational package — covering essential Fan Fulfillment staffing and queue management only, for teams who need core crowd/fulfillment support without the full production layer.</p>
+        <p data-i18n="tierBaseP">A core operational solution focused on the most critical touchpoints. Provides queue-control staffing at key zones: the check-in area, the fanzone area, and similar high-traffic points.</p>
       </div>
     </div>
 
@@ -412,41 +441,37 @@
       <table class="price-table">
         <thead>
           <tr>
-            <th data-i18n="ptColScale">Event Scale</th>
-            <th data-i18n="ptColExamples">Event Type Examples</th>
-            <th data-i18n="ptColFull">Full Minimum Tier</th>
-            <th data-i18n="ptColBase">Base Operational Tier</th>
+            <th data-i18n="ptColScale">Audience Scale</th>
+            <th data-i18n="ptColExamples">Typical Event Format</th>
+            <th data-i18n="ptColBase">Base Operational Tier (VND)</th>
+            <th data-i18n="ptColFull">Full Operational Tier (VND)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td data-i18n="ptRow1Scale">Under 500 guests</td>
             <td data-i18n="ptRow1Examples">Fanmeeting, Showcase, Minishow, Press Conference</td>
-            <td>90,000,000+ VND</td>
             <td>30,000,000+ VND</td>
+            <td>90,000,000+ VND</td>
           </tr>
+          <tr class="price-table-note"><td colspan="4" data-i18n="ptRow1Note">Small-scale event, an intimate setting that supports many direct interaction moments, requiring a basic level of operations.</td></tr>
           <tr>
             <td data-i18n="ptRow2Scale">500 – 1,000 guests</td>
-            <td data-i18n="ptRow2Examples">Fancon, Mini Concert, Special Showcase</td>
-            <td>400,000,000+ VND</td>
+            <td data-i18n="ptRow2Examples">Mid-Scale Fancon, Special Showcase, Mini Concert</td>
             <td>50,000,000+ VND</td>
+            <td>300,000,000+ VND</td>
           </tr>
+          <tr class="price-table-note"><td colspan="4" data-i18n="ptRow2Note">Medium-scale event with a more distinct commercial character, requiring tighter organizational and operational capability for the event and fan benefits.</td></tr>
           <tr>
-            <td data-i18n="ptRow3Scale">1,000 – 2,000 guests</td>
-            <td data-i18n="ptRow3Examples">Live Concert, Fancon, Mini Music Festival</td>
-            <td data-i18n="ptCustom">Custom Consultation</td>
-            <td data-i18n="ptCustom">Custom Consultation</td>
+            <td data-i18n="ptRow3Scale">Over 1,000 guests</td>
+            <td data-i18n="ptRow3Examples">Live Concert, Large-Scale Fancon, Mini Music Festival</td>
+            <td data-i18n="ptCustom">Custom Consultation &amp; Quote</td>
+            <td data-i18n="ptCustom">Custom Consultation &amp; Quote</td>
           </tr>
-          <tr>
-            <td data-i18n="ptRow4Scale">Merch Fulfillment Only</td>
-            <td data-i18n="ptRow4Examples">Order-Volume Based</td>
-            <td data-i18n="ptDash">—</td>
-            <td>17,000,000+ VND</td>
-          </tr>
+          <tr class="price-table-note"><td colspan="4" data-i18n="ptRow3Note">Large-scale event requiring an advanced operational plan to respond to the elevated risk that comes with higher audience density.</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="pricing-footnote" data-i18n="pricingFootnote">At this scale, pricing depends heavily on venue, security requirements, and technical complexity — our team will provide a tailored quote after a scoping call.</p>
 
     <div class="pricing-note" data-i18n="pricingNote"><b>Note:</b> Base prices cover Fan Fulfillment operational services only and strictly exclude Stage Production (Sound, Lighting, Stage setup) and Site/Venue Decoration.</div>
 
@@ -480,11 +505,10 @@
 <section class="cta" id="contact">
   <div class="wrap">
     <div class="eyebrow" style="justify-content:center;" data-i18n="ctaEyebrow">Talk to Our Team</div>
-    <h2 style="margin-top:18px;" data-i18n="ctaH2">Talk to Our Team About Your Event</h2>
-    <p data-i18n="ctaP">Tell us your event size and goals — we'll recommend the right tier and give you an accurate quote.</p>
+    <h2 style="margin-top:18px;" data-i18n="ctaH2">Get a Fast Consultation for Your Event</h2>
     <div class="cta-actions">
       <a href="mailto:hello@pakgud.co" class="btn-primary">hello@pakgud.co</a>
-      <a href="tel:+84328721486" class="btn-outline">Ms. Minh — +84 32 8721486</a>
+      <a href="tel:+84328721486" class="btn-outline">Hồng Minh — +84 32 872 1486</a>
     </div>
   </div>
 </section>
@@ -527,87 +551,92 @@
     heroEyebrow: { en: "Fan Fulfillment Service", vi: "Fan Fulfillment Service" },
     heroH1: { en: "Fan Fulfillment Service", vi: "Fan Fulfillment Service" },
     heroTagline: { en: "\"Delivering the ultimate fan experience\"", vi: "\"Vận hành trải nghiệm tốt nhất cho fan\"" },
-    heroP1: { en: "Every touchpoint between an idol and their fandom is a moment that can't be redone. PakGud's Fan Fulfillment Service is the operational backbone that makes sure it goes right the first time — from the merch in a fan's hands, to the line they wait in, to the seconds they spend face-to-face with the artist.", vi: "Mỗi khoảnh khắc giữa thần tượng và người hâm mộ đều là duy nhất, không thể làm lại. Fan Fulfillment Service của PakGud là nền tảng vận hành đảm bảo mọi thứ diễn ra đúng ngay từ lần đầu — từ món merch trong tay fan, đến hàng người họ xếp chờ, đến từng giây họ được đối diện trực tiếp với nghệ sĩ." },
-    heroP2: { en: "We handle the logistics, the crowd, and the choreography of every fan interaction — so agencies and production teams can focus on the show, not the swarm.", vi: "Chúng tôi xử lý hậu cần, đám đông, và từng bước phối hợp của mọi tương tác với fan — để các agency và ê-kíp sản xuất tập trung vào chương trình, không phải đám đông." },
-    heroQuote1: { en: "Flawless execution. Airtight safety. Zero wasted seconds.", vi: "Thực thi hoàn hảo. An toàn tuyệt đối. Không lãng phí một giây nào." },
-    heroQuote2: { en: "That's the standard we operate to on every fan touchpoint, at every scale.", vi: "Đó là tiêu chuẩn chúng tôi vận hành cho mọi điểm chạm với fan, ở mọi quy mô." },
+    heroP1: { en: "PakGud partners with organizers to run every touchpoint — check-in, merchandise distribution, and audience-benefit execution — so your team can focus entirely on creativity and the artist experience.", vi: "PakGud đồng hành cùng đơn vị tổ chức trong việc vận hành toàn bộ các hạng mục như check-in, phân phối merchandise và triển khai quyền lợi khán giả, giúp ê-kíp tập trung trọn vẹn vào sáng tạo và trải nghiệm nghệ sĩ." },
     heroCta: { en: "Request a Fan Fulfillment Consultation →", vi: "Yêu Cầu Tư Vấn Fan Fulfillment →" },
 
-    qlink1: { en: "Merch Fulfillment", vi: "Vận Hành &amp; Phân Phát Merch" },
-    qlink2: { en: "Crowd &amp; Queue Management", vi: "Tối Ưu Dòng Người &amp; Quản Lý Xếp Hàng" },
-    qlink3: { en: "Benefit Execution", vi: "Vận Hành Fan Benefits" },
+    qlink1: { en: "Merchandise &amp; Giftset", vi: "Merchandise &amp; Giftset" },
+    qlink2: { en: "Check-In &amp; Event Coordination", vi: "Check-in &amp; Điều Phối Sự Kiện" },
+    qlink3: { en: "Fan Benefits", vi: "Fan Benefits" },
 
     scopeEyebrow: { en: "Service Scope", vi: "Phạm Vi Dịch Vụ" },
     scopeH2: { en: "Service Scope &amp; Operational Breakdown", vi: "Phạm Vi Dịch Vụ &amp; Cơ Cấu Vận Hành" },
     scopeP: { en: "PakGud's Fan Fulfillment Service is built on three integrated pillars. Each one can stand alone or work together as a single, seamlessly coordinated operation.", vi: "Fan Fulfillment Service của PakGud được xây dựng trên ba trụ cột tích hợp. Mỗi trụ cột có thể vận hành độc lập hoặc phối hợp liền mạch thành một hệ thống vận hành thống nhất." },
 
-    pillar1Label: { en: "Pillar 1 / Merch Fulfillment", vi: "Trụ Cột 1 / Vận Hành &amp; Phân Phát Merch" },
-    pillar1H2: { en: "Merch Fulfillment", vi: "Vận Hành &amp; Phân Phát Merch" },
-    pillar1Intro: { en: "From factory to fan's hands, we manage the full merchandise lifecycle:", vi: "Từ nhà máy đến tay fan, chúng tôi quản lý toàn bộ vòng đời sản phẩm merch:" },
-    pillar1B1T: { en: "Inventory Control", vi: "Kiểm Soát Tồn Kho" },
-    pillar1B1D: { en: "Professional warehousing with full stock tracking, before, during, and after the event.", vi: "Lưu kho chuyên nghiệp với theo dõi tồn kho đầy đủ, trước, trong, và sau sự kiện." },
-    pillar1B2T: { en: "Packaging (đóng gói)", vi: "Đóng Gói (Packaging)" },
-    pillar1B2D: { en: "Multi-layer protective packing for albums, lightsticks, and apparel, built to survive high-volume handling.", vi: "Đóng gói bảo vệ nhiều lớp cho album, lightstick, và áo thun, chịu được xử lý khối lượng lớn." },
-    pillar1B3T: { en: "Pick-up &amp; Distribution (phân phát cho fan)", vi: "Phân Phát Cho Fan (Pick-up &amp; Distribution)" },
-    pillar1B3D: { en: "Organized on-site booth operations that get official merch and fan-kits into fans' hands quickly, without bottlenecks.", vi: "Vận hành quầy tại chỗ có tổ chức, đưa merch chính hãng và fan-kit đến tay fan nhanh chóng, không ùn tắc." },
-    pillar1B4T: { en: "Order Coordination", vi: "Điều Phối Đơn Hàng" },
-    pillar1B4D: { en: "Syncing orders across your website, Shopee, and TikTok Shop, with reliable last-mile delivery for anything not claimed on-site.", vi: "Đồng bộ đơn hàng từ website, Shopee, và TikTok Shop, cùng giao hàng chặng cuối đáng tin cậy cho phần chưa nhận tại chỗ." },
-    pillar1Callout: { en: "<b>Why it matters:</b> A slow or disorganized merch line is the first thing fans complain about. We make sure it isn't yours.", vi: "<b>Vì sao điều này quan trọng:</b> Một hàng chờ merch chậm hoặc lộn xộn là điều đầu tiên fan phàn nàn. Chúng tôi đảm bảo đó không phải là hàng chờ của bạn." },
+    pillar1Label: { en: "Pillar 1 / Merchandise &amp; Giftset", vi: "Trụ Cột 1 / Merchandise &amp; Giftset" },
+    pillar1H2: { en: "Merchandise &amp; Giftset Management", vi: "Quản Lý &amp; Vận Hành Merchandise Và Giftset" },
+    pillar1Quote: { en: "\"Reduce the worry around quality control and merchandise quantity errors.\"", vi: "\"Giảm thiểu nỗi lo về vấn đề kiểm soát chất lượng và sai sót số lượng merchandise.\"" },
+    pillar1Kw1: { en: "Good Quality", vi: "Chất Lượng Tốt" },
+    pillar1Kw2: { en: "Accurate Quantity", vi: "Đúng Số Lượng" },
+    pillar1Kw3: { en: "Hand-Delivered To Fans", vi: "Giao Tận Tay Fan" },
+    pillar1Intro: { en: "We manage the full lifecycle from production to distribution, ensuring merchandise is tightly controlled, reaches guests on schedule, and takes the workload off the organizer's shoulders:", vi: "Quản lý toàn bộ vòng đời từ sản xuất đến phân phối để đảm bảo merchandise được kiểm soát chặt chẽ, đúng tiến độ đến tay khán giả và tối ưu công sức cho đơn vị tổ chức:" },
+    pillar1B1T: { en: "Warehousing &amp; Inventory Control", vi: "Lưu Kho &amp; Kiểm Soát Tồn Kho" },
+    pillar1B1D: { en: "Professional warehousing with full stock tracking, before, during, and after the event.", vi: "Lưu kho chuyên nghiệp và theo dõi tồn kho đầy đủ, trước, trong, và sau sự kiện." },
+    pillar1B2T: { en: "Packaging", vi: "Đóng Gói" },
+    pillar1B2D: { en: "Products are packed to standard for absolute quality protection, sorted by category and benefit tier so on-site benefit hand-off is fast and simple.", vi: "Các sản phẩm được đóng gói theo tiêu chuẩn để bảo vệ tuyệt đối về chất lượng cho merchandise và giftset, đóng gói theo phân loại và quyền lợi từng hạng để dễ dàng cho việc trả benefits tại sự kiện." },
+    pillar1B3T: { en: "On-Site Merchandise Operations", vi: "Vận Hành Merchandise Onsite" },
+    pillar1B3D: { en: "A dedicated giftset and merchandise pick-up area, matched against ticket-tier data for fast, accurate distribution with zero duplicates or losses.", vi: "Thiết lập khu vực trả giftset và merchandise riêng biệt, khớp dữ liệu hạng vé để phân phát quà nhanh gọn, chính xác, không trùng lặp hoặc thất thoát." },
+    pillar1B4T: { en: "Shipping &amp; Order Coordination", vi: "Giao Hàng &amp; Điều Phối Đơn Hàng" },
+    pillar1B4D: { en: "Synced order coordination from your sales platforms through to delivery at the buyer's door.", vi: "Phối hợp đồng bộ đơn hàng từ nền tảng bán để giao hàng đến người mua." },
 
-    pillar2Label: { en: "Pillar 2 / Crowd &amp; Queue Management", vi: "Trụ Cột 2 / Tối Ưu Dòng Người &amp; Quản Lý Xếp Hàng" },
-    pillar2H2: { en: "Crowd &amp; Queue Management", vi: "Tối Ưu Dòng Người &amp; Quản Lý Xếp Hàng" },
-    pillar2Intro: { en: "Every fan event lives or dies by its flow. We design and run the systems that keep thousands of people moving safely and smoothly:", vi: "Mọi sự kiện fan sống hay chết nhờ vào dòng di chuyển. Chúng tôi thiết kế và vận hành hệ thống giữ cho hàng ngàn người di chuyển an toàn và suôn sẻ:" },
+    pillar2Label: { en: "Pillar 2 / Check-In &amp; Event Coordination", vi: "Trụ Cột 2 / Check-in &amp; Điều Phối Sự Kiện" },
+    pillar2H2: { en: "Check-In &amp; Event Coordination", vi: "Check-in &amp; Điều Phối Sự Kiện" },
+    pillar2Quote: { en: "\"PakGud designs and runs systems that keep movement flowing smoothly, tightly controlled from the very first touchpoint, to deliver a clean, comfortable, and safe entry experience for every guest.\"", vi: "\"PakGud thiết kế và vận hành hệ thống đảm bảo luồng di chuyển thông suốt, kiểm soát chặt chẽ ngay từ điểm chạm đầu tiên để mang lại trải nghiệm vào cửa gọn gàng, dễ chịu và an toàn cho khán giả.\"" },
+    pillar2Kw1: { en: "Fast Check-In", vi: "Check-in Nhanh Chóng" },
+    pillar2Kw2: { en: "Clear Crowd Flow", vi: "Phân Luồng Rõ Ràng" },
+    pillar2Kw3: { en: "Security Control", vi: "Kiểm Soát An Ninh" },
     pillar2B1T: { en: "Entry &amp; Exit Flow Design", vi: "Thiết Kế Luồng Ra Vào" },
-    pillar2B1D: { en: "Zoned floor plans and wayfinding built around your venue's actual layout.", vi: "Sơ đồ phân khu và biển chỉ dẫn được xây dựng theo bố cục thực tế của địa điểm." },
-    pillar2B2T: { en: "Access Control", vi: "Kiểm Soát Ra Vào" },
-    pillar2B2D: { en: "QR ticket scanning, wristband/pass distribution, and VIP segmentation handled by trained on-site leads.", vi: "Quét vé QR, phát vòng tay/thẻ, và phân khu VIP do đội trưởng thực địa đã qua đào tạo phụ trách." },
+    pillar2B1D: { en: "Zoned floor plans, signage, and clearly split lines by guest group so crowds never bottleneck at one point — with remote staff coordination that takes pressure off the check-in desk itself.", vi: "Xây dựng sơ đồ phân khu, biển chỉ dẫn, phân line rõ ràng theo từng nhóm khách, không dồn cục tại một điểm, điều phối nhân sự hướng dẫn từ xa để giảm áp lực ngay tại bàn check-in." },
+    pillar2B2T: { en: "On-The-Spot Verification &amp; Issue Handling", vi: "Check Thông Tin &amp; Xử Lý Lỗi Tại Chỗ" },
+    pillar2B2D: { en: "Direct QR scanning and reconciliation, with fast on-the-spot issue resolution to prevent check-in bottlenecks.", vi: "Quét mã / đối soát trực tiếp, xử lý nhanh các sự cố, tránh gây tắc nghẽn luồng check-in." },
     pillar2B3T: { en: "Wait-Time Minimization", vi: "Tối Ưu Thời Gian Chờ" },
-    pillar2B3D: { en: "Queue structuring and staff deployment calibrated to your expected crowd density.", vi: "Cơ cấu hàng chờ và bố trí nhân sự được hiệu chỉnh theo mật độ đám đông dự kiến." },
-    pillar2B4T: { en: "Scalable Security", vi: "An Ninh Có Thể Mở Rộng" },
-    pillar2B4D: { en: "From light-touch check-in staff at intimate showcases to full barrier systems and professional security teams at large-scale concerts.", vi: "Từ nhân sự check-in nhẹ nhàng tại showcase thân mật đến hệ thống rào chắn đầy đủ và đội an ninh chuyên nghiệp tại concert quy mô lớn." },
-    pillar2Callout: { en: "<b>Why it matters:</b> Crowd mismanagement isn't just a bad look — it's a safety liability. Our queue systems are built to scale with your audience size, not improvised on the day.", vi: "<b>Vì sao điều này quan trọng:</b> Quản lý đám đông kém không chỉ là hình ảnh xấu — đó là rủi ro an toàn. Hệ thống xếp hàng của chúng tôi được xây dựng để mở rộng theo quy mô khán giả, không phải ứng biến trong ngày." },
+    pillar2B3D: { en: "Extra staff during peak windows and additional lines opened as needed to keep check-in speed steady.", vi: "Tăng nhân sự tại khung giờ đông, mở thêm line khi cần để giữ tốc độ check-in ổn định." },
+    pillar2B4T: { en: "Continuous Flow Past The Gate", vi: "Giữ Luồng Vào Liên Tục Sau Cổng" },
+    pillar2B4D: { en: "Guests are guided further inside the venue, preventing clustering right after check-in that backs up the line and keeping the gate area clear.", vi: "Hướng khách di chuyển sâu vào bên trong, tránh tụ lại ngay sau check-in gây nghẽn ngược và giữ khu vực cổng luôn thông thoáng." },
 
-    pillar3Label: { en: "Pillar 3 / Benefit Execution", vi: "Trụ Cột 3 / Vận Hành Fan Benefits" },
-    pillar3H2: { en: "Benefit Execution", vi: "Vận Hành Fan Benefits" },
-    pillar3Intro: { en: "The highest-stakes minutes of any fan event are the direct artist-fan interactions. We run these on a locked schedule, with artist safety and fan satisfaction held in equal priority:", vi: "Những phút giây quan trọng nhất của bất kỳ sự kiện fan nào là tương tác trực tiếp giữa nghệ sĩ và fan. Chúng tôi vận hành những khoảnh khắc này theo lịch trình cố định, với an toàn nghệ sĩ và sự hài lòng của fan được ưu tiên ngang nhau:" },
-    pillar3B1T: { en: "Photo Sessions (Chụp ảnh)", vi: "Chụp Ảnh (Photo Sessions)" },
-    pillar3B1D: { en: "1:1, Group Photo 1:10, and 1:50 formats, each with dedicated flow choreography.", vi: "Các hình thức 1:1, chụp nhóm 1:10, và 1:50, mỗi loại có luồng vận hành riêng." },
-    pillar3B2T: { en: "Hi-Bye / Send-off (Chào nghệ sĩ / Tiễn nghệ sĩ)", vi: "Chào &amp; Tiễn Nghệ Sĩ (Hi-Bye / Send-off)" },
-    pillar3B2D: { en: "Arrival and departure moments, managed for both energy and safety.", vi: "Khoảnh khắc đến và đi của nghệ sĩ, được quản lý cho cả không khí và an toàn." },
-    pillar3B3T: { en: "Hi-Touch / Handshake (Bắt tay)", vi: "Bắt Tay (Hi-Touch / Handshake)" },
-    pillar3B3D: { en: "High-throughput, close-contact interactions run with strict timing and physical safety protocols.", vi: "Tương tác tiếp xúc gần, lưu lượng cao, vận hành với thời gian nghiêm ngặt và quy trình an toàn thể chất." },
-    pillar3B4T: { en: "Fansign / Autograph Sessions (Xin chữ ký / Ký tặng)", vi: "Xin Chữ Ký (Fansign / Autograph)" },
-    pillar3B4D: { en: "Signing sessions coordinated end-to-end, from fan queueing to item hand-off.", vi: "Buổi ký tặng được điều phối trọn gói, từ fan xếp hàng đến bàn giao vật phẩm." },
-    pillar3Callout: { en: "<b>Why it matters:</b> These are the moments fans travel for. A benefit session that runs late, runs unsafe, or runs out of time damages the fandom relationship — we exist to make sure it never does.", vi: "<b>Vì sao điều này quan trọng:</b> Đây là những khoảnh khắc fan không quản đường xa để có được. Một buổi fan benefit trễ giờ, thiếu an toàn, hoặc hết giờ giữa chừng sẽ làm tổn hại mối quan hệ với fandom — chúng tôi tồn tại để đảm bảo điều đó không bao giờ xảy ra." },
+    pillar3Label: { en: "Pillar 3 / Fan Benefits Execution", vi: "Trụ Cột 3 / Vận Hành Hạng Mục Fan Benefits" },
+    pillar3H2: { en: "Fan Benefits Execution", vi: "Vận Hành Hạng Mục Fan Benefits" },
+    pillar3Quote: { en: "\"The moment every fan event is remembered for is always the direct interaction between artist and fan. We run these moments on a locked timeline, with artist safety and fan satisfaction held in equal priority.\"", vi: "\"Điểm đáng mong chờ nhất của một sự kiện của nghệ sĩ luôn là những tương tác trực tiếp giữa nghệ sĩ và fan. Chúng tôi vận hành những khoảnh khắc này theo timeline cố định, với an toàn nghệ sĩ và sự hài lòng của fan được ưu tiên ngang nhau.\"" },
+    pillar3Kw1: { en: "Crowd Control", vi: "Kiểm Soát Đám Đông" },
+    pillar3Kw2: { en: "Standardized Time Control", vi: "Kiểm Soát Thời Gian Tiêu Chuẩn" },
+    pillar3Kw3: { en: "Artist Security", vi: "Bảo Vệ An Ninh Cho Nghệ Sĩ" },
+    pillar3B1T: { en: "Dedicated Interaction Zones", vi: "Thiết Lập Khu Vực Tương Tác Riêng Biệt" },
+    pillar3B1D: { en: "Hi-touch, soundcheck, and photo group areas are fully separated from the general audience flow, preventing intrusion or cross-flow interference.", vi: "Phân tách hoàn toàn khu vực Hi-touch, Soundcheck, Photo Group khỏi luồng khán giả chung, tránh bị xâm lấn hoặc nhiễu luồng." },
+    pillar3B2T: { en: "Group-By-Group Timeline Coordination", vi: "Điều Phối Timeline Cấp Độ “Từng Nhóm – Từng Lượt”" },
+    pillar3B2D: { en: "Each fan group's participation time is controlled against a detailed rundown, keeping every activity on schedule without affecting the artist's timeline.", vi: "Kiểm soát thời gian tham gia của từng nhóm fan theo rundown chi tiết, đảm bảo mọi hoạt động diễn ra đúng khung giờ và không ảnh hưởng đến lịch trình của nghệ sĩ." },
+    pillar3B3T: { en: "Conduct &amp; Participation Rules", vi: "Quản Lý Hành Vi &amp; Điều Kiện Tham Gia" },
+    pillar3B3D: { en: "Clear rules on who can participate and in what format (1:1, 1:10...), with strict enforcement of interaction-zone conduct (filming/photography, contact, distance).", vi: "Xác định rõ ai được tham gia, tham gia theo hình thức nào (1:1, 1:10...), kiểm soát chặt các quy định tại khu vực tương tác (quay/chụp, tiếp xúc, khoảng cách)." },
+    pillar3B4T: { en: "Micro-Flow Coordination", vi: "Điều Phối Luồng Vi Mô (Micro-Flow)" },
+    pillar3B4D: { en: "Movement organized in small groups, with controlled stop points, photo points, and exit points for a continuous handoff with zero disruption.", vi: "Tổ chức di chuyển theo từng nhóm nhỏ, kiểm soát điểm dừng – điểm chụp – điểm ra, đảm bảo luồng chuyển tiếp liên tục mà không gây gián đoạn." },
+    pillar3B5T: { en: "Security &amp; Artist Protection", vi: "Đảm Bảo An Ninh &amp; Bảo Vệ Nghệ Sĩ" },
+    pillar3B5D: { en: "Security personnel stationed at every interaction zone, with continuous monitoring to prevent situations that breach control or violate the rules.", vi: "Bố trí lực lượng bảo vệ tại khu vực tương tác, giám sát liên tục để ngăn chặn các tình huống vượt kiểm soát hoặc vi phạm quy định." },
 
     pricingEyebrow: { en: "Pricing &amp; Event Package Structure", vi: "Cơ Cấu Giá &amp; Gói Sự Kiện" },
-    pricingH2: { en: "Priced by Scale, Not Guesswork", vi: "Định Giá Theo Quy Mô, Không Đoán Mò" },
-    pricingP: { en: "Every event is priced by scale, with two tiers available depending on how much of the operation you need PakGud to run.", vi: "Mỗi sự kiện được định giá theo quy mô, với hai mức tuỳ theo phần vận hành bạn cần PakGud đảm nhận." },
+    pricingH2: { en: "Flexible Cost Structure By Scale", vi: "Cấu Trúc Chi Phí Linh Hoạt Theo Quy Mô" },
+    pricingP: { en: "Every event's cost structure is built around its real scale and operational scope. PakGud offers two flexible tiers of engagement so you can optimize resources while still guaranteeing operational effectiveness.", vi: "Mỗi sự kiện được xây dựng cấu trúc chi phí dựa trên quy mô và phạm vi vận hành thực tế. PakGud cung cấp hai cấp độ triển khai linh hoạt, giúp bạn tối ưu nguồn lực mà vẫn đảm bảo hiệu quả vận hành." },
 
-    tierFullH4: { en: "Full Minimum Tier", vi: "Full Minimum Tier" },
-    tierFullP: { en: "Our complete operational package for that event size — check-in, crowd control, benefit execution, staffing, and coordination.", vi: "Gói vận hành trọn vẹn cho quy mô sự kiện đó — check-in, kiểm soát đám đông, vận hành fan benefits, nhân sự, và điều phối." },
+    tierFullH4: { en: "Full Operational Tier", vi: "Full Operational Tier" },
+    tierFullP: { en: "A complete operational solution for the entire event experience. Covers every item from check-in, crowd control, and fan benefit execution through to staffing and overall operational flow — ensuring every touchpoint in the guest journey runs in sync, seamless, and on plan.", vi: "Giải pháp vận hành trọn gói cho toàn bộ trải nghiệm sự kiện. Bao gồm toàn bộ các hạng mục từ check-in, kiểm soát đám đông, vận hành fan benefits, đến điều phối nhân sự và luồng vận hành tổng thể, đảm bảo mọi điểm chạm trong hành trình khán giả được vận hành đồng bộ, liền mạch và đúng kế hoạch." },
     tierBaseH4: { en: "Base Operational Tier", vi: "Base Operational Tier" },
-    tierBaseP: { en: "Our lighter operational package — covering essential Fan Fulfillment staffing and queue management only, for teams who need core crowd/fulfillment support without the full production layer.", vi: "Gói vận hành nhẹ hơn — chỉ bao gồm nhân sự Fan Fulfillment thiết yếu và quản lý xếp hàng, dành cho đội ngũ cần hỗ trợ cốt lõi về đám đông/vận hành mà không cần lớp sản xuất đầy đủ." },
+    tierBaseP: { en: "A core operational solution focused on the most critical touchpoints. Provides queue-control staffing at key zones: the check-in area, the fanzone area, and similar high-traffic points.", vi: "Giải pháp vận hành cốt lõi, tập trung vào những điểm chạm quan trọng nhất. Cung cấp nhân sự kiểm soát xếp hàng tại các khu vực trọng điểm: khu vực check-in, khu vực fanzone, v.v." },
 
-    ptColScale: { en: "Event Scale", vi: "Quy Mô Sự Kiện" },
-    ptColExamples: { en: "Event Type Examples", vi: "Ví Dụ Loại Sự Kiện" },
-    ptColFull: { en: "Full Minimum Tier", vi: "Full Minimum Tier" },
-    ptColBase: { en: "Base Operational Tier", vi: "Base Operational Tier" },
-    ptRow1Scale: { en: "Under 500 guests", vi: "Dưới 500 khách" },
-    ptRow1Examples: { en: "Fanmeeting, Showcase, Minishow, Press Conference", vi: "Fanmeeting, Showcase, Minishow, Họp Báo" },
-    ptRow2Scale: { en: "500 – 1,000 guests", vi: "500 – 1.000 khách" },
-    ptRow2Examples: { en: "Fancon, Mini Concert, Special Showcase", vi: "Fancon, Mini Concert, Special Showcase" },
-    ptRow3Scale: { en: "1,000 – 2,000 guests", vi: "1.000 – 2.000 khách" },
-    ptRow3Examples: { en: "Live Concert, Fancon, Mini Music Festival", vi: "Live Concert, Fancon, Mini Music Festival" },
-    ptCustom: { en: "Custom Consultation", vi: "Tư Vấn Riêng" },
-    ptRow4Scale: { en: "Merch Fulfillment Only", vi: "Chỉ Merch Fulfillment" },
-    ptRow4Examples: { en: "Order-Volume Based", vi: "Theo Khối Lượng Đơn Hàng" },
-    ptDash: { en: "—", vi: "—" },
+    ptColScale: { en: "Audience Scale", vi: "Quy Mô Khán Giả" },
+    ptColExamples: { en: "Typical Event Format", vi: "Hình Thức Sự Kiện Tiêu Biểu" },
+    ptColBase: { en: "Base Operational Tier (VND)", vi: "Base Operational Tier (VND)" },
+    ptColFull: { en: "Full Operational Tier (VND)", vi: "Full Operational Tier (VND)" },
+    ptRow1Scale: { en: "Under 500 guests", vi: "Dưới 500 khán giả" },
+    ptRow1Examples: { en: "Fanmeeting, Showcase, Minishow, Press Conference", vi: "Fanmeeting, Showcase, Minishow, Press Conference" },
+    ptRow1Note: { en: "Small-scale event, an intimate setting that supports many direct interaction moments, requiring a basic level of operations.", vi: "Quy mô sự kiện nhỏ, không gian tổ chức mang tính gần gũi, tạo điều kiện cho nhiều khoảnh khắc tương tác trực tiếp, yêu cầu vận hành ở mức cơ bản." },
+    ptRow2Scale: { en: "500 – 1,000 guests", vi: "500 - 1.000 khán giả" },
+    ptRow2Examples: { en: "Mid-Scale Fancon, Special Showcase, Mini Concert", vi: "Fancon quy mô vừa, Special Showcase, Mini Concert" },
+    ptRow2Note: { en: "Medium-scale event with a more distinct commercial character, requiring tighter organizational and operational capability for the event and fan benefits.", vi: "Quy mô sự kiện trung bình với tính chất thương mại rõ nét hơn, đòi hỏi năng lực tổ chức - vận hành sự kiện và fan benefits mức độ chặt chẽ hơn." },
+    ptRow3Scale: { en: "Over 1,000 guests", vi: "Trên 1.000 khán giả" },
+    ptRow3Examples: { en: "Live Concert, Large-Scale Fancon, Mini Music Festival", vi: "Live Concert, Fancon lớn, Mini Music Festival" },
+    ptRow3Note: { en: "Large-scale event requiring an advanced operational plan to respond to the elevated risk that comes with higher audience density.", vi: "Quy mô sự kiện lớn, yêu cầu phương án vận hành nâng cao nhằm ứng phó với rủi ro gia tăng theo mật độ khán giả." },
+    ptCustom: { en: "Custom Consultation &amp; Quote", vi: "Tư Vấn &amp; Báo Giá Riêng" },
     merchOnlyH4: { en: "Merch Fulfillment Only — 17,000,000+ VND Includes:", vi: "Chỉ Merch Fulfillment — 17.000.000+ VND Bao Gồm:" },
     merchOnlyB1: { en: "Full cost of bulk packing personnel.", vi: "Toàn bộ chi phí nhân sự đóng gói số lượng lớn." },
     merchOnlyB2: { en: "Two-way merch/materials shipping between warehouse ↔ event venue.", vi: "Chi phí vận chuyển vật tư/merch hai chiều từ kho vận ↔ venue sự kiện." },
     merchOnlyB3: { en: "Cost of on-site coordination and booth-running staff.", vi: "Chi phí nhân sự điều phối và chạy onsite tại booth." },
-    pricingFootnote: { en: "At this scale, pricing depends heavily on venue, security requirements, and technical complexity — our team will provide a tailored quote after a scoping call.", vi: "Ở quy mô này, giá phụ thuộc nhiều vào địa điểm, yêu cầu an ninh, và độ phức tạp kỹ thuật — đội ngũ chúng tôi sẽ đưa ra báo giá riêng sau buổi khảo sát phạm vi." },
     pricingNote: { en: "<b>Note:</b> Base prices cover Fan Fulfillment operational services only and strictly exclude Stage Production (Sound, Lighting, Stage setup) and Site/Venue Decoration.", vi: "<b>Lưu ý:</b> Mức giá cơ bản chỉ bao gồm dịch vụ vận hành Fan Fulfillment và hoàn toàn không bao gồm Stage Production (Âm thanh, Ánh sáng, Dựng sân khấu) và Trang Trí Địa Điểm/Sự Kiện." },
 
     addonsH2: { en: "Need more than Fan Fulfillment?", vi: "Cần Nhiều Hơn Fan Fulfillment?" },
@@ -619,8 +648,7 @@
     addon5: { en: "Vendor &amp; Tax Management", vi: "Quản Lý Nhà Cung Cấp &amp; Thuế" },
 
     ctaEyebrow: { en: "Talk to Our Team", vi: "Trao Đổi Với Đội Ngũ" },
-    ctaH2: { en: "Talk to Our Team About Your Event", vi: "Trao Đổi Với Đội Ngũ Về Sự Kiện Của Bạn" },
-    ctaP: { en: "Tell us your event size and goals — we'll recommend the right tier and give you an accurate quote.", vi: "Cho chúng tôi biết quy mô và mục tiêu sự kiện — chúng tôi sẽ tư vấn mức phù hợp và báo giá chính xác." },
+    ctaH2: { en: "Get a Fast Consultation for Your Event", vi: "Nhận Tư Vấn Nhanh Dịch Vụ Cho Sự Kiện Của Bạn" },
 
     footDesc: { en: "Vietnam's Fan Fulfillment operator — merch fulfillment, crowd &amp; queue management, and benefit execution, run with published rates and an itemized paper trail.", vi: "Đối tác vận hành Fan Fulfillment tại Việt Nam — vận hành merch, quản lý đám đông &amp; xếp hàng, và vận hành fan benefits, với mức giá công khai và chứng từ minh bạch." },
     footCompanyH4: { en: "Company", vi: "Công Ty" },
