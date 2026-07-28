@@ -203,6 +203,23 @@
   .credibility blockquote{font-family:'Oswald', sans-serif; font-size:clamp(20px,2.4vw,28px); text-transform:none; font-weight:500; max-width:800px; margin:0 auto; line-height:1.4;}
   .credibility .cite{margin-top:18px; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--steel);}
 
+  /* ---------- SCOPE (3-card outcome grid) ---------- */
+  .scope{border-top:1px solid var(--line);}
+  .scope-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .scope-card{background:var(--paper); padding:34px 30px; display:flex; flex-direction:column; gap:14px;}
+  .scope-card .cat-num{font-family:'IBM Plex Mono', monospace; color:var(--steel-light); font-size:13px;}
+  .scope-card h3{font-size:19px; font-family:'IBM Plex Sans', sans-serif; font-weight:600; text-transform:none; letter-spacing:0;}
+  .scope-card .scope-vi{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--steel); text-transform:none; letter-spacing:0.02em;}
+  .scope-card .scope-desc{color:var(--steel); font-size:13.5px; line-height:1.6; flex:1;}
+  .scope-card .scope-more{
+    margin-top:auto; align-self:flex-start;
+    border:1px solid var(--ink); padding:10px 16px;
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--ink); transition:background .2s ease, color .2s ease;
+  }
+  .scope-card .scope-more:hover{background:var(--ink); color:var(--paper);}
+  @media (max-width:900px){ .scope-grid{grid-template-columns:1fr;} }
+
   /* ---------- SECTION HEADERS ---------- */
   section{padding:100px 0;}
   .sec-head{display:flex; justify-content:space-between; align-items:flex-end; gap:40px; margin-bottom:56px; flex-wrap:wrap;}
@@ -298,13 +315,6 @@
   .step-cell p{font-size:13.5px; color:var(--steel); margin-top:10px; line-height:1.5;}
   @media (max-width:900px){ .steps-grid{grid-template-columns:1fr 1fr;} }
   @media (max-width:560px){ .steps-grid{grid-template-columns:1fr;} }
-
-  /* ---------- WHO WE WORK WITH ---------- */
-  .who-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
-  .who-cell{background:var(--paper); padding:30px 26px; min-height:130px; display:flex; flex-direction:column; justify-content:space-between;}
-  .who-cell .mono{font-size:11px; color:var(--steel); letter-spacing:0.1em; text-transform:uppercase;}
-  .who-cell h3{font-size:17px; font-family:'IBM Plex Sans', sans-serif; text-transform:none; font-weight:600; letter-spacing:0; margin-top:auto;}
-  @media (max-width:900px){ .who-grid{grid-template-columns:1fr 1fr;} }
 
   /* ---------- STATS / TRUST CARD ---------- */
   .stats{border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--paper-dim);}
@@ -420,6 +430,17 @@
   </div>
 </section>
 
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat"><div class="num"><span class="accent">12</span></div><div class="lbl" data-i18n="statLbl1">Successful Events</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl" data-i18n="statLbl2">Cities</div></div>
+      <div class="stat"><div class="num">50,000+</div><div class="lbl" data-i18n="statLbl3">Items Fulfilled</div></div>
+      <div class="stat"><div class="num">99%</div><div class="lbl" data-i18n="statLbl4">Satisfied Fans</div></div>
+    </div>
+  </div>
+</section>
+
 <div class="strip">
   <div class="strip-inner">
     <span data-i18n="strip1">MERCH FULFILLMENT <b>·</b></span>
@@ -446,35 +467,36 @@
   </div>
 </section>
 
-<section class="audiences" id="audiences">
+<section class="scope" id="scope">
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <div class="eyebrow" data-i18n="audEyebrow">Who We're Built For</div>
-        <h2 style="margin-top:16px;" data-i18n="audH2">Two kinds of partners. One transparent standard.</h2>
+        <div class="eyebrow" data-i18n="scopeEyebrow">Service Scope</div>
+        <h2 style="margin-top:16px;" data-i18n="scopeH2">What We Handle On Show Day</h2>
       </div>
-      <p data-i18n="audP">Whether you're flying in from abroad or you've been burned by a vendor before, you get the same published rates and the same paper trail.</p>
+      <p data-i18n="scopeP">Functional execution, emotional outcomes — the operational core of every fan touchpoint.</p>
     </div>
-    <div class="audience-grid">
-      <div class="audience-card">
-        <div class="a-label" data-i18n="aud1Label">For International Labels &amp; Companies</div>
-        <h3 data-i18n="aud1Title">A local operator you can vet from a distance.</h3>
-        <div class="cat-tags">
-          <span class="chip" data-i18n="aud1chip1">Local Licensing &amp; Permits</span>
-          <span class="chip" data-i18n="aud1chip2">English-Speaking Contact</span>
-          <span class="chip" data-i18n="aud1chip3">Itemized Reporting</span>
-          <span class="chip" data-i18n="aud1chip4">Vetted Ground Crew</span>
-        </div>
+    <div class="scope-grid">
+      <div class="scope-card">
+        <div class="cat-num">01</div>
+        <h3 data-i18n="scope1H3">Merch Fulfillment</h3>
+        <div class="scope-vi">Quản lý &amp; vận hành merchandise và giftset</div>
+        <p class="scope-desc" data-i18n="scope1Desc">Không còn tình trạng thiếu – dư – phát nhầm merchandise, mọi phần giftset đều đến đúng người, đúng quyền lợi.</p>
+        <a href="services.html#merch-fulfillment" class="scope-more" data-i18n="scopeMoreLink">Xem đầy đủ →</a>
       </div>
-      <div class="audience-card">
-        <div class="a-label" data-i18n="aud2Label">For Local Managers, Executives &amp; Agents</div>
-        <h3 data-i18n="aud2Title">Start small. See the invoice. Decide for yourself.</h3>
-        <div class="cat-tags">
-          <span class="chip" data-i18n="aud2chip1">Published Starting Rates</span>
-          <span class="chip" data-i18n="aud2chip2">Itemized Invoicing</span>
-          <span class="chip" data-i18n="aud2chip3">Low-Commitment Entry</span>
-          <span class="chip" data-i18n="aud2chip4">Discreet &amp; Vetted Crew</span>
-        </div>
+      <div class="scope-card">
+        <div class="cat-num">02</div>
+        <h3 data-i18n="scope2H3">Crowd &amp; Queue Management</h3>
+        <div class="scope-vi">Quản lý &amp; vận hành khu vực check-in/khu vực vòng ngoài sự kiện</div>
+        <p class="scope-desc" data-i18n="scope2Desc">Kiểm soát được dòng người ngay từ trước khi vào sự kiện, tránh tình trạng hàng dài ùn tắc.</p>
+        <a href="services.html#crowd-queue" class="scope-more" data-i18n="scopeMoreLink">Xem đầy đủ →</a>
+      </div>
+      <div class="scope-card">
+        <div class="cat-num">03</div>
+        <h3 data-i18n="scope3H3">Fan Benefit Execution</h3>
+        <div class="scope-vi">Vận hành Fan Benefits</div>
+        <p class="scope-desc" data-i18n="scope3Desc">Các hoạt động với nghệ sĩ diễn ra đúng nhịp và kiểm soát được toàn bộ, giữ trải nghiệm trọn vẹn cho fan và đảm bảo sự an toàn cho nghệ sĩ.</p>
+        <a href="services.html#benefit-execution" class="scope-more" data-i18n="scopeMoreLink">Xem đầy đủ →</a>
       </div>
     </div>
   </div>
@@ -559,6 +581,40 @@
             <span class="p-tier-value">17,000,000+ VND</span>
           </div>
           <a href="services.html#pricing" class="p-more" data-i18n="priceCardLink">Xem bảng giá mở rộng →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="audiences" id="audiences">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow" data-i18n="audEyebrow">Who We're Built For</div>
+        <h2 style="margin-top:16px;" data-i18n="audH2">Two kinds of partners. One transparent standard.</h2>
+      </div>
+      <p data-i18n="audP">Whether you're flying in from abroad or you've been burned by a vendor before, you get the same published rates and the same paper trail.</p>
+    </div>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <div class="a-label" data-i18n="aud1Label">For International Labels &amp; Companies</div>
+        <h3 data-i18n="aud1Title">A local operator you can vet from a distance.</h3>
+        <div class="cat-tags">
+          <span class="chip" data-i18n="aud1chip1">Local Licensing &amp; Permits</span>
+          <span class="chip" data-i18n="aud1chip2">English-Speaking Contact</span>
+          <span class="chip" data-i18n="aud1chip3">Itemized Reporting</span>
+          <span class="chip" data-i18n="aud1chip4">Vetted Ground Crew</span>
+        </div>
+      </div>
+      <div class="audience-card">
+        <div class="a-label" data-i18n="aud2Label">For Local Managers, Executives &amp; Agents</div>
+        <h3 data-i18n="aud2Title">Start small. See the invoice. Decide for yourself.</h3>
+        <div class="cat-tags">
+          <span class="chip" data-i18n="aud2chip1">Published Starting Rates</span>
+          <span class="chip" data-i18n="aud2chip2">Itemized Invoicing</span>
+          <span class="chip" data-i18n="aud2chip3">Low-Commitment Entry</span>
+          <span class="chip" data-i18n="aud2chip4">Discreet &amp; Vetted Crew</span>
         </div>
       </div>
     </div>
@@ -690,35 +746,6 @@
   </div>
 </section>
 
-<section class="who" id="who">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <div class="eyebrow" data-i18n="whoEyebrow">Roles We Work With</div>
-        <h2 style="margin-top:16px;" data-i18n="whoH2">Built for the people behind the artist</h2>
-      </div>
-      <p data-i18n="whoP">We plug into your team as the operations crew on the ground.</p>
-    </div>
-    <div class="who-grid">
-      <div class="who-cell"><span class="mono">01</span><h3 data-i18n="who1">Artist Management</h3></div>
-      <div class="who-cell"><span class="mono">02</span><h3 data-i18n="who2">Record Labels</h3></div>
-      <div class="who-cell"><span class="mono">03</span><h3 data-i18n="who3">Entertainment Companies</h3></div>
-      <div class="who-cell"><span class="mono">04</span><h3 data-i18n="who4">Talent Agencies</h3></div>
-    </div>
-  </div>
-</section>
-
-<section class="stats">
-  <div class="wrap">
-    <div class="stats-grid">
-      <div class="stat"><div class="num"><span class="accent">12</span></div><div class="lbl" data-i18n="statLbl1">Successful Events</div></div>
-      <div class="stat"><div class="num">3</div><div class="lbl" data-i18n="statLbl2">Cities</div></div>
-      <div class="stat"><div class="num">50,000+</div><div class="lbl" data-i18n="statLbl3">Items Fulfilled</div></div>
-      <div class="stat"><div class="num">99%</div><div class="lbl" data-i18n="statLbl4">Satisfied Fans</div></div>
-    </div>
-  </div>
-</section>
-
 <section class="cta" id="contact">
   <div class="wrap">
     <div class="eyebrow" style="justify-content:center;" data-i18n="ctaEyebrow">Save a Seat in Your Office</div>
@@ -768,7 +795,7 @@
 
     heroEyebrow: { en: "Vietnam's Trusted Local Fan-Experience Operator", vi: "Đối Tác Vận Hành Trải Nghiệm Fan Đáng Tin Cậy Tại Việt Nam" },
     heroH1:      { en: "The hidden team<br>that fulfills the<br><span class='accent'>fan experience.</span>", vi: "Đội ngũ thầm lặng<br>kiến tạo<br><span class='accent'>trải nghiệm fan.</span>" },
-    heroLede:    { en: "<strong style='color:var(--ink);'>Save a seat in your office. Free your mind from operational chaos.</strong><br><br>PakGud handles the operations — fanmeetings, fancons, and merch fulfillment — with published starting rates and an itemized paper trail, so your team can stay focused on the artist.", vi: "<strong style='color:var(--ink);'>Tiết kiệm không gian cho văn phòng bạn. Giải phóng tâm trí khỏi những cơn đau đầu vận hành.</strong><br><br>PakGud phụ trách vận hành — fanmeeting, fancon và merch fulfillment — với mức giá khởi điểm công khai và chứng từ minh bạch, để đội ngũ bạn tập trung trọn vẹn cho nghệ sĩ." },
+    heroLede:    { en: "<strong style='color:var(--ink);'>Save a seat in your office. Free your mind from operational chaos.</strong><br><br>PakGud handles the operations — fanmeetings, fancons, and merch fulfillment — with published starting rates and an itemized paper trail, so your team can stay focused on the artist.", vi: "<strong style='color:var(--ink);'>Tiết kiệm không gian cho văn phòng bạn. Giải phóng tâm trí khỏi những cơn đau đầu vận hành.</strong><br><br>PakGud phụ trách vận hành trải nghiệm khán giả tại fanmeeting, fancon và merch fulfillment, giúp BTC và ê-kíp giải phóng hoàn toàn khỏi áp lực vận hành để tập trung cho nghệ sĩ." },
     heroSecondary: { en: "See the rate card ↓", vi: "Xem bảng giá ↓" },
     heroProof: { en: "Operations partner for 2 of the Top 10 artists in Anh Trai Say Hi 2025", vi: "Đối tác vận hành cho 2 trong Top 10 nghệ sĩ của Anh Trai Say Hi 2025" },
 
@@ -797,6 +824,20 @@
 
     credQuote: { en: "\"Proud operations partner for 2 of the Top 10 artists in Anh Trai Say Hi 2025 — the season's biggest idol franchise.\"", vi: "\"Tự hào là đối tác vận hành cho 2 trong Top 10 nghệ sĩ của Anh Trai Say Hi 2025 — chương trình idol lớn nhất mùa.\"" },
     credCite: { en: "Selling Point — Verified Track Record", vi: "Điểm Nổi Bật — Thành Tích Đã Xác Thực" },
+
+    scopeEyebrow: { en: "Service Scope", vi: "Phạm Vi Dịch Vụ" },
+    scopeH2: { en: "What We Handle On Show Day", vi: "Những Gì Chúng Tôi Đảm Nhận Trong Ngày Diễn Ra Sự Kiện" },
+    scopeP: { en: "Functional execution, emotional outcomes — the operational core of every fan touchpoint.", vi: "Thực thi chức năng, kết quả cảm xúc — cốt lõi vận hành của mọi điểm chạm với fan." },
+    scopeMoreLink: { en: "View Full Details →", vi: "Xem đầy đủ →" },
+
+    scope1H3: { en: "Merch Fulfillment", vi: "Vận Hành &amp; Phân Phát Merch" },
+    scope1Desc: { en: "No more shortages, overages, or misdelivered merch — every giftset reaches the right fan, with the right entitlement.", vi: "Không còn tình trạng thiếu – dư – phát nhầm merchandise, mọi phần giftset đều đến đúng người, đúng quyền lợi." },
+
+    scope2H3: { en: "Crowd &amp; Queue Management", vi: "Tối Ưu Dòng Người &amp; Quản Lý Xếp Hàng" },
+    scope2Desc: { en: "Crowd flow is controlled before fans even reach the venue, eliminating long queues and bottlenecks.", vi: "Kiểm soát được dòng người ngay từ trước khi vào sự kiện, tránh tình trạng hàng dài ùn tắc." },
+
+    scope3H3: { en: "Fan Benefit Execution", vi: "Vận Hành Fan Privileges" },
+    scope3Desc: { en: "Every artist-fan interaction runs on pace and fully controlled — keeping the experience complete for fans and protecting the artist's safety.", vi: "Các hoạt động với nghệ sĩ diễn ra đúng nhịp và kiểm soát được toàn bộ, giữ trải nghiệm trọn vẹn cho fan và đảm bảo sự an toàn cho nghệ sĩ." },
 
     audEyebrow: { en: "Who We're Built For", vi: "Chúng Tôi Sinh Ra Cho Ai" },
     audH2:      { en: "Two kinds of partners. One transparent standard.", vi: "Hai kiểu đối tác. Một tiêu chuẩn minh bạch." },
@@ -900,14 +941,6 @@
     step4Num:   { en: "04 / The Reconciliation", vi: "04 / Đối Soát" },
     step4Title: { en: "We deliver and reconcile", vi: "Thực thi và đối soát" },
     step4Desc:  { en: "Every item accounted for, every invoice itemized, every time.", vi: "Mọi hạng mục đều được ghi nhận, mọi hóa đơn đều chi tiết, mỗi lần đều như vậy." },
-
-    whoEyebrow: { en: "Roles We Work With", vi: "Vai Trò Chúng Tôi Đồng Hành Cùng" },
-    whoH2:      { en: "Built for the people behind the artist", vi: "Được xây dựng cho những người đứng sau nghệ sĩ" },
-    whoP:       { en: "We plug into your team as the operations crew on the ground.", vi: "Chúng tôi hòa vào đội ngũ bạn như một đội vận hành thực địa." },
-    who1: { en: "Artist Management", vi: "Quản Lý Nghệ Sĩ" },
-    who2: { en: "Record Labels", vi: "Hãng Đĩa" },
-    who3: { en: "Entertainment Companies", vi: "Công Ty Giải Trí" },
-    who4: { en: "Talent Agencies", vi: "Công Ty Quản Lý Tài Năng" },
 
     statLbl1: { en: "Successful Events", vi: "Sự Kiện Thành Công" },
     statLbl2: { en: "Cities", vi: "Thành Phố" },
