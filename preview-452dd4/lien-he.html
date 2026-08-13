@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SDYRCN6R12"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-SDYRCN6R12');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>PakGud — Liên Hệ</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%232451E0'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .intro{padding:120px 0 60px; border-bottom:1px solid var(--line);}
+  .intro h1{margin-top:20px; font-size:clamp(28px,4vw,46px); max-width:820px;}
+  .intro .lede{margin-top:20px; font-size:16.5px; line-height:1.7; color:var(--steel); max-width:640px;}
+
+  .form-section{padding:72px 0 110px;}
+  .field{margin-bottom:48px; padding-bottom:40px; border-bottom:1px solid var(--line);}
+  .field:last-of-type{border-bottom:none;}
+  .field-label{
+    display:flex; align-items:baseline; gap:10px;
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--ink); margin-bottom:18px; font-weight:600;
+  }
+  .field-num{color:var(--accent);}
+  .field-note{font-family:'IBM Plex Sans', sans-serif; text-transform:none; letter-spacing:0; font-size:13px; color:var(--steel); font-weight:400; margin-top:6px;}
+
+  .choice-grid{display:flex; flex-wrap:wrap; gap:10px;}
+  .choice{position:relative;}
+  .choice input{position:absolute; opacity:0; width:100%; height:100%; margin:0; cursor:pointer; top:0; left:0;}
+  .choice span{
+    display:inline-block; padding:12px 18px; border:1px solid var(--line-dark);
+    font-size:13.5px; color:var(--ink); font-family:'IBM Plex Sans', sans-serif;
+    transition:background .2s ease, color .2s ease, border-color .2s ease; cursor:pointer;
+  }
+  .choice input:checked + span{background:var(--ink); color:var(--paper); border-color:var(--ink);}
+  .choice input:focus-visible + span{outline:2px solid var(--accent); outline-offset:2px;}
+
+  .text-field{
+    width:100%; max-width:480px; padding:14px 16px; border:1px solid var(--line-dark); background:var(--paper);
+    font-family:'IBM Plex Sans', sans-serif; font-size:14.5px; color:var(--ink);
+  }
+  .text-field:focus{outline:2px solid var(--accent); outline-offset:1px; border-color:var(--accent);}
+
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px; max-width:820px;}
+  .contact-grid .text-field{max-width:none;}
+  @media (max-width:640px){ .contact-grid{grid-template-columns:1fr;} }
+
+  #merchSubtier{margin-top:22px; padding-top:22px; border-top:1px dashed var(--line-dark);}
+  #merchSubtier[hidden]{display:none;}
+
+  .form-submit{margin-top:12px;}
+
+  .confirm-state{padding:140px 0; text-align:center;}
+  .confirm-state[hidden]{display:none;}
+  .confirm-state .check{
+    width:56px; height:56px; border-radius:50%; background:var(--accent); color:var(--paper);
+    display:flex; align-items:center; justify-content:center; margin:0 auto 28px; font-size:26px;
+  }
+  .confirm-state h2{font-size:clamp(24px,3vw,34px); max-width:640px; margin:0 auto;}
+  .confirm-state p{margin-top:16px; color:var(--steel); font-size:15px; max-width:520px; margin-left:auto; margin-right:auto;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="index.html" class="logo"><span class="dot"></span>PakGud</a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Trang Chủ</a>
+      <a href="faq.html">FAQ</a>
+      <a href="lien-he.html">Liên Hệ</a>
+      <a href="lien-he.html" class="nav-links-cta">Nhận Báo Giá</a>
+    </div>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <a href="lien-he.html" class="nav-cta">Nhận Báo Giá</a>
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">☰</button>
+    </div>
+  </nav>
+</header>
+
+<section class="intro">
+  <div class="wrap">
+    <div class="eyebrow">Liên Hệ</div>
+    <h1>Kể cho PakGud nghe về sự kiện của bạn</h1>
+    <p class="lede">Chưa chắc mình cần gì cũng không sao — trả lời vài câu hỏi, PakGud sẽ giúp bạn hình dung rõ hơn về quy mô vận hành phù hợp.</p>
+  </div>
+</section>
+
+<section class="form-section">
+  <div class="wrap">
+
+    <form id="inquiryForm" novalidate>
+
+      <div class="field">
+        <div class="field-label"><span class="field-num">01</span> Loại hình sự kiện</div>
+        <div class="choice-grid">
+          <label class="choice"><input type="radio" name="eventType" value="Fansign/Fanmeeting nhỏ"><span>Fansign / Fanmeeting nhỏ</span></label>
+          <label class="choice"><input type="radio" name="eventType" value="Fanmeeting đầy đủ"><span>Fanmeeting đầy đủ</span></label>
+          <label class="choice"><input type="radio" name="eventType" value="Fancon/Concert"><span>Fancon / Concert</span></label>
+          <label class="choice"><input type="radio" name="eventType" value="Pop-up/Activation/Triển lãm"><span>Pop-up / Activation / Triển lãm</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label"><span class="field-num">02</span> Dự kiến số lượng khách</div>
+        <div class="choice-grid">
+          <label class="choice"><input type="radio" name="guestCount" value="Dưới 300"><span>Dưới 300</span></label>
+          <label class="choice"><input type="radio" name="guestCount" value="300–700"><span>300 – 700</span></label>
+          <label class="choice"><input type="radio" name="guestCount" value="700–1.500"><span>700 – 1.500</span></label>
+          <label class="choice"><input type="radio" name="guestCount" value="1.500–3.000"><span>1.500 – 3.000</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label"><span class="field-num">03</span> Đã có địa điểm chưa</div>
+        <div class="choice-grid">
+          <label class="choice"><input type="radio" name="venueStatus" value="Đã có"><span>Đã có</span></label>
+          <label class="choice"><input type="radio" name="venueStatus" value="Cần PakGud tìm & thuê"><span>Cần PakGud tìm &amp; thuê</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label"><span class="field-num">04</span> Số ngày sử dụng địa điểm</div>
+        <div class="choice-grid">
+          <label class="choice"><input type="radio" name="venueDays" value="1"><span>1 ngày</span></label>
+          <label class="choice"><input type="radio" name="venueDays" value="2"><span>2 ngày</span></label>
+          <label class="choice"><input type="radio" name="venueDays" value="3+"><span>3+ ngày</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label"><span class="field-num">05</span> Nghệ sĩ đến từ đâu</div>
+        <div class="choice-grid">
+          <label class="choice"><input type="radio" name="artistOrigin" value="Việt Nam"><span>Việt Nam</span></label>
+          <label class="choice"><input type="radio" name="artistOrigin" value="Hàn Quốc, nước ngoài"><span>Hàn Quốc, nước ngoài</span></label>
+          <label class="choice"><input type="radio" name="artistOrigin" value="Không có nghệ sĩ"><span>Không có nghệ sĩ</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label"><span class="field-num">06</span> Có hoạt động tiếp xúc gần với nghệ sĩ không</div>
+        <div class="choice-grid">
+          <label class="choice"><input type="radio" name="closeContact" value="Có"><span>Có</span></label>
+          <label class="choice"><input type="radio" name="closeContact" value="Không"><span>Không</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label"><span class="field-num">07</span> Mức độ kiểm soát vào cửa</div>
+        <div class="choice-grid">
+          <label class="choice"><input type="radio" name="entryControl" value="Soát vé đơn giản"><span>Soát vé đơn giản</span></label>
+          <label class="choice"><input type="radio" name="entryControl" value="Check-in + vòng tay phân khu"><span>Check-in + vòng tay phân khu</span></label>
+          <label class="choice"><input type="radio" name="entryControl" value="Check-in + vòng tay + đổi quà tại chỗ"><span>Check-in + vòng tay + đổi quà tại chỗ</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label"><span class="field-num">08</span> Có quầy bán merch tại sự kiện không</div>
+        <div class="choice-grid">
+          <label class="choice"><input type="radio" name="merchBooth" value="Có"><span>Có</span></label>
+          <label class="choice"><input type="radio" name="merchBooth" value="Không"><span>Không</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label"><span class="field-num">09</span> Địa bàn tổ chức</div>
+        <div class="choice-grid">
+          <label class="choice"><input type="radio" name="region" value="Hà Nội/TP.HCM"><span>Hà Nội / TP.HCM</span></label>
+          <label class="choice"><input type="radio" name="region" value="Tỉnh thành khác"><span>Tỉnh thành khác</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label"><span class="field-num">10</span> Hạng mục bổ sung <span class="field-note">(có thể chọn nhiều)</span></div>
+        <div class="choice-grid">
+          <label class="choice"><input type="checkbox" name="addons" value="Chụp ảnh & quay phim"><span>Chụp ảnh &amp; quay phim</span></label>
+          <label class="choice"><input type="checkbox" name="addons" value="Livestream"><span>Livestream</span></label>
+          <label class="choice"><input type="checkbox" name="addons" value="Aftermovie"><span>Aftermovie</span></label>
+          <label class="choice"><input type="checkbox" name="addons" value="Photobooth"><span>Photobooth</span></label>
+          <label class="choice"><input type="checkbox" name="addons" value="Điều phối dự án fan"><span>Điều phối dự án fan</span></label>
+          <label class="choice"><input type="checkbox" name="addons" value="Fulfillment merch" id="merchAddon"><span>Fulfillment merch</span></label>
+        </div>
+        <div id="merchSubtier" hidden>
+          <div class="field-label" style="font-size:11.5px;">Số lượng merch cần fulfillment</div>
+          <div class="choice-grid">
+            <label class="choice"><input type="radio" name="merchQty" value="Dưới 500 sản phẩm"><span>Dưới 500 sản phẩm</span></label>
+            <label class="choice"><input type="radio" name="merchQty" value="500–2.000 sản phẩm"><span>500 – 2.000 sản phẩm</span></label>
+            <label class="choice"><input type="radio" name="merchQty" value="Trên 2.000 sản phẩm"><span>Trên 2.000 sản phẩm</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label"><span class="field-num">11</span> Thông tin liên hệ</div>
+        <div class="contact-grid">
+          <div>
+            <label class="field-note mono" style="display:block; margin-bottom:8px;">Tên / đơn vị *</label>
+            <input class="text-field" type="text" name="contactName" required>
+          </div>
+          <div>
+            <label class="field-note mono" style="display:block; margin-bottom:8px;">Email hoặc số điện thoại *</label>
+            <input class="text-field" type="text" name="contactInfo" required>
+          </div>
+          <div>
+            <label class="field-note mono" style="display:block; margin-bottom:8px;">Ngày sự kiện dự kiến (nếu có)</label>
+            <input class="text-field" type="date" name="eventDate">
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-primary form-submit">Gửi Thông Tin</button>
+    </form>
+
+    <div class="confirm-state" id="confirmState" hidden>
+      <div class="check">✓</div>
+      <h2>Đã nhận, cảm ơn — PakGud sẽ liên hệ trong 24 giờ làm việc.</h2>
+      <p>Nếu cần trao đổi ngay, bạn có thể liên hệ trực tiếp qua hello@pakgud.co hoặc +84 32 8721486 (Ms. Minh).</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <div class="foot-logo"><span class="dot"></span>PakGud</div>
+      <p>Đơn vị tổ chức các sự kiện đặc thù cho nghệ sĩ và nhà sáng tạo, quy mô từ 100 đến 1.000 khán giả được thực hiện bởi Công ty cổ phần No Headliner. <a href="https://www.noheadliner.co/" target="_blank" rel="noopener noreferrer">Xem các dự án tại đây</a></p>
+    </div>
+    <div class="foot-col">
+      <h4>Điều Hướng</h4>
+      <a href="index.html">Trang Chủ</a>
+      <a href="faq.html">FAQ</a>
+      <a href="lien-he.html">Liên Hệ</a>
+      <a href="du-toan.html" class="foot-calc">Ước tính chi phí</a>
+    </div>
+    <div class="foot-col">
+      <h4>Liên Hệ</h4>
+      <a href="mailto:hello@pakgud.co">hello@pakgud.co</a>
+      <a href="tel:+84328721486">+84 32 8721486 (Ms. Minh)</a>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© 2026 PakGud. All rights reserved.</span>
+    <span>Powered by No Headliner</span>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+(function(){
+  var merchAddon = document.getElementById('merchAddon');
+  var merchSubtier = document.getElementById('merchSubtier');
+  merchAddon.addEventListener('change', function(){
+    merchSubtier.hidden = !merchAddon.checked;
+  });
+
+  var form = document.getElementById('inquiryForm');
+  var confirmState = document.getElementById('confirmState');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){
+      form.reportValidity();
+      return;
+    }
+    // NOTE: no backend is wired up yet — this only swaps in a confirmation
+    // state client-side. Connect a form endpoint (e.g. Formspree, a Sheets
+    // webhook, or your own API) here to actually receive submissions.
+    if(typeof gtag === 'function'){
+      gtag('event', 'inquiry_submitted');
+    }
+    form.hidden = true;
+    confirmState.hidden = false;
+    confirmState.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+})();
+</script>
+</body>
+</html>

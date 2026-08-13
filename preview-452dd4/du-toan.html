@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SDYRCN6R12"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-SDYRCN6R12');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>PakGud — Bảng Tính Chi Phí Mẫu</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%232451E0'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .calc-intro{padding:120px 0 40px;}
+  .calc-intro .tool-tag{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--steel); border:1px solid var(--line-dark); display:inline-block; padding:5px 10px; margin-bottom:18px;
+  }
+  .calc-intro h1{font-size:clamp(24px,3.2vw,38px); max-width:760px;}
+
+  .disclaimers{
+    background:var(--paper-dim); border:1px solid var(--line-dark);
+    padding:20px 24px; margin-top:28px; max-width:820px;
+  }
+  .disclaimers p{font-size:13px; line-height:1.65; color:var(--steel);}
+  .disclaimers p + p{margin-top:8px;}
+  .disclaimers p b{color:var(--ink);}
+
+  .calc-body{padding:56px 0 120px;}
+  .calc-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; align-items:start;}
+  @media (max-width:960px){ .calc-grid{grid-template-columns:1fr;} }
+
+  .field{margin-bottom:38px;}
+  .field-label{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--ink); font-weight:600; margin-bottom:14px; display:block;
+  }
+
+  .slider-row{display:flex; align-items:center; gap:16px;}
+  input[type="range"]{
+    flex:1; -webkit-appearance:none; appearance:none; height:2px; background:var(--line-dark); outline:none;
+  }
+  input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance:none; appearance:none; width:18px; height:18px; border-radius:50%;
+    background:var(--accent); cursor:pointer; border:3px solid var(--paper); box-shadow:0 0 0 1px var(--accent);
+  }
+  input[type="range"]::-moz-range-thumb{
+    width:18px; height:18px; border-radius:50%; background:var(--accent); cursor:pointer;
+    border:3px solid var(--paper); box-shadow:0 0 0 1px var(--accent);
+  }
+  #guestNumber{
+    width:96px; padding:10px 12px; border:1px solid var(--line-dark); background:var(--paper);
+    font-family:'IBM Plex Mono', monospace; font-size:14px; color:var(--ink); text-align:right;
+  }
+  #guestNumber:focus{outline:2px solid var(--accent); outline-offset:1px;}
+
+  .toggle-row{display:flex; gap:48px; flex-wrap:wrap;}
+  .toggle-group{display:flex; flex-direction:column; gap:14px;}
+  .toggle-switch{display:inline-flex; border:1px solid var(--line-dark); transition:opacity .2s ease;}
+  .toggle-switch.disabled{opacity:0.4; pointer-events:none;}
+  .toggle-opt{
+    background:transparent; border:none; padding:11px 24px; font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--steel); cursor:pointer;
+    transition:background .2s ease, color .2s ease;
+  }
+  .toggle-opt + .toggle-opt{border-left:1px solid var(--line-dark);}
+  .toggle-opt.active{background:var(--ink); color:var(--paper);}
+
+  .ref-outputs{display:flex; gap:40px; flex-wrap:wrap; background:var(--paper-dim); border:1px solid var(--line); padding:20px 24px;}
+  .ref-item{display:flex; flex-direction:column; gap:6px;}
+  .ref-label{font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--steel);}
+  .ref-value{font-family:'Oswald', sans-serif; font-size:20px; font-weight:600; color:var(--ink);}
+
+  .select-field{
+    width:100%; max-width:420px; padding:13px 14px; border:1px solid var(--line-dark); background:var(--paper);
+    font-family:'IBM Plex Sans', sans-serif; font-size:14px; color:var(--ink); cursor:pointer;
+  }
+  .select-field:focus{outline:2px solid var(--accent); outline-offset:1px;}
+
+  .output-card{
+    position:sticky; top:96px; color:var(--paper);
+    background:linear-gradient(155deg, var(--case) 0%, var(--case) 55%, var(--accent) 150%);
+    padding:36px 32px; border:1px solid var(--line-dark);
+  }
+  .output-label{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--steel-light);}
+  .output-total{font-family:'Oswald', sans-serif; font-size:clamp(28px,3vw,38px); font-weight:700; color:var(--paper); margin-top:10px;}
+  .breakdown{margin-top:26px; border-top:1px solid var(--line-dark);}
+  .breakdown-row{
+    display:flex; justify-content:space-between; gap:16px; padding:12px 0;
+    border-bottom:1px dashed var(--line-dark); font-size:13px;
+  }
+  .breakdown-row .b-label{color:var(--steel-light);}
+  .breakdown-row .b-value{font-family:'IBM Plex Mono', monospace; color:var(--paper);}
+  .calc-disclaimer{margin-top:24px; padding-top:20px; border-top:1px solid var(--line-dark);}
+  .calc-disclaimer p{font-size:11.5px; line-height:1.6; color:var(--steel-light);}
+  .calc-disclaimer p + p{margin-top:8px;}
+  .output-card .btn-primary{
+    display:block; width:100%; text-align:center; margin-top:24px;
+    background:var(--accent); border-color:var(--accent);
+  }
+  .output-card .btn-primary:hover{background:var(--paper); color:var(--ink); border-color:var(--paper);}
+
+  @media (max-width:960px){ .output-card{position:static;} }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="index.html" class="logo"><span class="dot"></span>PakGud</a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Trang Chủ</a>
+      <a href="faq.html">FAQ</a>
+      <a href="lien-he.html">Liên Hệ</a>
+      <a href="lien-he.html" class="nav-links-cta">Nhận Báo Giá</a>
+    </div>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <a href="lien-he.html" class="nav-cta">Nhận Báo Giá</a>
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">☰</button>
+    </div>
+  </nav>
+</header>
+
+<section class="calc-intro">
+  <div class="wrap">
+    <div class="tool-tag">Công Cụ Tham Khảo</div>
+    <h1>Bảng Tính Chi Phí Mẫu</h1>
+    <div class="disclaimers">
+      <p><b>Lưu ý:</b> Chi phí thực tế sẽ thay đổi đáng kể, vui lòng liên hệ để có bảng dự trù chính xác.</p>
+      <p>Chi phí chưa bao gồm sản xuất sân khấu và các hạng mục decor không gian — cần có định hướng sáng tạo kèm bản vẽ để có dự trù chính xác.</p>
+    </div>
+  </div>
+</section>
+
+<section class="calc-body">
+  <div class="wrap calc-grid">
+
+    <div class="calc-inputs">
+      <div class="field">
+        <label class="field-label" for="guestSlider">Số lượng khách</label>
+        <div class="slider-row">
+          <input type="range" id="guestSlider" min="0" max="1500" step="10" value="400">
+          <input type="number" id="guestNumber" min="0" max="1500" value="400" aria-label="Số lượng khách chính xác">
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Loại hình chỗ ngồi</div>
+        <div class="toggle-switch" id="seatToggle" role="group" aria-label="Standing hoặc Seating">
+          <button type="button" class="toggle-opt active" data-val="standing">Standing</button>
+          <button type="button" class="toggle-opt" data-val="seating">Seating</button>
+        </div>
+      </div>
+
+      <div class="field ref-outputs">
+        <div class="ref-item">
+          <span class="ref-label">Số nhân sự cần (tham khảo)</span>
+          <span class="ref-value" id="staffOut">40</span>
+        </div>
+        <div class="ref-item">
+          <span class="ref-label">Operational fee (tham khảo)</span>
+          <span class="ref-value" id="opFeeOut">14.000.000 VND</span>
+        </div>
+      </div>
+
+      <div class="field toggle-row">
+        <div class="toggle-group">
+          <div class="field-label">Venue</div>
+          <div class="toggle-switch" id="venueToggle" role="group" aria-label="Bao gồm venue fee">
+            <button type="button" class="toggle-opt active" data-val="on">Có</button>
+            <button type="button" class="toggle-opt" data-val="off">Không</button>
+          </div>
+        </div>
+        <div class="toggle-group">
+          <div class="field-label">Media</div>
+          <div class="toggle-switch" id="mediaToggle" role="group" aria-label="Bao gồm media">
+            <button type="button" class="toggle-opt active" data-val="off">Không</button>
+            <button type="button" class="toggle-opt" data-val="on">Có</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="benefitsSelect">Benefits</label>
+        <select id="benefitsSelect" class="select-field">
+          <option value="0">Không sử dụng</option>
+          <option value="20000">Light (20.000 VND / khách)</option>
+          <option value="50000">Medium (50.000 VND / khách)</option>
+          <option value="70000">Premium (70.000 VND / khách)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="calc-output">
+      <div class="output-card">
+        <div class="output-label">Tổng Chi Phí Ước Tính</div>
+        <div class="output-total" id="totalOut">54.000.000 VND</div>
+        <div class="breakdown" id="breakdownList"></div>
+        <div class="calc-disclaimer">
+          <p>Chi phí thực tế sẽ thay đổi đáng kể, vui lòng liên hệ để có bảng dự trù chính xác.</p>
+          <p>Chi phí chưa bao gồm sản xuất sân khấu và các hạng mục decor không gian.</p>
+        </div>
+        <a href="lien-he.html" class="btn-primary">Nhận Báo Giá Chính Xác</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <div class="foot-logo"><span class="dot"></span>PakGud</div>
+      <p>Đơn vị tổ chức các sự kiện đặc thù cho nghệ sĩ và nhà sáng tạo, quy mô từ 100 đến 1.000 khán giả được thực hiện bởi Công ty cổ phần No Headliner. <a href="https://www.noheadliner.co/" target="_blank" rel="noopener noreferrer">Xem các dự án tại đây</a></p>
+    </div>
+    <div class="foot-col">
+      <h4>Điều Hướng</h4>
+      <a href="index.html">Trang Chủ</a>
+      <a href="faq.html">FAQ</a>
+      <a href="lien-he.html">Liên Hệ</a>
+      <a href="du-toan.html" class="foot-calc">Ước tính chi phí</a>
+    </div>
+    <div class="foot-col">
+      <h4>Liên Hệ</h4>
+      <a href="mailto:hello@pakgud.co">hello@pakgud.co</a>
+      <a href="tel:+84328721486">+84 32 8721486 (Ms. Minh)</a>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© 2026 PakGud. All rights reserved.</span>
+    <span>Powered by No Headliner</span>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+(function(){
+  var BRACKETS = [
+    { label:'≤ 400 khách', max:400, standing:40000000, seating:80000000, staff:40,  operational:14000000 },
+    { label:'400 → 800 khách', max:800, standing:80000000, seating:120000000, staff:70,  operational:30000000 },
+    { label:'800 → 1.500 khách', max:1500, standing:120000000, seating:200000000, staff:115, operational:50000000 }
+  ];
+
+  function getBracket(n){
+    if(n <= 400) return BRACKETS[0];
+    if(n <= 800) return BRACKETS[1];
+    return BRACKETS[2];
+  }
+
+  function formatVND(n){
+    return Math.round(n).toLocaleString('vi-VN') + ' VND';
+  }
+
+  var slider = document.getElementById('guestSlider');
+  var number = document.getElementById('guestNumber');
+  var staffOut = document.getElementById('staffOut');
+  var opFeeOut = document.getElementById('opFeeOut');
+  var totalOut = document.getElementById('totalOut');
+  var breakdownList = document.getElementById('breakdownList');
+  var benefitsSelect = document.getElementById('benefitsSelect');
+  var seatToggle = document.getElementById('seatToggle');
+  var venueToggle = document.getElementById('venueToggle');
+  var mediaToggle = document.getElementById('mediaToggle');
+
+  var seatMode = 'standing';
+  var venueOn = true;
+  var mediaOn = false;
+
+  function bindToggle(el, onChange){
+    el.addEventListener('click', function(e){
+      var btn = e.target.closest('.toggle-opt');
+      if(!btn) return;
+      el.querySelectorAll('.toggle-opt').forEach(function(b){
+        b.classList.toggle('active', b === btn);
+      });
+      onChange(btn.getAttribute('data-val'));
+      recalc();
+    });
+  }
+
+  function setGuestCount(n, source){
+    n = Math.max(0, Math.min(1500, Math.round(n)));
+    if(source !== 'slider') slider.value = n;
+    if(source !== 'number') number.value = n;
+    recalc();
+  }
+
+  slider.addEventListener('input', function(){ setGuestCount(slider.value, 'slider'); });
+  number.addEventListener('input', function(){
+    if(number.value === '') return;
+    setGuestCount(number.value, 'number');
+  });
+
+  bindToggle(seatToggle, function(val){ seatMode = val; });
+  bindToggle(venueToggle, function(val){
+    venueOn = (val === 'on');
+    seatToggle.classList.toggle('disabled', !venueOn);
+  });
+  bindToggle(mediaToggle, function(val){ mediaOn = (val === 'on'); });
+
+  benefitsSelect.addEventListener('change', recalc);
+
+  function recalc(){
+    var guests = Number(number.value) || 0;
+    var bracket = getBracket(guests);
+    var venueFee = venueOn ? (seatMode === 'seating' ? bracket.seating : bracket.standing) : 0;
+    var mediaFee = mediaOn ? 40000000 : 0;
+    var benefitsRate = Number(benefitsSelect.value);
+    var benefitsFee = benefitsRate * guests;
+    var total = venueFee + bracket.operational + mediaFee + benefitsFee;
+
+    staffOut.textContent = bracket.staff;
+    opFeeOut.textContent = formatVND(bracket.operational);
+    totalOut.textContent = formatVND(total);
+
+    var venueLabel = 'Venue fee (' + (seatMode === 'seating' ? 'Seating' : 'Standing') + ')' + (venueOn ? '' : ' — đã tắt');
+    var rows = [
+      { label: venueLabel, value: venueFee },
+      { label:'Operational fee', value: bracket.operational },
+      { label:'Media', value: mediaFee },
+      { label:'Benefits (' + guests + ' khách)', value: benefitsFee }
+    ];
+    breakdownList.innerHTML = rows.map(function(r){
+      return '<div class="breakdown-row"><span class="b-label">' + r.label + '</span><span class="b-value">' + formatVND(r.value) + '</span></div>';
+    }).join('');
+  }
+
+  recalc();
+})();
+</script>
+</body>
+</html>
