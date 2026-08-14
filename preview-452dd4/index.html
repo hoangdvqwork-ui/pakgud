@@ -47,6 +47,10 @@
     font-size:clamp(20px,2.6vw,30px); letter-spacing:0; line-height:1.5;
     max-width:800px; margin:0 auto; color:var(--ink);
   }
+  .positioning p.cities{
+    font-family:'IBM Plex Mono', monospace; font-weight:400;
+    font-size:13.5px; letter-spacing:0.04em; color:var(--steel); margin-top:18px;
+  }
 
   /* ---------- BIO TWO-COLUMN ---------- */
   .bio{border-bottom:1px solid var(--line);}
@@ -59,11 +63,16 @@
   .bio-col.col-muted .lead{color:var(--steel);}
   .bio-col.col-accent .lead{color:var(--accent);}
   .bio-col p.body{font-size:15.5px; line-height:1.8; color:var(--steel); margin-top:22px;}
-  .bio-callout{
-    background:var(--paper-dim); border-left:3px solid var(--accent);
-    padding:24px 26px; margin:26px 0; font-size:15px; line-height:1.7; color:var(--ink);
-  }
   @media (max-width:900px){ .bio-grid{grid-template-columns:1fr;} .bio-col{padding:56px 28px;} }
+
+  /* ---------- SECTION BREAK — CALLOUT ---------- */
+  .callout-break{padding:100px 0; text-align:center; border-bottom:1px solid var(--line); background:var(--paper-dim);}
+  .callout-break .bar{width:48px; height:2px; background:var(--accent); margin:0 auto 28px;}
+  .callout-break p{
+    font-family:'Oswald', sans-serif; text-transform:none; font-weight:500;
+    font-size:clamp(22px,3vw,34px); letter-spacing:0; line-height:1.5;
+    max-width:820px; margin:0 auto; color:var(--ink);
+  }
 
   /* ---------- WHAT PAKGUD HANDLES ---------- */
   .stages{border-bottom:1px solid var(--line);}
@@ -71,6 +80,7 @@
   .stage-card{background:var(--paper); padding:34px 30px;}
   .stage-card .stage-num{font-family:'IBM Plex Mono', monospace; color:var(--steel-light); font-size:13px;}
   .stage-card h3{font-size:18px; margin-top:16px; font-family:'IBM Plex Sans', sans-serif; text-transform:none; font-weight:600; letter-spacing:0;}
+  .stage-card .stage-sub{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--steel); margin-top:8px;}
   .stage-card p{font-size:14px; line-height:1.6; color:var(--steel); margin-top:10px;}
   .stage-card.reveal:nth-child(2){transition-delay:.08s;}
   .stage-card.reveal:nth-child(3){transition-delay:.16s;}
@@ -94,8 +104,8 @@
     color:var(--paper);
   }
   .cta-final .wrap{position:relative; z-index:1;}
-  .cta-final h2{color:var(--steel-light); font-size:15.5px; text-transform:none; font-weight:400; max-width:600px; margin:0 auto; line-height:1.6; font-family:'IBM Plex Sans', sans-serif;}
-  .cta-final .discount-line{margin-top:22px; color:var(--paper); font-size:clamp(26px,3.6vw,44px); font-weight:600; max-width:840px; margin-left:auto; margin-right:auto; line-height:1.4; font-family:'Oswald', sans-serif; text-transform:none;}
+  .cta-final h2{color:var(--paper); font-size:clamp(26px,3.6vw,44px); font-weight:600; max-width:840px; margin:0 auto; line-height:1.4; font-family:'Oswald', sans-serif; text-transform:none;}
+  .cta-final p{margin-top:22px; color:var(--steel-light); font-size:16px; line-height:1.75; max-width:640px; margin-left:auto; margin-right:auto;}
   .cta-final .btn-primary{margin-top:34px; background:var(--accent); border-color:var(--accent);}
   .cta-final .btn-primary:hover{background:var(--paper); color:var(--ink); border-color:var(--paper);}
 
@@ -121,10 +131,10 @@
       <a href="index.html">Trang Chủ</a>
       <a href="faq.html">FAQ</a>
       <a href="lien-he.html">Liên Hệ</a>
-      <a href="lien-he.html" class="nav-links-cta">Nhận Báo Giá</a>
+      <a href="lien-he.html" class="nav-links-cta">Tư Vấn &amp; Báo Giá</a>
     </div>
     <div style="display:flex; align-items:center; gap:16px;">
-      <a href="lien-he.html" class="nav-cta">Nhận Báo Giá</a>
+      <a href="lien-he.html" class="nav-cta">Tư Vấn &amp; Báo Giá</a>
       <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">☰</button>
     </div>
   </nav>
@@ -141,7 +151,8 @@
 <!-- (2) POSITIONING STATEMENT -->
 <section class="positioning">
   <div class="wrap">
-    <p class="reveal">PakGud là đơn vị tổ chức các sự kiện đặc thù cho nghệ sĩ và nhà sáng tạo, với quy mô từ 100 đến 1.000 khán giả.</p>
+    <p class="reveal">PakGud là đơn vị tổ chức sự kiện và vận hành fan fulfillment cho nghệ sĩ và nhà sáng tạo, với quy mô từ 100 đến 1.000 khán giả.</p>
+    <p class="cities reveal">📍 Hà Nội, TP. Hồ Chí Minh, Đà Nẵng</p>
   </div>
 </section>
 
@@ -158,39 +169,49 @@
     <div class="stage-grid">
       <div class="stage-card reveal">
         <div class="stage-num">01</div>
-        <h3>Trước Sự Kiện</h3>
-        <p>Chuẩn bị fan benefits, đóng gói merch, thiết lập hệ thống đăng ký/vé.</p>
+        <h3>Vận Hành &amp; Phân Phát Merch</h3>
+        <div class="stage-sub">Quản lý &amp; vận hành merchandise và giftset</div>
+        <p>Không còn tình trạng thiếu – dư – phát nhầm merchandise, mọi phần giftset đều đến đúng người, đúng quyền lợi.</p>
       </div>
       <div class="stage-card reveal">
         <div class="stage-num">02</div>
-        <h3>Trong Sự Kiện</h3>
-        <p>Check-in, kiểm soát hàng chờ, vận hành khu vực tiếp xúc và quyền lợi fan.</p>
+        <h3>Tối Ưu Dòng Người &amp; Quản Lý Xếp Hàng</h3>
+        <div class="stage-sub">Quản lý &amp; vận hành khu vực check-in/khu vực vòng ngoài sự kiện</div>
+        <p>Kiểm soát được dòng người ngay từ trước khi vào sự kiện, tránh tình trạng hàng dài ùn tắc.</p>
       </div>
       <div class="stage-card reveal">
         <div class="stage-num">03</div>
-        <h3>Sau Sự Kiện</h3>
-        <p>Đối soát, hoàn tất fulfillment, tổng kết vận hành.</p>
+        <h3>Vận Hành Fan Privileges</h3>
+        <div class="stage-sub">Vận hành Fan Benefits</div>
+        <p>Các hoạt động với nghệ sĩ diễn ra đúng nhịp và kiểm soát được toàn bộ, giữ trải nghiệm trọn vẹn cho fan và đảm bảo sự an toàn cho nghệ sĩ.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- (4) FULL BIO — TWO COLUMNS -->
+<!-- (4) SECTION BREAK — CALLOUT -->
+<section class="callout-break">
+  <div class="wrap">
+    <div class="bar"></div>
+    <p class="reveal">Bởi 1.000 fan đầu tiên của một nghệ sĩ quá quan trọng để trải nghiệm của họ được giao cho những giải pháp tạm thời.</p>
+  </div>
+</section>
+
+<!-- (5) FULL BIO — TWO COLUMNS -->
 <section class="bio">
   <div class="bio-grid">
     <div class="bio-col col-muted">
       <p class="lead reveal">1.000 fan đầu tiên rất quan trọng.</p>
-      <div class="bio-callout reveal">Bởi 1.000 fan đầu tiên của một nghệ sĩ quá quan trọng để trải nghiệm của họ được giao cho những giải pháp tạm thời. Họ cần một đội ngũ hiểu nghệ sĩ, hiểu fan và đủ năng lực để biến những ý tưởng đó thành một trải nghiệm vận hành được.</div>
       <p class="body reveal">Sự kiện có thể được thiết kế đẹp, nghệ sĩ có thể có một ý tưởng lớn, nhưng trải nghiệm của fan lại được quyết định bởi rất nhiều chi tiết phía sau: cách một quyền lợi được thực hiện, một món hàng được sản xuất và giao đến tay fan, một hàng chờ được tổ chức, hay cách toàn bộ sự kiện vận hành từ lúc mở cửa đến khi khán giả ra về.</p>
     </div>
     <div class="bio-col col-accent">
       <p class="lead reveal">PakGud ra đời để giải quyết phần việc đó.</p>
-      <p class="body reveal">PakGud là đơn vị tổ chức các sự kiện đặc thù cho nghệ sĩ và nhà sáng tạo, với quy mô từ 100 đến 1.000 khán giả. Chúng tôi xây dựng và vận hành những phần việc phía sau để mỗi lần nghệ sĩ gặp gỡ khán giả đều được thực hiện chỉn chu, hiệu quả và đúng với tinh thần của họ.</p>
+      <p class="body reveal">PakGud là đơn vị tổ chức sự kiện và vận hành fan fulfillment cho nghệ sĩ và nhà sáng tạo, với quy mô từ 100 đến 1.000 khán giả. Chúng tôi xây dựng và vận hành những phần việc phía sau để mỗi lần nghệ sĩ gặp gỡ khán giả đều được thực hiện chỉn chu, hiệu quả và đúng với tinh thần của họ.</p>
     </div>
   </div>
 </section>
 
-<!-- (5) PRICING PHILOSOPHY -->
+<!-- (6) PRICING PHILOSOPHY -->
 <section class="pricing-phil">
   <div class="wrap">
     <div class="eyebrow reveal" style="justify-content:center;">Chi Phí Vận Hành</div>
@@ -200,12 +221,12 @@
   </div>
 </section>
 
-<!-- (6) CTA -->
+<!-- (7) CTA -->
 <section class="cta-final glow-section">
   <div class="wrap">
-    <h2 class="reveal">Chúng tôi không muốn chỉ làm một sự kiện. PakGud muốn trở thành đội ngũ đứng phía sau, giúp nghệ sĩ xây dựng và bảo vệ mối quan hệ với những người đầu tiên đã lựa chọn đồng hành cùng họ.</h2>
-    <p class="discount-line glow-text reveal" data-text="Giảm 30% cho khách hàng đầu tiên, 15% trọn đời cho khách hàng quay lại sau lần thứ hai.">Giảm 30% cho khách hàng đầu tiên, 15% trọn đời cho khách hàng quay lại sau lần thứ hai.</p>
-    <a href="lien-he.html" class="btn-primary reveal">Nhận báo giá</a>
+    <h2 class="glow-text reveal" data-text="PakGud không đơn giản là tổ chức sự kiện">PakGud không đơn giản là tổ chức sự kiện</h2>
+    <p class="reveal">PakGud muốn trở thành đội ngũ đứng phía sau, giúp nghệ sĩ xây dựng và bảo vệ mối quan hệ với những người đầu tiên đã lựa chọn đồng hành cùng họ.</p>
+    <a href="lien-he.html" class="btn-primary reveal">Tư vấn &amp; Báo giá</a>
   </div>
 </section>
 
@@ -213,7 +234,7 @@
   <div class="wrap foot-grid">
     <div>
       <div class="foot-logo"><span class="dot"></span>PakGud</div>
-      <p>Đơn vị tổ chức các sự kiện đặc thù cho nghệ sĩ và nhà sáng tạo, quy mô từ 100 đến 1.000 khán giả được thực hiện bởi Công ty cổ phần No Headliner. <a href="https://www.noheadliner.co/" target="_blank" rel="noopener noreferrer">Xem các dự án tại đây</a></p>
+      <p>Đơn vị tổ chức sự kiện và vận hành fan fulfillment cho nghệ sĩ và nhà sáng tạo, với quy mô từ 100 đến 1.000 khán giả, được thực hiện bởi Công ty cổ phần No Headliner.<br><a href="https://www.noheadliner.co/" target="_blank" rel="noopener noreferrer">Xem các dự án của No Headliner tại đây</a></p>
     </div>
     <div class="foot-col">
       <h4>Điều Hướng</h4>
