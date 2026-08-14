@@ -162,7 +162,7 @@
         </div>
         <div class="ref-item">
           <span class="ref-label">Operational fee (tham khảo)</span>
-          <span class="ref-value" id="opFeeOut">14.000.000 VND</span>
+          <span class="ref-value" id="opFeeOut">43.000.000 VND</span>
         </div>
       </div>
 
@@ -178,25 +178,25 @@
             <input type="radio" name="seatMode" value="seating">
             <span class="option-name">Seating</span>
           </label>
-          <div class="option-group-label">Fan Benefits</div>
+          <div class="option-group-label">Fan Benefits (đã bao gồm sản xuất)</div>
           <label class="option-row selected">
             <input type="radio" name="benefits" value="0" checked>
             <span class="option-name">Không sử dụng</span>
           </label>
           <label class="option-row">
-            <input type="radio" name="benefits" value="20000">
-            <span class="option-name">Light</span>
-            <span class="option-meta">20.000 VND / khách</span>
-          </label>
-          <label class="option-row">
-            <input type="radio" name="benefits" value="50000">
-            <span class="option-name">Medium</span>
-            <span class="option-meta">50.000 VND / khách</span>
-          </label>
-          <label class="option-row">
             <input type="radio" name="benefits" value="70000">
-            <span class="option-name">Premium</span>
+            <span class="option-name">Light</span>
             <span class="option-meta">70.000 VND / khách</span>
+          </label>
+          <label class="option-row">
+            <input type="radio" name="benefits" value="150000">
+            <span class="option-name">Medium</span>
+            <span class="option-meta">150.000 VND / khách</span>
+          </label>
+          <label class="option-row">
+            <input type="radio" name="benefits" value="250000">
+            <span class="option-name">Premium</span>
+            <span class="option-meta">250.000 VND / khách</span>
           </label>
         </div>
       </div>
@@ -205,7 +205,7 @@
     <div class="calc-output">
       <div class="output-card">
         <div class="output-label">Tổng Chi Phí Ước Tính</div>
-        <div class="output-total" id="totalOut">14.000.000 VND</div>
+        <div class="output-total" id="totalOut">73.000.000 VND</div>
         <p class="breakdown-hint">Bấm vào từng hàng để thêm bớt chi phí vào số tổng</p>
         <div class="breakdown" id="breakdownList"></div>
         <div class="calc-disclaimer">
@@ -248,9 +248,9 @@
 <script>
 (function(){
   var BRACKETS = [
-    { label:'≤ 400 khách', max:400, standing:40000000, seating:80000000, staff:40,  operational:14000000 },
-    { label:'400 → 800 khách', max:800, standing:80000000, seating:120000000, staff:70,  operational:30000000 },
-    { label:'800 → 1.500 khách', max:1500, standing:120000000, seating:200000000, staff:115, operational:50000000 }
+    { label:'≤ 400 khách', max:400, standing:30000000, seating:70000000, staff:40,  operational:43000000 },
+    { label:'400 → 800 khách', max:800, standing:120000000, seating:70000000, staff:70,  operational:59500000 },
+    { label:'800 → 1.500 khách', max:1500, standing:200000000, seating:200000000, staff:115, operational:91000000 }
   ];
 
   function getBracket(n){
