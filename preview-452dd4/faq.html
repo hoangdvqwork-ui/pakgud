@@ -39,11 +39,64 @@
     position:fixed; right:28px; bottom:28px; z-index:40;
     font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase;
     color:var(--steel); display:flex; align-items:center; gap:8px; pointer-events:none; opacity:0.8;
+    transition:opacity .25s ease;
   }
   footer{scroll-snap-align:start;}
   @media (max-width:760px){
     .faq-slide{padding:96px 0 56px;}
     .faq-hint{display:none;}
+  }
+
+  /* ---------- SIDE TRACK NAV ---------- */
+  .faq-track{
+    position:fixed; right:26px; top:50%; transform:translateY(-50%); z-index:40;
+    display:flex; flex-direction:column; align-items:center; gap:12px;
+  }
+  .faq-track button{
+    background:none; border:none; padding:6px; cursor:pointer; line-height:1;
+  }
+  .faq-track .tick{
+    display:block; width:6px; height:6px; border-radius:50%; background:var(--line-dark);
+    transition:background .2s ease, transform .2s ease;
+  }
+  .faq-track button:hover .tick{background:var(--steel);}
+  .faq-track button.active .tick{background:var(--accent); transform:scale(1.7);}
+  @media (max-width:960px){ .faq-track{display:none;} }
+
+  /* ---------- SCROLL-UP COMPACT INDEX ---------- */
+  .faq-compact{
+    position:fixed; top:72px; left:0; right:0; bottom:0; z-index:45;
+    background:var(--case); color:var(--paper);
+    display:flex; align-items:center; justify-content:center;
+    opacity:0; pointer-events:none; transition:opacity .3s ease;
+    overflow-y:auto; padding:48px 24px;
+  }
+  .faq-compact.open{opacity:1; pointer-events:auto;}
+  .faq-compact-inner{max-width:760px; width:100%; margin:auto;}
+  .faq-compact .compact-eyebrow{justify-content:center; margin-bottom:10px;}
+  .faq-compact h2{
+    text-align:center; color:var(--paper); font-size:clamp(20px,2.6vw,28px);
+    text-transform:none; font-weight:600; margin-bottom:36px;
+  }
+  .compact-list{border-top:1px solid var(--line-dark);}
+  .compact-item{
+    display:flex; align-items:baseline; gap:18px; width:100%;
+    background:none; border:none; border-bottom:1px solid var(--line-dark);
+    padding:18px 6px; text-align:left; cursor:pointer;
+    font-family:'IBM Plex Sans', sans-serif; color:var(--steel-light);
+    transition:color .2s ease, padding-left .2s ease;
+  }
+  .compact-item:hover, .compact-item:focus-visible{color:var(--paper); padding-left:16px;}
+  .compact-item.active{color:var(--paper);}
+  .compact-item .c-num{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--accent); flex-shrink:0;}
+  .compact-item .c-text{font-size:15.5px; line-height:1.4;}
+  .compact-close-hint{
+    margin-top:28px; text-align:center; font-family:'IBM Plex Mono', monospace;
+    font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:var(--steel);
+  }
+  @media (max-width:760px){
+    .faq-compact{top:64px; padding:32px 18px;}
+    .compact-item .c-text{font-size:14px;}
   }
 
   /* ---------- CTA ---------- */
@@ -91,6 +144,41 @@
     </div>
   </nav>
 </header>
+
+<nav class="faq-track" aria-label="Danh sách câu hỏi" id="faqTrack">
+  <button type="button" data-goto="0" aria-label="Câu hỏi 1"><span class="tick"></span></button>
+  <button type="button" data-goto="1" aria-label="Câu hỏi 2"><span class="tick"></span></button>
+  <button type="button" data-goto="2" aria-label="Câu hỏi 3"><span class="tick"></span></button>
+  <button type="button" data-goto="3" aria-label="Câu hỏi 4"><span class="tick"></span></button>
+  <button type="button" data-goto="4" aria-label="Câu hỏi 5"><span class="tick"></span></button>
+  <button type="button" data-goto="5" aria-label="Câu hỏi 6"><span class="tick"></span></button>
+  <button type="button" data-goto="6" aria-label="Câu hỏi 7"><span class="tick"></span></button>
+  <button type="button" data-goto="7" aria-label="Câu hỏi 8"><span class="tick"></span></button>
+  <button type="button" data-goto="8" aria-label="Câu hỏi 9"><span class="tick"></span></button>
+</nav>
+
+<div class="faq-compact" id="faqCompact">
+  <div class="faq-compact-inner">
+    <div class="eyebrow compact-eyebrow" data-i18n="compactEyebrow">9 Câu Hỏi</div>
+    <h2 data-i18n="compactH2">Chọn câu hỏi bạn muốn xem</h2>
+    <div class="compact-list" id="compactList">
+      <button type="button" class="compact-item" data-goto="0"><span class="c-num">01</span><span class="c-text" data-i18n="faqQ1">PakGud làm những gì?</span></button>
+      <button type="button" class="compact-item" data-goto="1"><span class="c-num">02</span><span class="c-text" data-i18n="faqQ2">Fan Fulfillment là gì?</span></button>
+      <button type="button" class="compact-item" data-goto="2"><span class="c-num">03</span><span class="c-text" data-i18n="faqQ3">PakGud có phải là đơn vị tổ chức sự kiện không?</span></button>
+      <button type="button" class="compact-item" data-goto="3"><span class="c-num">04</span><span class="c-text" data-i18n="faqQ4">Tại sao PakGud có ít hoạt động được công khai?</span></button>
+      <button type="button" class="compact-item" data-goto="4"><span class="c-num">05</span><span class="c-text" data-i18n="faqQ5">Nên liên hệ PakGud trước sự kiện bao lâu?</span></button>
+      <button type="button" class="compact-item" data-goto="5"><span class="c-num">06</span><span class="c-text" data-i18n="faqQ6">PakGud có đội ngũ vận hành riêng không?</span></button>
+      <button type="button" class="compact-item" data-goto="6"><span class="c-num">07</span><span class="c-text" data-i18n="faqQ7">PakGud có hỗ trợ thiết kế, sản xuất và bán merchandise luôn không?</span></button>
+      <button type="button" class="compact-item" data-goto="7"><span class="c-num">08</span><span class="c-text" data-i18n="faqQ8">PakGud khác với các đơn vị merchandise như thế nào?</span></button>
+      <button type="button" class="compact-item" data-goto="8"><span class="c-num">09</span><span class="c-text" data-i18n="faqQ9">PakGud xử lý các vấn đề liên quan đến bản quyền hình ảnh và artwork của nghệ sĩ như thế nào?</span></button>
+    </div>
+    <div class="compact-close-hint" data-i18n="compactCloseHint">Cuộn xuống hoặc bấm ra ngoài để quay lại</div>
+  </div>
+</div>
+
+<div class="faq-hint" id="faqHint">
+  <span>&uarr;</span> <span data-i18n="faqHintText">Cuộn lên để xem tất cả câu hỏi</span>
+</div>
 
 <section class="faq-slide">
   <div class="wrap">
@@ -216,9 +304,154 @@
     faqQ8: { vi: "PakGud khác với các đơn vị merchandise như thế nào?", en: "How is PakGud different from merchandise providers?" },
     faqA8: { vi: "PakGud không phải là một kênh bán hàng. Các đơn vị merchandise thường tập trung vào front-end, nơi fan nhìn thấy, lựa chọn và mua sản phẩm trên các nền tảng số. PakGud tập trung vào back-end, từ sản xuất, kiểm tra chất lượng, quản lý tồn kho, đóng gói đến vận chuyển sản phẩm đến tay fan. Chúng tôi có thể vận hành toàn bộ phần phía sau để nghệ sĩ và các đối tác của mình tập trung vào thương hiệu, sản phẩm và cộng đồng.", en: "PakGud is not a sales channel. Merchandise providers typically focus on the front-end, where fans see, choose, and purchase products on digital platforms. PakGud focuses on the back-end, from production, quality control, and inventory management to packing and shipping products to fans. We can operate the entire back-end so artists and their partners can focus on their brand, products, and community." },
     faqQ9: { vi: "PakGud xử lý các vấn đề liên quan đến bản quyền hình ảnh và artwork của nghệ sĩ như thế nào?", en: "How does PakGud handle the image rights and artwork of artists?" },
-    faqA9: { vi: "Bảo mật và bảo vệ tài sản hình ảnh của nghệ sĩ là một phần quan trọng trong quy trình làm việc của PakGud. Trước khi tham gia dự án, các vendor, đối tác và nhân sự liên quan đều được yêu cầu ký NDA (Non-Disclosure Agreement) và tuân thủ các quy định về sử dụng thông tin, hình ảnh và artwork được cung cấp. PakGud cũng kiểm soát quyền truy cập và chia sẻ các file thiết kế theo từng phạm vi công việc, chỉ cung cấp những tài liệu cần thiết cho từng bên trong từng giai đoạn để hạn chế tối đa rủi ro rò rỉ thông tin, sử dụng sai mục đích hoặc phát tán trái phép các tài sản của nghệ sĩ trong quá trình sản xuất và vận hành.", en: "Confidentiality and protection of an artist’s visual assets are an important part of PakGud’s working process. Before joining a project, all relevant vendors, partners, and personnel are required to sign an NDA (Non-Disclosure Agreement) and comply with the rules governing the use of provided information, images, and artwork. PakGud also controls access to and sharing of design files according to each party’s scope of work, providing only the materials necessary for each party at each stage. This helps minimize the risk of information leaks, misuse, or unauthorized distribution of the artist’s assets throughout production and operations." }
+    faqA9: { vi: "Bảo mật và bảo vệ tài sản hình ảnh của nghệ sĩ là một phần quan trọng trong quy trình làm việc của PakGud. Trước khi tham gia dự án, các vendor, đối tác và nhân sự liên quan đều được yêu cầu ký NDA (Non-Disclosure Agreement) và tuân thủ các quy định về sử dụng thông tin, hình ảnh và artwork được cung cấp. PakGud cũng kiểm soát quyền truy cập và chia sẻ các file thiết kế theo từng phạm vi công việc, chỉ cung cấp những tài liệu cần thiết cho từng bên trong từng giai đoạn để hạn chế tối đa rủi ro rò rỉ thông tin, sử dụng sai mục đích hoặc phát tán trái phép các tài sản của nghệ sĩ trong quá trình sản xuất và vận hành.", en: "Confidentiality and protection of an artist’s visual assets are an important part of PakGud’s working process. Before joining a project, all relevant vendors, partners, and personnel are required to sign an NDA (Non-Disclosure Agreement) and comply with the rules governing the use of provided information, images, and artwork. PakGud also controls access to and sharing of design files according to each party’s scope of work, providing only the materials necessary for each party at each stage. This helps minimize the risk of information leaks, misuse, or unauthorized distribution of the artist’s assets throughout production and operations." },
+    compactEyebrow: { vi: "9 Câu Hỏi", en: "9 Questions" },
+    compactH2: { vi: "Chọn câu hỏi bạn muốn xem", en: "Pick a question to read" },
+    compactCloseHint: { vi: "Cuộn xuống hoặc bấm ra ngoài để quay lại", en: "Scroll down or click outside to go back" },
+    faqHintText: { vi: "Cuộn lên để xem tất cả câu hỏi", en: "Scroll up to see all questions" }
   };
 </script>
 <script src="main.js"></script>
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.faq-slide'));
+  var compactPanel = document.getElementById('faqCompact');
+  var compactInner = document.querySelector('.faq-compact-inner');
+  var hint = document.getElementById('faqHint');
+  var trackButtons = Array.prototype.slice.call(document.querySelectorAll('.faq-track button'));
+  var gotoButtons = Array.prototype.slice.call(document.querySelectorAll('[data-goto]'));
+
+  var activeIndex = 0;   // slide currently most visible
+  var lastIndex = 0;     // previous value of activeIndex, to detect direction
+  var upStreak = 0;      // consecutive backward (scroll-up) transitions in a row
+  var isOnSlide = true;  // false once scrolled past the slides into CTA/footer
+  var isCompact = false;
+  var cooldown = false;
+
+  // Track the most-visible slide (drives the track nav + the up-streak count).
+  // Uses "best ratio wins" rather than a single fixed threshold, since the
+  // longer answers can exceed 100vh on shorter viewports.
+  var ratios = new Map();
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){ ratios.set(entry.target, entry.intersectionRatio); });
+    var best = null, bestRatio = 0;
+    slides.forEach(function(s){
+      var r = ratios.get(s) || 0;
+      if(r > bestRatio){ bestRatio = r; best = s; }
+    });
+    if(!best) return;
+    var idx = slides.indexOf(best);
+    isOnSlide = bestRatio > 0.3;
+    if(idx !== lastIndex){
+      upStreak = idx < lastIndex ? upStreak + 1 : 0;
+      lastIndex = idx;
+    }
+    activeIndex = idx;
+    updateTrack();
+  }, { threshold:[0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1] });
+  slides.forEach(function(s){ observer.observe(s); });
+
+  function updateTrack(){
+    trackButtons.forEach(function(btn, i){
+      btn.classList.toggle('active', isOnSlide && i === activeIndex);
+    });
+  }
+
+  function openCompact(){
+    if(isCompact) return;
+    isCompact = true;
+    compactPanel.classList.add('open');
+    document.documentElement.style.overflow = 'hidden';
+    if(hint) hint.style.opacity = '0';
+  }
+
+  function closeCompact(){
+    if(!isCompact) return;
+    isCompact = false;
+    compactPanel.classList.remove('open');
+    document.documentElement.style.overflow = '';
+    if(hint) hint.style.opacity = '';
+    upStreak = 0;
+  }
+
+  function goTo(index){
+    closeCompact();
+    var target = slides[index];
+    if(target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+  }
+
+  gotoButtons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      goTo(Number(btn.getAttribute('data-goto')));
+    });
+  });
+
+  // Click the dark backdrop (not a question row) to dismiss without navigating.
+  compactPanel.addEventListener('click', function(e){
+    if(e.target === compactPanel || e.target === compactInner){
+      closeCompact();
+    }
+  });
+
+  function triggerCooldown(){
+    cooldown = true;
+    setTimeout(function(){ cooldown = false; }, 500);
+  }
+
+  // Only step into compact mode once the visitor has scrolled up through
+  // more than two questions in a row — a single scroll-up just lets them
+  // read the previous question normally, via native scroll-snap.
+  window.addEventListener('wheel', function(e){
+    if(cooldown) return;
+    if(!isCompact){
+      if(e.deltaY < -4 && isOnSlide && upStreak >= 2){
+        e.preventDefault();
+        openCompact();
+        triggerCooldown();
+      }
+    } else if(e.deltaY > 4){
+      e.preventDefault();
+      closeCompact();
+      triggerCooldown();
+    }
+  }, { passive:false });
+
+  document.addEventListener('keydown', function(e){
+    if(cooldown) return;
+    if(!isCompact && (e.key === 'ArrowUp' || e.key === 'PageUp') && isOnSlide && upStreak >= 2){
+      e.preventDefault();
+      openCompact();
+      triggerCooldown();
+    } else if(isCompact && (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === 'Escape')){
+      e.preventDefault();
+      closeCompact();
+      triggerCooldown();
+    }
+  });
+
+  var touchStartY = null;
+  window.addEventListener('touchstart', function(e){
+    touchStartY = e.touches[0].clientY;
+  }, { passive:true });
+  window.addEventListener('touchmove', function(e){
+    if(touchStartY === null || cooldown) return;
+    var dy = e.touches[0].clientY - touchStartY;
+    if(!isCompact){
+      if(dy > 30 && isOnSlide && upStreak >= 2){ // finger drags down = scroll-up intent
+        e.preventDefault();
+        openCompact();
+        triggerCooldown();
+        touchStartY = null;
+      }
+    } else if(dy < -30){ // finger drags up = scroll-down intent
+      e.preventDefault();
+      closeCompact();
+      triggerCooldown();
+      touchStartY = null;
+    }
+  }, { passive:false });
+  window.addEventListener('touchend', function(){ touchStartY = null; }, { passive:true });
+})();
+</script>
 </body>
 </html>
