@@ -108,14 +108,13 @@
      (non-compacted) height, so while browsing the compact index they're
      hidden entirely — this is also what makes it structurally impossible
      for a compact-mode entry to ever land scrolled into the CTA instead
-     of a question. Scrolling past the last compacted row (#faqCompactEnd
-     in the markup, observed in the script) reveals them again so the
-     visitor can still reach the CTA without leaving compact mode. */
+     of a question. Scrolling past the last compacted row reveals them
+     again (see maybeRevealCta() in the script) so the visitor can still
+     reach the CTA without leaving compact mode. */
   html.faq-compact-mode:not(.faq-reveal-cta) .cta-final,
   html.faq-compact-mode:not(.faq-reveal-cta) footer{
     display:none;
   }
-  #faqCompactEnd{height:1px;}
 
   /* ---------- CTA ---------- */
   .cta-final{
@@ -287,11 +286,6 @@
   </div>
 </section>
 
-<!-- Reached once the visitor scrolls past the last compacted question row;
-     observed below to reveal the CTA/footer again (see .faq-compact-mode
-     rule in the stylesheet + the endObserver in the script). -->
-<div id="faqCompactEnd" aria-hidden="true"></div>
-
 <section class="cta-final glow-section">
   <div class="wrap">
     <h2 class="glow-text reveal" data-i18n="ctaHeading" data-text="PakGud không đơn giản là tổ chức sự kiện">PakGud không đơn giản là tổ chức sự kiện</h2>
@@ -354,7 +348,6 @@
   var slides = Array.prototype.slice.call(document.querySelectorAll('.faq-slide'));
   var hint = document.getElementById('faqHint');
   var trackButtons = Array.prototype.slice.call(document.querySelectorAll('.faq-track button'));
-  var compactEnd = document.getElementById('faqCompactEnd');
 
   var activeIndex = 0;   // slide currently most visible
   var lastIndex = 0;     // previous value of activeIndex, to detect direction
@@ -389,18 +382,26 @@
 
   // The CTA/footer are display:none while compact (see stylesheet) — this
   // is what makes it impossible for entering/exiting compact mode to ever
-  // land scrolled into them instead of a question. Scrolling past the
-  // last compacted row reaches #faqCompactEnd, which reveals them again
-  // without leaving compact mode.
-  if(compactEnd){
-    var endObserver = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting && isCompactMode){
-          document.documentElement.classList.add('faq-reveal-cta');
-        }
-      });
-    }, { threshold:0 });
-    endObserver.observe(compactEnd);
+  // land scrolled into them instead of a question. They reveal again once
+  // the visitor deliberately scrolls down while already near the bottom
+  // of the compacted list — gated on an actual wheel/touch gesture (see
+  // maybeRevealCta(), called from the wheel/touchmove listeners below),
+  // not just "is scrollY near the bottom": for a question near the end of
+  // the list (e.g. Q6/Q7) there are so few compacted rows left below it
+  // that landing there already puts the page within a few px of the
+  // bottom, or even exactly at the max scroll position with no further
+  // room to scroll at all — checking scroll position alone either
+  // revealed the CTA immediately on entry (no real scrolling happened
+  // yet) or, once guarded against that, could never reveal it at all
+  // (nothing left to scroll into). Requiring a genuine wheel/touch
+  // gesture sidesteps both: scrollIntoView() never fires those events,
+  // so entry can't trigger it, and the gesture itself is a valid signal
+  // even when it can't move scrollY any further.
+  function maybeRevealCta(){
+    var doc = document.documentElement;
+    if((window.scrollY + window.innerHeight) >= (doc.scrollHeight - 4)){
+      document.documentElement.classList.add('faq-reveal-cta');
+    }
   }
 
   function updateTrack(){
@@ -495,9 +496,16 @@
 
   // Only step into compact mode once the visitor has scrolled up through
   // more than two questions in a row — a single scroll-up just lets them
-  // read the previous question normally, via native scroll-snap.
+  // read the previous question normally, via native scroll-snap. While
+  // already compact, a scroll-down tick doesn't close it (that's
+  // click-only, see closeCompactMode) but does check whether it should
+  // reveal the CTA/footer.
   window.addEventListener('wheel', function(e){
-    if(cooldown || isCompactMode) return;
+    if(isCompactMode){
+      if(e.deltaY > 4) maybeRevealCta();
+      return;
+    }
+    if(cooldown) return;
     if(e.deltaY < -4 && isOnSlide && upStreak >= 2){
       e.preventDefault();
       openCompactMode();
@@ -517,8 +525,13 @@
     touchStartY = e.touches[0].clientY;
   }, { passive:true });
   window.addEventListener('touchmove', function(e){
-    if(touchStartY === null || cooldown || isCompactMode) return;
+    if(touchStartY === null) return;
     var dy = e.touches[0].clientY - touchStartY;
+    if(isCompactMode){
+      if(dy < -30) maybeRevealCta(); // finger drags up = scroll-down intent
+      return;
+    }
+    if(cooldown) return;
     if(dy > 30 && isOnSlide && upStreak >= 2){ // finger drags down = scroll-up intent
       e.preventDefault();
       openCompactMode();
