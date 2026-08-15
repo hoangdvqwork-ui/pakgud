@@ -21,20 +21,29 @@
 <noscript><style>.reveal{opacity:1 !important; transform:none !important;}</style></noscript>
 <style>
   html{scroll-snap-type:y mandatory; scroll-behavior:smooth;}
+  html.faq-compact-mode{scroll-snap-type:none;}
+  html.faq-instant .faq-slide, html.faq-instant .faq-a-row{transition:none !important;}
   .faq-slide{
     min-height:100vh; display:flex; align-items:center;
     scroll-snap-align:start; border-bottom:1px solid var(--line);
     padding:120px 0 80px;
+    transition:min-height .5s cubic-bezier(.22,1,.36,1), padding .5s cubic-bezier(.22,1,.36,1);
   }
   .faq-slide:nth-child(even){background:var(--paper-dim);}
   .faq-slide .wrap{max-width:820px;}
   .faq-slide .q-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--accent); letter-spacing:0.1em;}
   .faq-slide h2{
     margin-top:18px; font-size:clamp(26px,4vw,44px); text-transform:none; font-weight:600; letter-spacing:0; line-height:1.3;
+    transition:color .2s ease;
   }
   .faq-slide p{margin-top:26px; font-size:16.5px; line-height:1.85; color:var(--steel); max-width:720px;}
   .faq-slide h2.reveal{transition-delay:.08s;}
   .faq-slide p.reveal{transition-delay:.16s;}
+  /* Answer wrapper — collapses to 0 height in compact mode via the CSS
+     grid auto-height trick, so the question above it rolls up in place
+     instead of navigating to any separate panel. */
+  .faq-a-row{display:grid; grid-template-rows:1fr; transition:grid-template-rows .5s cubic-bezier(.22,1,.36,1), opacity .4s ease;}
+  .faq-a-row .faq-a-inner{overflow:hidden; min-height:0;}
   .faq-hint{
     position:fixed; right:28px; bottom:28px; z-index:40;
     font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase;
@@ -63,53 +72,28 @@
   .faq-track button.active .tick{background:var(--accent); transform:scale(1.7);}
   @media (max-width:960px){ .faq-track{display:none;} }
 
-  /* ---------- SCROLL-UP COMPACT INDEX ---------- */
-  .faq-compact{
-    position:fixed; top:72px; left:0; right:0; bottom:0; z-index:45;
-    background:var(--case); color:var(--paper);
-    display:flex; align-items:center; justify-content:center;
-    opacity:0; pointer-events:none; will-change:transform;
-    transform:translateY(100%);
-    transition:transform .6s cubic-bezier(.22,1,.36,1), opacity .35s ease;
-    overflow-y:auto; padding:48px 24px;
+  /* ---------- SCROLL-UP COMPACT INDEX ----------
+     No separate panel: the same 9 sections stay on the page, keep their
+     own alternating paper/paper-dim background and border, and each
+     answer simply rolls up so only the question rows remain. A short
+     per-slide stagger (via data-index) makes the roll-up cascade down
+     the list instead of every slide snapping shut at once. */
+  html.faq-compact-mode .faq-slide{
+    min-height:0; padding:26px 0; align-items:flex-start; cursor:pointer;
   }
-  .faq-compact.open{opacity:1; pointer-events:auto; transform:translateY(0);}
-  .faq-compact-inner{max-width:760px; width:100%; margin:auto;}
-  .faq-compact .compact-eyebrow{justify-content:center; margin-bottom:10px;}
-  .faq-compact h2{
-    text-align:center; color:var(--paper); font-size:clamp(20px,2.6vw,28px);
-    text-transform:none; font-weight:600; margin-bottom:36px;
-  }
-  .compact-list{border-top:1px solid var(--line-dark);}
-  .compact-item{
-    display:flex; align-items:baseline; gap:18px; width:100%;
-    background:none; border:none; border-bottom:1px solid var(--line-dark);
-    padding:18px 6px; text-align:left; cursor:pointer;
-    font-family:'IBM Plex Sans', sans-serif; color:var(--steel-light);
-    opacity:0; transform:translateY(12px);
-    transition:color .2s ease, padding-left .2s ease, opacity .4s ease, transform .4s ease;
-  }
-  .compact-item:hover, .compact-item:focus-visible{color:var(--paper); padding-left:16px;}
-  .compact-item.active{color:var(--paper);}
-  .faq-compact.open .compact-item{opacity:1; transform:translateY(0);}
-  .faq-compact.open .compact-item:nth-child(1){transition-delay:.16s;}
-  .faq-compact.open .compact-item:nth-child(2){transition-delay:.2s;}
-  .faq-compact.open .compact-item:nth-child(3){transition-delay:.24s;}
-  .faq-compact.open .compact-item:nth-child(4){transition-delay:.28s;}
-  .faq-compact.open .compact-item:nth-child(5){transition-delay:.32s;}
-  .faq-compact.open .compact-item:nth-child(6){transition-delay:.36s;}
-  .faq-compact.open .compact-item:nth-child(7){transition-delay:.4s;}
-  .faq-compact.open .compact-item:nth-child(8){transition-delay:.44s;}
-  .faq-compact.open .compact-item:nth-child(9){transition-delay:.48s;}
-  .compact-item .c-num{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--accent); flex-shrink:0;}
-  .compact-item .c-text{font-size:15.5px; line-height:1.4;}
-  .compact-close-hint{
-    margin-top:28px; text-align:center; font-family:'IBM Plex Mono', monospace;
-    font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:var(--steel);
-  }
+  html.faq-compact-mode .faq-slide .faq-a-row{grid-template-rows:0fr; opacity:0;}
+  html.faq-compact-mode .faq-slide:hover h2{color:var(--accent);}
+  .faq-slide[data-index="0"] .faq-a-row{transition-delay:0s;}
+  .faq-slide[data-index="1"] .faq-a-row{transition-delay:.03s;}
+  .faq-slide[data-index="2"] .faq-a-row{transition-delay:.06s;}
+  .faq-slide[data-index="3"] .faq-a-row{transition-delay:.09s;}
+  .faq-slide[data-index="4"] .faq-a-row{transition-delay:.12s;}
+  .faq-slide[data-index="5"] .faq-a-row{transition-delay:.15s;}
+  .faq-slide[data-index="6"] .faq-a-row{transition-delay:.18s;}
+  .faq-slide[data-index="7"] .faq-a-row{transition-delay:.21s;}
+  .faq-slide[data-index="8"] .faq-a-row{transition-delay:.24s;}
   @media (max-width:760px){
-    .faq-compact{top:64px; padding:32px 18px;}
-    .compact-item .c-text{font-size:14px;}
+    html.faq-compact-mode .faq-slide{padding:18px 0;}
   }
 
   /* ---------- CTA ---------- */
@@ -170,98 +154,115 @@
   <button type="button" data-goto="8" aria-label="Câu hỏi 9"><span class="tick"></span></button>
 </nav>
 
-<div class="faq-compact" id="faqCompact">
-  <div class="faq-compact-inner">
-    <div class="eyebrow compact-eyebrow" data-i18n="compactEyebrow">9 Câu Hỏi</div>
-    <h2 data-i18n="compactH2">Chọn câu hỏi bạn muốn xem</h2>
-    <div class="compact-list" id="compactList">
-      <button type="button" class="compact-item" data-goto="0"><span class="c-num">01</span><span class="c-text" data-i18n="faqQ1">PakGud làm những gì?</span></button>
-      <button type="button" class="compact-item" data-goto="1"><span class="c-num">02</span><span class="c-text" data-i18n="faqQ2">Fan Fulfillment là gì?</span></button>
-      <button type="button" class="compact-item" data-goto="2"><span class="c-num">03</span><span class="c-text" data-i18n="faqQ3">PakGud có phải là đơn vị tổ chức sự kiện không?</span></button>
-      <button type="button" class="compact-item" data-goto="3"><span class="c-num">04</span><span class="c-text" data-i18n="faqQ4">Tại sao PakGud có ít hoạt động được công khai?</span></button>
-      <button type="button" class="compact-item" data-goto="4"><span class="c-num">05</span><span class="c-text" data-i18n="faqQ5">Nên liên hệ PakGud trước sự kiện bao lâu?</span></button>
-      <button type="button" class="compact-item" data-goto="5"><span class="c-num">06</span><span class="c-text" data-i18n="faqQ6">PakGud có đội ngũ vận hành riêng không?</span></button>
-      <button type="button" class="compact-item" data-goto="6"><span class="c-num">07</span><span class="c-text" data-i18n="faqQ7">PakGud có hỗ trợ thiết kế, sản xuất và bán merchandise luôn không?</span></button>
-      <button type="button" class="compact-item" data-goto="7"><span class="c-num">08</span><span class="c-text" data-i18n="faqQ8">PakGud khác với các đơn vị merchandise như thế nào?</span></button>
-      <button type="button" class="compact-item" data-goto="8"><span class="c-num">09</span><span class="c-text" data-i18n="faqQ9">PakGud xử lý các vấn đề liên quan đến bản quyền hình ảnh và artwork của nghệ sĩ như thế nào?</span></button>
-    </div>
-    <div class="compact-close-hint" data-i18n="compactCloseHint">Cuộn xuống hoặc bấm ra ngoài để quay lại</div>
-  </div>
-</div>
-
 <div class="faq-hint" id="faqHint">
   <span>&uarr;</span> <span data-i18n="faqHintText">Cuộn lên để xem tất cả câu hỏi</span>
 </div>
 
-<section class="faq-slide">
+<section class="faq-slide" data-index="0">
   <div class="wrap">
-    <div class="q-num reveal">01 / FAQ</div>
-    <h2 class="reveal" data-i18n="faqQ1">PakGud làm những gì?</h2>
-    <p class="reveal" data-i18n="faqA1">PakGud là đơn vị tổ chức và vận hành sự kiện dành cho nghệ sĩ và nhà sáng tạo, tập trung vào fancon, fan meeting, live concert và các mô hình sự kiện có yếu tố fan experience, với quy mô từ 100 đến 1.000 khán giả. PakGud có thể đồng hành từ khâu lên kế hoạch, sản xuất, vận hành onsite đến fan fulfillment, giúp kết nối các phần việc phía sau thành một quy trình thống nhất và đảm bảo trải nghiệm của khán giả được triển khai trơn tru từ trước, trong và sau sự kiện. PakGud được vận hành bởi Công ty Cổ phần No Headliner và hiện hoạt động tại Hà Nội, TP. Hồ Chí Minh và Đà Nẵng.</p>
+    <div class="faq-q-row">
+      <div class="q-num reveal">01 / FAQ</div>
+      <h2 class="reveal" data-i18n="faqQ1">PakGud làm những gì?</h2>
+    </div>
+    <div class="faq-a-row"><div class="faq-a-inner">
+      <p class="reveal" data-i18n="faqA1">PakGud là đơn vị tổ chức và vận hành sự kiện dành cho nghệ sĩ và nhà sáng tạo, tập trung vào fancon, fan meeting, live concert và các mô hình sự kiện có yếu tố fan experience, với quy mô từ 100 đến 1.000 khán giả. PakGud có thể đồng hành từ khâu lên kế hoạch, sản xuất, vận hành onsite đến fan fulfillment, giúp kết nối các phần việc phía sau thành một quy trình thống nhất và đảm bảo trải nghiệm của khán giả được triển khai trơn tru từ trước, trong và sau sự kiện. PakGud được vận hành bởi Công ty Cổ phần No Headliner và hiện hoạt động tại Hà Nội, TP. Hồ Chí Minh và Đà Nẵng.</p>
+    </div></div>
   </div>
 </section>
 
-<section class="faq-slide">
+<section class="faq-slide" data-index="1">
   <div class="wrap">
-    <div class="q-num reveal">02 / FAQ</div>
-    <h2 class="reveal" data-i18n="faqQ2">Fan Fulfillment là gì?</h2>
-    <p class="reveal" data-i18n="faqA2">Fan Fulfillment là toàn bộ những hoạt động giúp hoàn thành các quyền lợi và nhu cầu của fan trong một chương trình hoặc chiến dịch. Phạm vi có thể bao gồm thiết kế và sản xuất physical goods, chuẩn bị và phân phối fan benefits, thực hiện fan project, quản lý hàng chờ, check-in, khu vực nhận quyền lợi và các yếu tố tiện nghi khác trong trải nghiệm của fan.</p>
+    <div class="faq-q-row">
+      <div class="q-num reveal">02 / FAQ</div>
+      <h2 class="reveal" data-i18n="faqQ2">Fan Fulfillment là gì?</h2>
+    </div>
+    <div class="faq-a-row"><div class="faq-a-inner">
+      <p class="reveal" data-i18n="faqA2">Fan Fulfillment là toàn bộ những hoạt động giúp hoàn thành các quyền lợi và nhu cầu của fan trong một chương trình hoặc chiến dịch. Phạm vi có thể bao gồm thiết kế và sản xuất physical goods, chuẩn bị và phân phối fan benefits, thực hiện fan project, quản lý hàng chờ, check-in, khu vực nhận quyền lợi và các yếu tố tiện nghi khác trong trải nghiệm của fan.</p>
+    </div></div>
   </div>
 </section>
 
-<section class="faq-slide">
+<section class="faq-slide" data-index="2">
   <div class="wrap">
-    <div class="q-num reveal">03 / FAQ</div>
-    <h2 class="reveal" data-i18n="faqQ3">PakGud có phải là đơn vị tổ chức sự kiện không?</h2>
-    <p class="reveal" data-i18n="faqA3">Có. Tổ chức và vận hành sự kiện là một trong những thế mạnh cốt lõi của PakGud. Tuy nhiên, chúng tôi không chỉ cung cấp một gói tổ chức sự kiện trọn gói. PakGud được xây dựng theo mô-đun, với các dịch vụ có thể kết hợp tùy theo nhu cầu của từng nghệ sĩ. Một chương trình có thể sử dụng PakGud cho toàn bộ vận hành, hoặc chỉ lựa chọn một số mô-đun như merchandise management, fan benefits, event operations và fan fulfillment, sau đó kết hợp với đơn vị sản xuất sân khấu hoặc creative partner mà nghệ sĩ đã lựa chọn. Mục tiêu là tạo ra một hệ thống vận hành phù hợp với từng nghệ sĩ, thay vì buộc mọi chương trình phải sử dụng cùng một công thức.</p>
+    <div class="faq-q-row">
+      <div class="q-num reveal">03 / FAQ</div>
+      <h2 class="reveal" data-i18n="faqQ3">PakGud có phải là đơn vị tổ chức sự kiện không?</h2>
+    </div>
+    <div class="faq-a-row"><div class="faq-a-inner">
+      <p class="reveal" data-i18n="faqA3">Có. Tổ chức và vận hành sự kiện là một trong những thế mạnh cốt lõi của PakGud. Tuy nhiên, chúng tôi không chỉ cung cấp một gói tổ chức sự kiện trọn gói. PakGud được xây dựng theo mô-đun, với các dịch vụ có thể kết hợp tùy theo nhu cầu của từng nghệ sĩ. Một chương trình có thể sử dụng PakGud cho toàn bộ vận hành, hoặc chỉ lựa chọn một số mô-đun như merchandise management, fan benefits, event operations và fan fulfillment, sau đó kết hợp với đơn vị sản xuất sân khấu hoặc creative partner mà nghệ sĩ đã lựa chọn. Mục tiêu là tạo ra một hệ thống vận hành phù hợp với từng nghệ sĩ, thay vì buộc mọi chương trình phải sử dụng cùng một công thức.</p>
+    </div></div>
   </div>
 </section>
 
-<section class="faq-slide">
+<section class="faq-slide" data-index="3">
   <div class="wrap">
-    <div class="q-num reveal">04 / FAQ</div>
-    <h2 class="reveal" data-i18n="faqQ4">Tại sao PakGud có ít hoạt động được công khai?</h2>
-    <p class="reveal" data-i18n="faqA4">Vì không phải lúc nào PakGud cũng cần xuất hiện. Bên cạnh việc trực tiếp đứng ra tổ chức sự kiện, chúng tôi có thể hoạt động theo mô hình white-label, đứng phía sau để thương hiệu của nghệ sĩ và ê-kíp được đặt ở vị trí trung tâm. Với những dự án cần bảo mật, PakGud tuân thủ các thỏa thuận và điều khoản bảo mật với nghệ sĩ, đối tác và các bên liên quan. Thành công của chúng tôi đôi khi chính là khi khán giả chỉ nhớ đến nghệ sĩ, chứ không cần biết ai đã vận hành phía sau.</p>
+    <div class="faq-q-row">
+      <div class="q-num reveal">04 / FAQ</div>
+      <h2 class="reveal" data-i18n="faqQ4">Tại sao PakGud có ít hoạt động được công khai?</h2>
+    </div>
+    <div class="faq-a-row"><div class="faq-a-inner">
+      <p class="reveal" data-i18n="faqA4">Vì không phải lúc nào PakGud cũng cần xuất hiện. Bên cạnh việc trực tiếp đứng ra tổ chức sự kiện, chúng tôi có thể hoạt động theo mô hình white-label, đứng phía sau để thương hiệu của nghệ sĩ và ê-kíp được đặt ở vị trí trung tâm. Với những dự án cần bảo mật, PakGud tuân thủ các thỏa thuận và điều khoản bảo mật với nghệ sĩ, đối tác và các bên liên quan. Thành công của chúng tôi đôi khi chính là khi khán giả chỉ nhớ đến nghệ sĩ, chứ không cần biết ai đã vận hành phía sau.</p>
+    </div></div>
   </div>
 </section>
 
-<section class="faq-slide">
+<section class="faq-slide" data-index="4">
   <div class="wrap">
-    <div class="q-num reveal">05 / FAQ</div>
-    <h2 class="reveal" data-i18n="faqQ5">Nên liên hệ PakGud trước sự kiện bao lâu?</h2>
-    <p class="reveal" data-i18n="faqA5">Thời gian chuẩn bị phụ thuộc vào quy mô, địa điểm và phạm vi công việc mà PakGud đảm nhận. Với các sự kiện có nhiều hạng mục như production, merchandise, fan benefits và onsite operations, PakGud khuyến nghị ekip liên hệ từ <b>4-8 tuần trước sự kiện</b> để có đủ thời gian planning, sản xuất và kiểm tra các hạng mục cần thiết. Với những sự kiện có timeline ngắn hơn, PakGud vẫn có thể xem xét hỗ trợ tùy theo scope và nguồn lực cần huy động. Sau khi nhận brief, team sẽ đánh giá timeline thực tế và đề xuất phương án triển khai phù hợp.</p>
+    <div class="faq-q-row">
+      <div class="q-num reveal">05 / FAQ</div>
+      <h2 class="reveal" data-i18n="faqQ5">Nên liên hệ PakGud trước sự kiện bao lâu?</h2>
+    </div>
+    <div class="faq-a-row"><div class="faq-a-inner">
+      <p class="reveal" data-i18n="faqA5">Thời gian chuẩn bị phụ thuộc vào quy mô, địa điểm và phạm vi công việc mà PakGud đảm nhận. Với các sự kiện có nhiều hạng mục như production, merchandise, fan benefits và onsite operations, PakGud khuyến nghị ekip liên hệ từ <b>4-8 tuần trước sự kiện</b> để có đủ thời gian planning, sản xuất và kiểm tra các hạng mục cần thiết. Với những sự kiện có timeline ngắn hơn, PakGud vẫn có thể xem xét hỗ trợ tùy theo scope và nguồn lực cần huy động. Sau khi nhận brief, team sẽ đánh giá timeline thực tế và đề xuất phương án triển khai phù hợp.</p>
+    </div></div>
   </div>
 </section>
 
-<section class="faq-slide">
+<section class="faq-slide" data-index="5">
   <div class="wrap">
-    <div class="q-num reveal">06 / FAQ</div>
-    <h2 class="reveal" data-i18n="faqQ6">PakGud có đội ngũ vận hành riêng không?</h2>
-    <p class="reveal" data-i18n="faqA6">Có. PakGud có một đội ngũ nội bộ phụ trách quản lý, điều phối và vận hành các dự án, đồng thời có thể mở rộng nguồn lực theo quy mô và nhu cầu của từng chương trình. Chúng tôi không xây dựng một đội ngũ cố định cho mọi sự kiện, mà xây dựng một hệ thống vận hành. Các vị trí quản lý và điều phối chính luôn do team PakGud đảm nhiệm, trong khi những nguồn lực bổ sung sẽ được lựa chọn và tổ chức riêng cho từng dự án.</p>
+    <div class="faq-q-row">
+      <div class="q-num reveal">06 / FAQ</div>
+      <h2 class="reveal" data-i18n="faqQ6">PakGud có đội ngũ vận hành riêng không?</h2>
+    </div>
+    <div class="faq-a-row"><div class="faq-a-inner">
+      <p class="reveal" data-i18n="faqA6">Có. PakGud có một đội ngũ nội bộ phụ trách quản lý, điều phối và vận hành các dự án, đồng thời có thể mở rộng nguồn lực theo quy mô và nhu cầu của từng chương trình. Chúng tôi không xây dựng một đội ngũ cố định cho mọi sự kiện, mà xây dựng một hệ thống vận hành. Các vị trí quản lý và điều phối chính luôn do team PakGud đảm nhiệm, trong khi những nguồn lực bổ sung sẽ được lựa chọn và tổ chức riêng cho từng dự án.</p>
+    </div></div>
   </div>
 </section>
 
-<section class="faq-slide">
+<section class="faq-slide" data-index="6">
   <div class="wrap">
-    <div class="q-num reveal">07 / FAQ</div>
-    <h2 class="reveal" data-i18n="faqQ7">PakGud có hỗ trợ thiết kế, sản xuất và bán merchandise luôn không?</h2>
-    <p class="reveal" data-i18n="faqA7">PakGud có thể đồng hành với merchandise từ khâu phát triển thiết kế, sản xuất, kiểm soát số lượng, đóng gói đến fulfillment. PakGud hiện chưa cung cấp nền tảng bán merchandise và bán vé sự kiện riêng. Tuy nhiên, nếu ekip đã có hệ thống bán hàng hoặc nền tảng quản lý đơn hàng, PakGud có thể tiếp nhận dữ liệu và phụ trách các bước phía sau như kiểm kê, phân loại, đóng gói và giao merchandise đến khách hàng.</p>
+    <div class="faq-q-row">
+      <div class="q-num reveal">07 / FAQ</div>
+      <h2 class="reveal" data-i18n="faqQ7">PakGud có hỗ trợ thiết kế, sản xuất và bán merchandise luôn không?</h2>
+    </div>
+    <div class="faq-a-row"><div class="faq-a-inner">
+      <p class="reveal" data-i18n="faqA7">PakGud có thể đồng hành với merchandise từ khâu phát triển thiết kế, sản xuất, kiểm soát số lượng, đóng gói đến fulfillment. PakGud hiện chưa cung cấp nền tảng bán merchandise và bán vé sự kiện riêng. Tuy nhiên, nếu ekip đã có hệ thống bán hàng hoặc nền tảng quản lý đơn hàng, PakGud có thể tiếp nhận dữ liệu và phụ trách các bước phía sau như kiểm kê, phân loại, đóng gói và giao merchandise đến khách hàng.</p>
+    </div></div>
   </div>
 </section>
 
-<section class="faq-slide">
+<section class="faq-slide" data-index="7">
   <div class="wrap">
-    <div class="q-num reveal">08 / FAQ</div>
-    <h2 class="reveal" data-i18n="faqQ8">PakGud khác với các đơn vị merchandise như thế nào?</h2>
-    <p class="reveal" data-i18n="faqA8">PakGud không phải là một kênh bán hàng. Các đơn vị merchandise thường tập trung vào front-end, nơi fan nhìn thấy, lựa chọn và mua sản phẩm trên các nền tảng số. PakGud tập trung vào back-end, từ sản xuất, kiểm tra chất lượng, quản lý tồn kho, đóng gói đến vận chuyển sản phẩm đến tay fan. Chúng tôi có thể vận hành toàn bộ phần phía sau để nghệ sĩ và các đối tác của mình tập trung vào thương hiệu, sản phẩm và cộng đồng.</p>
+    <div class="faq-q-row">
+      <div class="q-num reveal">08 / FAQ</div>
+      <h2 class="reveal" data-i18n="faqQ8">PakGud khác với các đơn vị merchandise như thế nào?</h2>
+    </div>
+    <div class="faq-a-row"><div class="faq-a-inner">
+      <p class="reveal" data-i18n="faqA8">PakGud không phải là một kênh bán hàng. Các đơn vị merchandise thường tập trung vào front-end, nơi fan nhìn thấy, lựa chọn và mua sản phẩm trên các nền tảng số. PakGud tập trung vào back-end, từ sản xuất, kiểm tra chất lượng, quản lý tồn kho, đóng gói đến vận chuyển sản phẩm đến tay fan. Chúng tôi có thể vận hành toàn bộ phần phía sau để nghệ sĩ và các đối tác của mình tập trung vào thương hiệu, sản phẩm và cộng đồng.</p>
+    </div></div>
   </div>
 </section>
 
-<section class="faq-slide">
+<section class="faq-slide" data-index="8">
   <div class="wrap">
-    <div class="q-num reveal">09 / FAQ</div>
-    <h2 class="reveal" data-i18n="faqQ9">PakGud xử lý các vấn đề liên quan đến bản quyền hình ảnh và artwork của nghệ sĩ như thế nào?</h2>
-    <p class="reveal" data-i18n="faqA9">Bảo mật và bảo vệ tài sản hình ảnh của nghệ sĩ là một phần quan trọng trong quy trình làm việc của PakGud. Trước khi tham gia dự án, các vendor, đối tác và nhân sự liên quan đều được yêu cầu ký NDA (Non-Disclosure Agreement) và tuân thủ các quy định về sử dụng thông tin, hình ảnh và artwork được cung cấp. PakGud cũng kiểm soát quyền truy cập và chia sẻ các file thiết kế theo từng phạm vi công việc, chỉ cung cấp những tài liệu cần thiết cho từng bên trong từng giai đoạn để hạn chế tối đa rủi ro rò rỉ thông tin, sử dụng sai mục đích hoặc phát tán trái phép các tài sản của nghệ sĩ trong quá trình sản xuất và vận hành.</p>
+    <div class="faq-q-row">
+      <div class="q-num reveal">09 / FAQ</div>
+      <h2 class="reveal" data-i18n="faqQ9">PakGud xử lý các vấn đề liên quan đến bản quyền hình ảnh và artwork của nghệ sĩ như thế nào?</h2>
+    </div>
+    <div class="faq-a-row"><div class="faq-a-inner">
+      <p class="reveal" data-i18n="faqA9">Bảo mật và bảo vệ tài sản hình ảnh của nghệ sĩ là một phần quan trọng trong quy trình làm việc của PakGud. Trước khi tham gia dự án, các vendor, đối tác và nhân sự liên quan đều được yêu cầu ký NDA (Non-Disclosure Agreement) và tuân thủ các quy định về sử dụng thông tin, hình ảnh và artwork được cung cấp. PakGud cũng kiểm soát quyền truy cập và chia sẻ các file thiết kế theo từng phạm vi công việc, chỉ cung cấp những tài liệu cần thiết cho từng bên trong từng giai đoạn để hạn chế tối đa rủi ro rò rỉ thông tin, sử dụng sai mục đích hoặc phát tán trái phép các tài sản của nghệ sĩ trong quá trình sản xuất và vận hành.</p>
+    </div></div>
   </div>
 </section>
 
@@ -318,9 +319,6 @@
     faqA8: { vi: "PakGud không phải là một kênh bán hàng. Các đơn vị merchandise thường tập trung vào front-end, nơi fan nhìn thấy, lựa chọn và mua sản phẩm trên các nền tảng số. PakGud tập trung vào back-end, từ sản xuất, kiểm tra chất lượng, quản lý tồn kho, đóng gói đến vận chuyển sản phẩm đến tay fan. Chúng tôi có thể vận hành toàn bộ phần phía sau để nghệ sĩ và các đối tác của mình tập trung vào thương hiệu, sản phẩm và cộng đồng.", en: "PakGud is not a sales channel. Merchandise providers typically focus on the front-end, where fans see, choose, and purchase products on digital platforms. PakGud focuses on the back-end, from production, quality control, and inventory management to packing and shipping products to fans. We can operate the entire back-end so artists and their partners can focus on their brand, products, and community." },
     faqQ9: { vi: "PakGud xử lý các vấn đề liên quan đến bản quyền hình ảnh và artwork của nghệ sĩ như thế nào?", en: "How does PakGud handle the image rights and artwork of artists?" },
     faqA9: { vi: "Bảo mật và bảo vệ tài sản hình ảnh của nghệ sĩ là một phần quan trọng trong quy trình làm việc của PakGud. Trước khi tham gia dự án, các vendor, đối tác và nhân sự liên quan đều được yêu cầu ký NDA (Non-Disclosure Agreement) và tuân thủ các quy định về sử dụng thông tin, hình ảnh và artwork được cung cấp. PakGud cũng kiểm soát quyền truy cập và chia sẻ các file thiết kế theo từng phạm vi công việc, chỉ cung cấp những tài liệu cần thiết cho từng bên trong từng giai đoạn để hạn chế tối đa rủi ro rò rỉ thông tin, sử dụng sai mục đích hoặc phát tán trái phép các tài sản của nghệ sĩ trong quá trình sản xuất và vận hành.", en: "Confidentiality and protection of an artist’s visual assets are an important part of PakGud’s working process. Before joining a project, all relevant vendors, partners, and personnel are required to sign an NDA (Non-Disclosure Agreement) and comply with the rules governing the use of provided information, images, and artwork. PakGud also controls access to and sharing of design files according to each party’s scope of work, providing only the materials necessary for each party at each stage. This helps minimize the risk of information leaks, misuse, or unauthorized distribution of the artist’s assets throughout production and operations." },
-    compactEyebrow: { vi: "9 Câu Hỏi", en: "9 Questions" },
-    compactH2: { vi: "Chọn câu hỏi bạn muốn xem", en: "Pick a question to read" },
-    compactCloseHint: { vi: "Cuộn xuống hoặc bấm ra ngoài để quay lại", en: "Scroll down or click outside to go back" },
     faqHintText: { vi: "Cuộn lên để xem tất cả câu hỏi", en: "Scroll up to see all questions" }
   };
 </script>
@@ -328,17 +326,15 @@
 <script>
 (function(){
   var slides = Array.prototype.slice.call(document.querySelectorAll('.faq-slide'));
-  var compactPanel = document.getElementById('faqCompact');
-  var compactInner = document.querySelector('.faq-compact-inner');
   var hint = document.getElementById('faqHint');
   var trackButtons = Array.prototype.slice.call(document.querySelectorAll('.faq-track button'));
-  var gotoButtons = Array.prototype.slice.call(document.querySelectorAll('[data-goto]'));
 
   var activeIndex = 0;   // slide currently most visible
   var lastIndex = 0;     // previous value of activeIndex, to detect direction
   var upStreak = 0;      // consecutive backward (scroll-up) transitions in a row
   var isOnSlide = true;  // false once scrolled past the slides into CTA/footer
-  var isCompact = false;
+  var isCompactMode = false;
+  var resumeIndex = 0;   // slide to return to when compact mode is dismissed
   var cooldown = false;
 
   // Track the most-visible slide (drives the track nav + the up-streak count).
@@ -366,44 +362,61 @@
 
   function updateTrack(){
     trackButtons.forEach(function(btn, i){
-      btn.classList.toggle('active', isOnSlide && i === activeIndex);
+      btn.classList.toggle('active', !isCompactMode && isOnSlide && i === activeIndex);
     });
   }
 
-  function openCompact(){
-    if(isCompact) return;
-    isCompact = true;
-    compactPanel.classList.add('open');
-    document.documentElement.style.overflow = 'hidden';
+  // Compact mode reuses the same 9 sections — no separate panel is ever
+  // introduced. Each slide's answer rolls up in place (see .faq-a-row in
+  // the stylesheet) while its own background/border/typography stay put,
+  // leaving all 9 questions stacked on the same page for picking from.
+  function openCompactMode(){
+    if(isCompactMode) return;
+    isCompactMode = true;
+    resumeIndex = activeIndex;
+    document.documentElement.classList.add('faq-compact-mode');
     if(hint) hint.style.opacity = '0';
+    window.scrollTo({ top:0, behavior:'auto' });
+    updateTrack();
   }
 
-  function closeCompact(){
-    if(!isCompact) return;
-    isCompact = false;
-    compactPanel.classList.remove('open');
-    document.documentElement.style.overflow = '';
-    if(hint) hint.style.opacity = '';
+  // Instantly restores every slide's full height (no reverse animation, to
+  // avoid the target's position drifting mid-transition), then scrolls to
+  // `index` — used both for "pick a question" and "scroll down to dismiss".
+  function closeCompactMode(index){
+    if(!isCompactMode) return;
+    var target = slides[index != null ? index : resumeIndex];
+    document.documentElement.classList.add('faq-instant');
+    document.documentElement.classList.remove('faq-compact-mode');
+    isCompactMode = false;
     upStreak = 0;
+    void document.body.offsetHeight; // flush the instant (no-transition) layout
+    if(target) target.scrollIntoView({ behavior:'auto', block:'start' });
+    if(hint) hint.style.opacity = '';
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        document.documentElement.classList.remove('faq-instant');
+        updateTrack();
+      });
+    });
   }
 
-  function goTo(index){
-    closeCompact();
-    var target = slides[index];
-    if(target) target.scrollIntoView({ behavior:'smooth', block:'start' });
-  }
-
-  gotoButtons.forEach(function(btn){
-    btn.addEventListener('click', function(){
-      goTo(Number(btn.getAttribute('data-goto')));
+  // Clicking any (now-compacted) question row opens that question back up.
+  slides.forEach(function(slide, i){
+    slide.addEventListener('click', function(){
+      if(isCompactMode) closeCompactMode(i);
     });
   });
 
-  // Click the dark backdrop (not a question row) to dismiss without navigating.
-  compactPanel.addEventListener('click', function(e){
-    if(e.target === compactPanel || e.target === compactInner){
-      closeCompact();
-    }
+  trackButtons.forEach(function(btn, i){
+    btn.addEventListener('click', function(){
+      if(isCompactMode){
+        closeCompactMode(i);
+      } else {
+        var target = slides[i];
+        if(target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+      }
+    });
   });
 
   function triggerCooldown(){
@@ -416,28 +429,28 @@
   // read the previous question normally, via native scroll-snap.
   window.addEventListener('wheel', function(e){
     if(cooldown) return;
-    if(!isCompact){
+    if(!isCompactMode){
       if(e.deltaY < -4 && isOnSlide && upStreak >= 2){
         e.preventDefault();
-        openCompact();
+        openCompactMode();
         triggerCooldown();
       }
     } else if(e.deltaY > 4){
       e.preventDefault();
-      closeCompact();
+      closeCompactMode();
       triggerCooldown();
     }
   }, { passive:false });
 
   document.addEventListener('keydown', function(e){
     if(cooldown) return;
-    if(!isCompact && (e.key === 'ArrowUp' || e.key === 'PageUp') && isOnSlide && upStreak >= 2){
+    if(!isCompactMode && (e.key === 'ArrowUp' || e.key === 'PageUp') && isOnSlide && upStreak >= 2){
       e.preventDefault();
-      openCompact();
+      openCompactMode();
       triggerCooldown();
-    } else if(isCompact && (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === 'Escape')){
+    } else if(isCompactMode && (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === 'Escape')){
       e.preventDefault();
-      closeCompact();
+      closeCompactMode();
       triggerCooldown();
     }
   });
@@ -449,16 +462,16 @@
   window.addEventListener('touchmove', function(e){
     if(touchStartY === null || cooldown) return;
     var dy = e.touches[0].clientY - touchStartY;
-    if(!isCompact){
+    if(!isCompactMode){
       if(dy > 30 && isOnSlide && upStreak >= 2){ // finger drags down = scroll-up intent
         e.preventDefault();
-        openCompact();
+        openCompactMode();
         triggerCooldown();
         touchStartY = null;
       }
     } else if(dy < -30){ // finger drags up = scroll-down intent
       e.preventDefault();
-      closeCompact();
+      closeCompactMode();
       triggerCooldown();
       touchStartY = null;
     }
