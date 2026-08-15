@@ -335,6 +335,7 @@
   var isOnSlide = true;  // false once scrolled past the slides into CTA/footer
   var isCompactMode = false;
   var resumeIndex = 0;   // slide to return to when compact mode is dismissed
+  var downStreak = 0;    // consecutive scroll-down gestures in a row, while compact
   var cooldown = false;
 
   // Track the most-visible slide (drives the track nav + the up-streak count).
@@ -374,6 +375,7 @@
     if(isCompactMode) return;
     isCompactMode = true;
     resumeIndex = activeIndex;
+    downStreak = 0;
     document.documentElement.classList.add('faq-compact-mode');
     if(hint) hint.style.opacity = '0';
     window.scrollTo({ top:0, behavior:'auto' });
@@ -390,6 +392,7 @@
     document.documentElement.classList.remove('faq-compact-mode');
     isCompactMode = false;
     upStreak = 0;
+    downStreak = 0;
     void document.body.offsetHeight; // flush the instant (no-transition) layout
     if(target) target.scrollIntoView({ behavior:'auto', block:'start' });
     if(hint) hint.style.opacity = '';
@@ -426,7 +429,11 @@
 
   // Only step into compact mode once the visitor has scrolled up through
   // more than two questions in a row — a single scroll-up just lets them
-  // read the previous question normally, via native scroll-snap.
+  // read the previous question normally, via native scroll-snap. The same
+  // "more than two in a row" delay applies symmetrically on the way out:
+  // a single scroll-down while compact doesn't instantly close it either,
+  // it takes two in a row (a stray tick, e.g. resetting a trackpad, is
+  // enough to reset the streak instead of dismissing).
   window.addEventListener('wheel', function(e){
     if(cooldown) return;
     if(!isCompactMode){
@@ -436,9 +443,14 @@
         triggerCooldown();
       }
     } else if(e.deltaY > 4){
-      e.preventDefault();
-      closeCompactMode();
-      triggerCooldown();
+      downStreak++;
+      if(downStreak >= 2){
+        e.preventDefault();
+        closeCompactMode();
+        triggerCooldown();
+      }
+    } else if(e.deltaY < -4){
+      downStreak = 0;
     }
   }, { passive:false });
 
@@ -448,10 +460,21 @@
       e.preventDefault();
       openCompactMode();
       triggerCooldown();
-    } else if(isCompactMode && (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === 'Escape')){
-      e.preventDefault();
-      closeCompactMode();
-      triggerCooldown();
+    } else if(isCompactMode){
+      if(e.key === 'Escape'){ // an explicit close — bypasses the streak delay
+        e.preventDefault();
+        closeCompactMode();
+        triggerCooldown();
+      } else if(e.key === 'ArrowDown' || e.key === 'PageDown'){
+        downStreak++;
+        if(downStreak >= 2){
+          e.preventDefault();
+          closeCompactMode();
+          triggerCooldown();
+        }
+      } else if(e.key === 'ArrowUp' || e.key === 'PageUp'){
+        downStreak = 0;
+      }
     }
   });
 
@@ -470,9 +493,15 @@
         touchStartY = null;
       }
     } else if(dy < -30){ // finger drags up = scroll-down intent
-      e.preventDefault();
-      closeCompactMode();
-      triggerCooldown();
+      downStreak++;
+      touchStartY = null; // require a fresh touch for the next gesture to count
+      if(downStreak >= 2){
+        e.preventDefault();
+        closeCompactMode();
+        triggerCooldown();
+      }
+    } else if(dy > 30){
+      downStreak = 0;
       touchStartY = null;
     }
   }, { passive:false });
