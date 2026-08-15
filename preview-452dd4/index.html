@@ -127,13 +127,18 @@
   <nav class="wrap">
     <a href="index.html" class="logo"><span class="dot"></span>PakGud</a>
     <div class="nav-links" id="navLinks">
-      <a href="index.html">Trang Chủ</a>
-      <a href="faq.html">FAQ</a>
-      <a href="lien-he.html">Liên Hệ</a>
-      <a href="lien-he.html" class="nav-links-cta">Nhận tư vấn</a>
+      <a href="index.html" data-i18n="navHome">Trang Chủ</a>
+      <a href="faq.html" data-i18n="navFaq">FAQ</a>
+      <a href="lien-he.html" data-i18n="navContact">Liên Hệ</a>
+      <a href="lien-he.html" class="nav-links-cta" data-i18n="navCta">Nhận tư vấn</a>
     </div>
     <div style="display:flex; align-items:center; gap:16px;">
-      <a href="lien-he.html" class="nav-cta">Nhận tư vấn</a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-set-lang="en">EN</button>
+        <span class="sep">/</span>
+        <button type="button" data-set-lang="vi" class="active">VI</button>
+      </div>
+      <a href="lien-he.html" class="nav-cta" data-i18n="navCta">Nhận tư vấn</a>
       <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">☰</button>
     </div>
   </nav>
@@ -143,15 +148,15 @@
 <section class="hero glow-section">
   <div class="wrap">
     <div class="eyebrow">PakGud</div>
-    <h1 class="glow-text" data-text="PAKGUD ĐƯỢC THIẾT KẾ CHO 1.000 FAN ĐẦU TIÊN CỦA MỖI NGHỆ SĨ">PAKGUD ĐƯỢC THIẾT KẾ CHO 1.000 FAN ĐẦU TIÊN CỦA MỖI NGHỆ SĨ</h1>
+    <h1 class="glow-text" data-i18n="heroHeadline" data-text="PAKGUD ĐƯỢC THIẾT KẾ CHO 1.000 FAN ĐẦU TIÊN CỦA MỖI NGHỆ SĨ">PAKGUD ĐƯỢC THIẾT KẾ CHO 1.000 FAN ĐẦU TIÊN CỦA MỖI NGHỆ SĨ</h1>
   </div>
 </section>
 
 <!-- (2) POSITIONING STATEMENT -->
 <section class="positioning">
   <div class="wrap">
-    <p class="reveal">PakGud là đơn vị tổ chức sự kiện và vận hành fan fulfillment cho nghệ sĩ và nhà sáng tạo, với quy mô từ 100 đến 1.000 khán giả.</p>
-    <p class="cities reveal">📍 Hà Nội, TP. Hồ Chí Minh, Đà Nẵng</p>
+    <p class="reveal" data-i18n="positioningP">PakGud là đơn vị tổ chức sự kiện và vận hành fan fulfillment cho nghệ sĩ và nhà sáng tạo, với quy mô từ 100 đến 1.000 khán giả.</p>
+    <p class="cities reveal" data-i18n="positioningCities">📍 Hà Nội, TP. Hồ Chí Minh, Đà Nẵng</p>
   </div>
 </section>
 
@@ -160,26 +165,26 @@
   <div class="wrap">
     <div class="sec-head">
       <div class="reveal">
-        <div class="eyebrow">Phạm Vi Vận Hành</div>
-        <h2 style="margin-top:16px;">Vận Hành Fan Fulfillment Bao Gồm Những Gì</h2>
+        <div class="eyebrow" data-i18n="stagesEyebrow">Phạm Vi Vận Hành</div>
+        <h2 style="margin-top:16px;" data-i18n="stagesH2">Vận Hành Fan Fulfillment Bao Gồm Những Gì</h2>
       </div>
-      <p class="reveal">Các hạng mục công việc cơ bản cho việc vận hành quyền lợi dành cho fan.</p>
+      <p class="reveal" data-i18n="stagesP">Các hạng mục công việc cơ bản cho việc vận hành quyền lợi dành cho fan.</p>
     </div>
     <div class="stage-grid">
       <div class="stage-card reveal">
         <div class="stage-num">01</div>
-        <div class="stage-sub">Quản lý &amp; vận hành merchandise và giftset</div>
-        <p>Không còn tình trạng thiếu – dư – phát nhầm merchandise, mọi phần giftset đều đến đúng người, đúng quyền lợi.</p>
+        <div class="stage-sub" data-i18n="stage1H">Quản lý &amp; vận hành merchandise và giftset</div>
+        <p data-i18n="stage1P">Không còn tình trạng thiếu – dư – phát nhầm merchandise, mọi phần giftset đều đến đúng người, đúng quyền lợi.</p>
       </div>
       <div class="stage-card reveal">
         <div class="stage-num">02</div>
-        <div class="stage-sub">Quản lý &amp; vận hành khu vực check-in/khu vực vòng ngoài sự kiện</div>
-        <p>Kiểm soát được dòng người ngay từ trước khi vào sự kiện, tránh tình trạng hàng dài ùn tắc.</p>
+        <div class="stage-sub" data-i18n="stage2H">Quản lý &amp; vận hành khu vực check-in/khu vực vòng ngoài sự kiện</div>
+        <p data-i18n="stage2P">Kiểm soát được dòng người ngay từ trước khi vào sự kiện, tránh tình trạng hàng dài ùn tắc.</p>
       </div>
       <div class="stage-card reveal">
         <div class="stage-num">03</div>
-        <div class="stage-sub">Vận hành Fan Benefits</div>
-        <p>Các hoạt động với nghệ sĩ diễn ra đúng nhịp và kiểm soát được toàn bộ, giữ trải nghiệm trọn vẹn cho fan và đảm bảo sự an toàn cho nghệ sĩ.</p>
+        <div class="stage-sub" data-i18n="stage3H">Vận hành Fan Benefits</div>
+        <p data-i18n="stage3P">Các hoạt động với nghệ sĩ diễn ra đúng nhịp và kiểm soát được toàn bộ, giữ trải nghiệm trọn vẹn cho fan và đảm bảo sự an toàn cho nghệ sĩ.</p>
       </div>
     </div>
   </div>
@@ -189,7 +194,7 @@
 <section class="callout-break">
   <div class="wrap">
     <div class="bar"></div>
-    <p class="reveal">Bởi 1.000 fan đầu tiên của một nghệ sĩ quá quan trọng để trải nghiệm của họ được giao cho những giải pháp tạm thời.</p>
+    <p class="reveal" data-i18n="calloutP">Bởi 1.000 fan đầu tiên của một nghệ sĩ quá quan trọng để trải nghiệm của họ được giao cho những giải pháp tạm thời.</p>
   </div>
 </section>
 
@@ -197,12 +202,12 @@
 <section class="bio">
   <div class="bio-grid">
     <div class="bio-col col-muted">
-      <p class="lead reveal">1.000 fan đầu tiên rất quan trọng.</p>
-      <p class="body reveal">Sự kiện có thể được thiết kế đẹp, nghệ sĩ có thể có một ý tưởng lớn, nhưng trải nghiệm của fan lại được quyết định bởi rất nhiều chi tiết phía sau: cách một quyền lợi được thực hiện, một món hàng được sản xuất và giao đến tay fan, một hàng chờ được tổ chức, hay cách toàn bộ sự kiện vận hành từ lúc mở cửa đến khi khán giả ra về.</p>
+      <p class="lead reveal" data-i18n="bioLead1">1.000 fan đầu tiên rất quan trọng.</p>
+      <p class="body reveal" data-i18n="bioBody1">Sự kiện có thể được thiết kế đẹp, nghệ sĩ có thể có một ý tưởng lớn, nhưng trải nghiệm của fan lại được quyết định bởi rất nhiều chi tiết phía sau: cách một quyền lợi được thực hiện, một món hàng được sản xuất và giao đến tay fan, một hàng chờ được tổ chức, hay cách toàn bộ sự kiện vận hành từ lúc mở cửa đến khi khán giả ra về.</p>
     </div>
     <div class="bio-col col-accent">
-      <p class="lead reveal">PakGud ra đời để giải quyết phần việc đó.</p>
-      <p class="body reveal">PakGud là đơn vị tổ chức sự kiện và vận hành fan fulfillment cho nghệ sĩ và nhà sáng tạo, với quy mô từ 100 đến 1.000 khán giả. Chúng tôi xây dựng và vận hành những phần việc phía sau để mỗi lần nghệ sĩ gặp gỡ khán giả đều được thực hiện chỉn chu, hiệu quả và đúng với tinh thần của họ.</p>
+      <p class="lead reveal" data-i18n="bioLead2">PakGud ra đời để giải quyết phần việc đó.</p>
+      <p class="body reveal" data-i18n="bioBody2">PakGud là đơn vị tổ chức sự kiện và vận hành fan fulfillment cho nghệ sĩ và nhà sáng tạo, với quy mô từ 100 đến 1.000 khán giả. Chúng tôi xây dựng và vận hành những phần việc phía sau để mỗi lần nghệ sĩ gặp gỡ khán giả đều được thực hiện chỉn chu, hiệu quả và đúng với tinh thần của họ.</p>
     </div>
   </div>
 </section>
@@ -210,19 +215,19 @@
 <!-- (6) PRICING PHILOSOPHY -->
 <section class="pricing-phil">
   <div class="wrap">
-    <div class="eyebrow reveal" style="justify-content:center;">Chi Phí Vận Hành</div>
-    <p class="body reveal" style="margin-top:22px;">Nghệ sĩ cần được tự do thử nghiệm, nhưng một ý tưởng lớn không nhất thiết phải đi cùng một ngân sách thiếu kiểm soát. PakGud cung cấp các giải pháp vận hành theo từng quy mô, giúp nghệ sĩ lựa chọn đúng những gì cần thiết ở từng giai đoạn.</p>
-    <div class="price-line reveal">Chi phí vận hành khởi điểm từ <span class="accent">30.000.000 VND</span></div>
-    <a href="calculator.html" class="btn-primary reveal">Ước tính chi phí</a>
+    <div class="eyebrow reveal" style="justify-content:center;" data-i18n="pricingH2">Chi Phí Vận Hành</div>
+    <p class="body reveal" style="margin-top:22px;" data-i18n="pricingP">Nghệ sĩ cần được tự do thử nghiệm, nhưng một ý tưởng lớn không nhất thiết phải đi cùng một ngân sách thiếu kiểm soát. PakGud cung cấp các giải pháp vận hành theo từng quy mô, giúp nghệ sĩ lựa chọn đúng những gì cần thiết ở từng giai đoạn.</p>
+    <div class="price-line reveal" data-i18n="pricingLine">Chi phí vận hành khởi điểm từ <span class="accent">30.000.000 VND</span></div>
+    <a href="calculator.html" class="btn-primary reveal" data-i18n="pricingBtn">Ước tính chi phí</a>
   </div>
 </section>
 
 <!-- (7) CTA -->
 <section class="cta-final glow-section">
   <div class="wrap">
-    <h2 class="glow-text reveal" data-text="PakGud không đơn giản là tổ chức sự kiện">PakGud không đơn giản là tổ chức sự kiện</h2>
-    <p class="reveal">PakGud muốn trở thành đội ngũ đứng phía sau, giúp nghệ sĩ xây dựng và bảo vệ mối quan hệ với những người đầu tiên đã lựa chọn đồng hành cùng họ.</p>
-    <a href="lien-he.html" class="btn-primary reveal">Nhận tư vấn</a>
+    <h2 class="glow-text reveal" data-i18n="ctaHeading" data-text="PakGud không đơn giản là tổ chức sự kiện">PakGud không đơn giản là tổ chức sự kiện</h2>
+    <p class="reveal" data-i18n="ctaBody">PakGud muốn trở thành đội ngũ đứng phía sau, giúp nghệ sĩ xây dựng và bảo vệ mối quan hệ với những người đầu tiên đã lựa chọn đồng hành cùng họ.</p>
+    <a href="lien-he.html" class="btn-primary reveal" data-i18n="navCta">Nhận tư vấn</a>
   </div>
 </section>
 
@@ -230,17 +235,17 @@
   <div class="wrap foot-grid">
     <div>
       <div class="foot-logo"><span class="dot"></span>PakGud</div>
-      <p>PakGud được vận hành bởi đội ngũ <a href="https://www.noheadliner.co/" target="_blank" rel="noopener noreferrer">No Headliner</a>, với kinh nghiệm tổ chức các chương trình âm nhạc và sự kiện nghệ sĩ tại Việt Nam.</p>
+      <p data-i18n="footTagline">PakGud được vận hành bởi đội ngũ <a href="https://www.noheadliner.co/" target="_blank" rel="noopener noreferrer">No Headliner</a>, với kinh nghiệm tổ chức các chương trình âm nhạc và sự kiện nghệ sĩ tại Việt Nam.</p>
     </div>
     <div class="foot-col">
-      <h4>Điều Hướng</h4>
-      <a href="index.html">Trang Chủ</a>
-      <a href="faq.html">FAQ</a>
-      <a href="lien-he.html">Liên Hệ</a>
-      <a href="calculator.html" class="foot-calc">Ước Tính Chi Phí</a>
+      <h4 data-i18n="footNavHeading">Điều Hướng</h4>
+      <a href="index.html" data-i18n="navHome">Trang Chủ</a>
+      <a href="faq.html" data-i18n="navFaq">FAQ</a>
+      <a href="lien-he.html" data-i18n="navContact">Liên Hệ</a>
+      <a href="calculator.html" class="foot-calc" data-i18n="footCalc">Ước Tính Chi Phí</a>
     </div>
     <div class="foot-col">
-      <h4>Liên Hệ</h4>
+      <h4 data-i18n="navContact">Liên Hệ</h4>
       <a href="mailto:hello@pakgud.co">hello@pakgud.co</a>
       <a href="tel:+84328721486">+84 32 8721486 (Ms. Minh)</a>
     </div>
@@ -251,6 +256,31 @@
   </div>
 </footer>
 
+<script>
+  window.PAGE_DICT = {
+    heroHeadline: { vi: "PAKGUD ĐƯỢC THIẾT KẾ CHO 1.000 FAN ĐẦU TIÊN CỦA MỖI NGHỆ SĨ", en: "PAKGUD IS BUILT FOR EVERY ARTIST’S FIRST 1,000 FANS" },
+    positioningP: { vi: "PakGud là đơn vị tổ chức sự kiện và vận hành fan fulfillment cho nghệ sĩ và nhà sáng tạo, với quy mô từ 100 đến 1.000 khán giả.", en: "PakGud organizes events and operates fan fulfillment for artists and creators, for audiences of 100 to 1,000." },
+    positioningCities: { vi: "📍 Hà Nội, TP. Hồ Chí Minh, Đà Nẵng", en: "📍 Hanoi, Ho Chi Minh City, Da Nang" },
+    stagesEyebrow: { vi: "Phạm Vi Vận Hành", en: "What We Handle" },
+    stagesH2: { vi: "Vận Hành Fan Fulfillment Bao Gồm Những Gì", en: "What Does Fan Fulfillment Include?" },
+    stagesP: { vi: "Các hạng mục công việc cơ bản cho việc vận hành quyền lợi dành cho fan.", en: "The core work involved in delivering fan benefits." },
+    stage1H: { vi: "Quản lý &amp; vận hành merchandise và giftset", en: "Merchandise &amp; Giftset Management" },
+    stage1P: { vi: "Không còn tình trạng thiếu – dư – phát nhầm merchandise, mọi phần giftset đều đến đúng người, đúng quyền lợi.", en: "No more missing, excess, or misallocated merchandise. Every giftset reaches the right person with the right benefits." },
+    stage2H: { vi: "Quản lý &amp; vận hành khu vực check-in/khu vực vòng ngoài sự kiện", en: "Check-in &amp; Event Perimeter Operations" },
+    stage2P: { vi: "Kiểm soát được dòng người ngay từ trước khi vào sự kiện, tránh tình trạng hàng dài ùn tắc.", en: "Control the flow of people before they enter the event and avoid long, congested queues." },
+    stage3H: { vi: "Vận hành Fan Benefits", en: "Fan Benefits Operations" },
+    stage3P: { vi: "Các hoạt động với nghệ sĩ diễn ra đúng nhịp và kiểm soát được toàn bộ, giữ trải nghiệm trọn vẹn cho fan và đảm bảo sự an toàn cho nghệ sĩ.", en: "Artist interactions run on schedule and stay fully controlled, preserving the fan experience while keeping the artist safe." },
+    calloutP: { vi: "Bởi 1.000 fan đầu tiên của một nghệ sĩ quá quan trọng để trải nghiệm của họ được giao cho những giải pháp tạm thời.", en: "Because an artist’s first 1,000 fans are too important to leave their experience to temporary solutions." },
+    bioLead1: { vi: "1.000 fan đầu tiên rất quan trọng.", en: "The First 1,000 Fans Matter." },
+    bioBody1: { vi: "Sự kiện có thể được thiết kế đẹp, nghệ sĩ có thể có một ý tưởng lớn, nhưng trải nghiệm của fan lại được quyết định bởi rất nhiều chi tiết phía sau: cách một quyền lợi được thực hiện, một món hàng được sản xuất và giao đến tay fan, một hàng chờ được tổ chức, hay cách toàn bộ sự kiện vận hành từ lúc mở cửa đến khi khán giả ra về.", en: "An event can look great and an artist can have a big idea, but the fan experience is ultimately shaped by the details behind it: how a benefit is delivered, how merchandise is produced and reaches the fan, how a queue is organized, or how the entire event operates from doors open to the moment the audience leaves." },
+    bioLead2: { vi: "PakGud ra đời để giải quyết phần việc đó.", en: "PakGud exists to handle that work." },
+    bioBody2: { vi: "PakGud là đơn vị tổ chức sự kiện và vận hành fan fulfillment cho nghệ sĩ và nhà sáng tạo, với quy mô từ 100 đến 1.000 khán giả. Chúng tôi xây dựng và vận hành những phần việc phía sau để mỗi lần nghệ sĩ gặp gỡ khán giả đều được thực hiện chỉn chu, hiệu quả và đúng với tinh thần của họ.", en: "PakGud organizes events and operates fan fulfillment for artists and creators, for audiences of 100 to 1,000. We build and operate the work behind the scenes so every artist-audience interaction is delivered with care, efficiency, and in the spirit of the artist." },
+    pricingH2: { vi: "Chi Phí Vận Hành", en: "Operational Costs" },
+    pricingP: { vi: "Nghệ sĩ cần được tự do thử nghiệm, nhưng một ý tưởng lớn không nhất thiết phải đi cùng một ngân sách thiếu kiểm soát. PakGud cung cấp các giải pháp vận hành theo từng quy mô, giúp nghệ sĩ lựa chọn đúng những gì cần thiết ở từng giai đoạn.", en: "Artists need the freedom to experiment, but a big idea does not have to come with an uncontrolled budget. PakGud provides operational solutions by scale, helping artists choose exactly what they need at each stage." },
+    pricingLine: { vi: "Chi phí vận hành khởi điểm từ <span class=\"accent\">30.000.000 VND</span>", en: "Operational costs start from <span class=\"accent\">30,000,000 VND</span>" },
+    pricingBtn: { vi: "Ước tính chi phí", en: "Estimate Costs" }
+  };
+</script>
 <script src="main.js"></script>
 </body>
 </html>

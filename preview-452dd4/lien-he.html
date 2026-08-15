@@ -76,13 +76,18 @@
   <nav class="wrap">
     <a href="index.html" class="logo"><span class="dot"></span>PakGud</a>
     <div class="nav-links" id="navLinks">
-      <a href="index.html">Trang Chủ</a>
-      <a href="faq.html">FAQ</a>
-      <a href="lien-he.html">Liên Hệ</a>
-      <a href="lien-he.html" class="nav-links-cta">Nhận tư vấn</a>
+      <a href="index.html" data-i18n="navHome">Trang Chủ</a>
+      <a href="faq.html" data-i18n="navFaq">FAQ</a>
+      <a href="lien-he.html" data-i18n="navContact">Liên Hệ</a>
+      <a href="lien-he.html" class="nav-links-cta" data-i18n="navCta">Nhận tư vấn</a>
     </div>
     <div style="display:flex; align-items:center; gap:16px;">
-      <a href="lien-he.html" class="nav-cta">Nhận tư vấn</a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-set-lang="en">EN</button>
+        <span class="sep">/</span>
+        <button type="button" data-set-lang="vi" class="active">VI</button>
+      </div>
+      <a href="lien-he.html" class="nav-cta" data-i18n="navCta">Nhận tư vấn</a>
       <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">☰</button>
     </div>
   </nav>
@@ -90,9 +95,9 @@
 
 <section class="intro">
   <div class="wrap">
-    <div class="eyebrow">Liên Hệ</div>
-    <h1>Kể cho PakGud nghe về sự kiện của bạn</h1>
-    <p class="lede">Chưa chắc mình cần gì cũng không sao — trả lời vài câu hỏi, PakGud sẽ giúp bạn hình dung rõ hơn về quy mô vận hành phù hợp.</p>
+    <div class="eyebrow" data-i18n="navContact">Liên Hệ</div>
+    <h1 data-i18n="inquiryH1">Kể cho PakGud nghe về sự kiện của bạn</h1>
+    <p class="lede" data-i18n="inquiryLede">Chưa chắc mình cần gì cũng không sao — trả lời vài câu hỏi, PakGud sẽ giúp bạn hình dung rõ hơn về quy mô vận hành phù hợp.</p>
   </div>
 </section>
 
@@ -102,129 +107,129 @@
     <form id="inquiryForm" novalidate>
 
       <div class="field">
-        <div class="field-label"><span class="field-num">01</span> Loại hình sự kiện</div>
+        <div class="field-label"><span class="field-num">01</span> <span data-i18n="f1Label">Loại hình sự kiện</span></div>
         <div class="choice-grid">
-          <label class="choice"><input type="radio" name="eventType" value="Fansign/Fanmeeting nhỏ"><span>Fansign / Fanmeeting nhỏ</span></label>
-          <label class="choice"><input type="radio" name="eventType" value="Fanmeeting đầy đủ"><span>Fanmeeting đầy đủ</span></label>
-          <label class="choice"><input type="radio" name="eventType" value="Fancon/Concert"><span>Fancon / Concert</span></label>
-          <label class="choice"><input type="radio" name="eventType" value="Pop-up/Activation/Triển lãm"><span>Pop-up / Activation / Triển lãm</span></label>
+          <label class="choice"><input type="radio" name="eventType" value="Fansign/Fanmeeting nhỏ"><span data-i18n="f1o1">Fansign / Fanmeeting nhỏ</span></label>
+          <label class="choice"><input type="radio" name="eventType" value="Fanmeeting đầy đủ"><span data-i18n="f1o2">Fanmeeting đầy đủ</span></label>
+          <label class="choice"><input type="radio" name="eventType" value="Fancon/Concert"><span data-i18n="f1o3">Fancon / Concert</span></label>
+          <label class="choice"><input type="radio" name="eventType" value="Pop-up/Activation/Triển lãm"><span data-i18n="f1o4">Pop-up / Activation / Triển lãm</span></label>
         </div>
       </div>
 
       <div class="field">
-        <div class="field-label"><span class="field-num">02</span> Dự kiến số lượng khách</div>
+        <div class="field-label"><span class="field-num">02</span> <span data-i18n="f2Label">Dự kiến số lượng khách</span></div>
         <div class="choice-grid">
-          <label class="choice"><input type="radio" name="guestCount" value="Dưới 300"><span>Dưới 300</span></label>
+          <label class="choice"><input type="radio" name="guestCount" value="Dưới 300"><span data-i18n="f2o1">Dưới 300</span></label>
           <label class="choice"><input type="radio" name="guestCount" value="300–700"><span>300 – 700</span></label>
-          <label class="choice"><input type="radio" name="guestCount" value="700–1.500"><span>700 – 1.500</span></label>
-          <label class="choice"><input type="radio" name="guestCount" value="1.500–3.000"><span>1.500 – 3.000</span></label>
+          <label class="choice"><input type="radio" name="guestCount" value="700–1.500"><span data-i18n="f2o3">700 – 1.500</span></label>
+          <label class="choice"><input type="radio" name="guestCount" value="1.500–3.000"><span data-i18n="f2o4">1.500 – 3.000</span></label>
         </div>
       </div>
 
       <div class="field">
-        <div class="field-label"><span class="field-num">03</span> Đã có địa điểm chưa</div>
+        <div class="field-label"><span class="field-num">03</span> <span data-i18n="f3Label">Đã có địa điểm chưa</span></div>
         <div class="choice-grid">
-          <label class="choice"><input type="radio" name="venueStatus" value="Đã có"><span>Đã có</span></label>
-          <label class="choice"><input type="radio" name="venueStatus" value="Cần PakGud tìm & thuê"><span>Cần PakGud tìm &amp; thuê</span></label>
+          <label class="choice"><input type="radio" name="venueStatus" value="Đã có"><span data-i18n="f3o1">Đã có</span></label>
+          <label class="choice"><input type="radio" name="venueStatus" value="Cần PakGud tìm & thuê"><span data-i18n="f3o2">Cần PakGud tìm &amp; thuê</span></label>
         </div>
       </div>
 
       <div class="field">
-        <div class="field-label"><span class="field-num">04</span> Số ngày sử dụng địa điểm</div>
+        <div class="field-label"><span class="field-num">04</span> <span data-i18n="f4Label">Số ngày sử dụng địa điểm</span></div>
         <div class="choice-grid">
-          <label class="choice"><input type="radio" name="venueDays" value="1"><span>1 ngày</span></label>
-          <label class="choice"><input type="radio" name="venueDays" value="2"><span>2 ngày</span></label>
-          <label class="choice"><input type="radio" name="venueDays" value="3+"><span>3+ ngày</span></label>
+          <label class="choice"><input type="radio" name="venueDays" value="1"><span data-i18n="f4o1">1 ngày</span></label>
+          <label class="choice"><input type="radio" name="venueDays" value="2"><span data-i18n="f4o2">2 ngày</span></label>
+          <label class="choice"><input type="radio" name="venueDays" value="3+"><span data-i18n="f4o3">3+ ngày</span></label>
         </div>
       </div>
 
       <div class="field">
-        <div class="field-label"><span class="field-num">05</span> Nghệ sĩ đến từ đâu</div>
+        <div class="field-label"><span class="field-num">05</span> <span data-i18n="f5Label">Nghệ sĩ đến từ đâu</span></div>
         <div class="choice-grid">
-          <label class="choice"><input type="radio" name="artistOrigin" value="Việt Nam"><span>Việt Nam</span></label>
-          <label class="choice"><input type="radio" name="artistOrigin" value="Hàn Quốc, nước ngoài"><span>Hàn Quốc, nước ngoài</span></label>
-          <label class="choice"><input type="radio" name="artistOrigin" value="Không có nghệ sĩ"><span>Không có nghệ sĩ</span></label>
+          <label class="choice"><input type="radio" name="artistOrigin" value="Việt Nam"><span data-i18n="f5o1">Việt Nam</span></label>
+          <label class="choice"><input type="radio" name="artistOrigin" value="Hàn Quốc, nước ngoài"><span data-i18n="f5o2">Hàn Quốc, nước ngoài</span></label>
+          <label class="choice"><input type="radio" name="artistOrigin" value="Không có nghệ sĩ"><span data-i18n="f5o3">Không có nghệ sĩ</span></label>
         </div>
       </div>
 
       <div class="field">
-        <div class="field-label"><span class="field-num">06</span> Có hoạt động tiếp xúc gần với nghệ sĩ không</div>
+        <div class="field-label"><span class="field-num">06</span> <span data-i18n="f6Label">Có hoạt động tiếp xúc gần với nghệ sĩ không</span></div>
         <div class="choice-grid">
-          <label class="choice"><input type="radio" name="closeContact" value="Có"><span>Có</span></label>
-          <label class="choice"><input type="radio" name="closeContact" value="Không"><span>Không</span></label>
+          <label class="choice"><input type="radio" name="closeContact" value="Có"><span data-i18n="optYes">Có</span></label>
+          <label class="choice"><input type="radio" name="closeContact" value="Không"><span data-i18n="optNo">Không</span></label>
         </div>
       </div>
 
       <div class="field">
-        <div class="field-label"><span class="field-num">07</span> Mức độ kiểm soát vào cửa</div>
+        <div class="field-label"><span class="field-num">07</span> <span data-i18n="f7Label">Mức độ kiểm soát vào cửa</span></div>
         <div class="choice-grid">
-          <label class="choice"><input type="radio" name="entryControl" value="Soát vé đơn giản"><span>Soát vé đơn giản</span></label>
-          <label class="choice"><input type="radio" name="entryControl" value="Check-in + vòng tay phân khu"><span>Check-in + vòng tay phân khu</span></label>
-          <label class="choice"><input type="radio" name="entryControl" value="Check-in + vòng tay + đổi quà tại chỗ"><span>Check-in + vòng tay + đổi quà tại chỗ</span></label>
+          <label class="choice"><input type="radio" name="entryControl" value="Soát vé đơn giản"><span data-i18n="f7o1">Soát vé đơn giản</span></label>
+          <label class="choice"><input type="radio" name="entryControl" value="Check-in + vòng tay phân khu"><span data-i18n="f7o2">Check-in + vòng tay phân khu</span></label>
+          <label class="choice"><input type="radio" name="entryControl" value="Check-in + vòng tay + đổi quà tại chỗ"><span data-i18n="f7o3">Check-in + vòng tay + đổi quà tại chỗ</span></label>
         </div>
       </div>
 
       <div class="field">
-        <div class="field-label"><span class="field-num">08</span> Có quầy bán merch tại sự kiện không</div>
+        <div class="field-label"><span class="field-num">08</span> <span data-i18n="f8Label">Có quầy bán merch tại sự kiện không</span></div>
         <div class="choice-grid">
-          <label class="choice"><input type="radio" name="merchBooth" value="Có"><span>Có</span></label>
-          <label class="choice"><input type="radio" name="merchBooth" value="Không"><span>Không</span></label>
+          <label class="choice"><input type="radio" name="merchBooth" value="Có"><span data-i18n="optYes">Có</span></label>
+          <label class="choice"><input type="radio" name="merchBooth" value="Không"><span data-i18n="optNo">Không</span></label>
         </div>
       </div>
 
       <div class="field">
-        <div class="field-label"><span class="field-num">09</span> Địa bàn tổ chức</div>
+        <div class="field-label"><span class="field-num">09</span> <span data-i18n="f9Label">Địa bàn tổ chức</span></div>
         <div class="choice-grid">
-          <label class="choice"><input type="radio" name="region" value="Hà Nội/TP.HCM"><span>Hà Nội / TP.HCM</span></label>
-          <label class="choice"><input type="radio" name="region" value="Tỉnh thành khác"><span>Tỉnh thành khác</span></label>
+          <label class="choice"><input type="radio" name="region" value="Hà Nội/TP.HCM"><span data-i18n="f9o1">Hà Nội / TP.HCM</span></label>
+          <label class="choice"><input type="radio" name="region" value="Tỉnh thành khác"><span data-i18n="f9o2">Tỉnh thành khác</span></label>
         </div>
       </div>
 
       <div class="field">
-        <div class="field-label"><span class="field-num">10</span> Hạng mục bổ sung <span class="field-note">(có thể chọn nhiều)</span></div>
+        <div class="field-label"><span class="field-num">10</span> <span data-i18n="f10Label">Hạng mục bổ sung</span> <span class="field-note" data-i18n="f10Note">(có thể chọn nhiều)</span></div>
         <div class="choice-grid">
-          <label class="choice"><input type="checkbox" name="addons" value="Chụp ảnh & quay phim"><span>Chụp ảnh &amp; quay phim</span></label>
+          <label class="choice"><input type="checkbox" name="addons" value="Chụp ảnh & quay phim"><span data-i18n="f10o1">Chụp ảnh &amp; quay phim</span></label>
           <label class="choice"><input type="checkbox" name="addons" value="Livestream"><span>Livestream</span></label>
           <label class="choice"><input type="checkbox" name="addons" value="Aftermovie"><span>Aftermovie</span></label>
           <label class="choice"><input type="checkbox" name="addons" value="Photobooth"><span>Photobooth</span></label>
-          <label class="choice"><input type="checkbox" name="addons" value="Điều phối dự án fan"><span>Điều phối dự án fan</span></label>
-          <label class="choice"><input type="checkbox" name="addons" value="Fulfillment merch" id="merchAddon"><span>Fulfillment merch</span></label>
+          <label class="choice"><input type="checkbox" name="addons" value="Điều phối dự án fan"><span data-i18n="f10o5">Điều phối dự án fan</span></label>
+          <label class="choice"><input type="checkbox" name="addons" value="Fulfillment merch" id="merchAddon"><span data-i18n="f10o6">Fulfillment merch</span></label>
         </div>
         <div id="merchSubtier" hidden>
-          <div class="field-label" style="font-size:11.5px;">Số lượng merch cần fulfillment</div>
+          <div class="field-label" style="font-size:11.5px;" data-i18n="f10SubLabel">Số lượng merch cần fulfillment</div>
           <div class="choice-grid">
-            <label class="choice"><input type="radio" name="merchQty" value="Dưới 500 sản phẩm"><span>Dưới 500 sản phẩm</span></label>
-            <label class="choice"><input type="radio" name="merchQty" value="500–2.000 sản phẩm"><span>500 – 2.000 sản phẩm</span></label>
-            <label class="choice"><input type="radio" name="merchQty" value="Trên 2.000 sản phẩm"><span>Trên 2.000 sản phẩm</span></label>
+            <label class="choice"><input type="radio" name="merchQty" value="Dưới 500 sản phẩm"><span data-i18n="f10Sub1">Dưới 500 sản phẩm</span></label>
+            <label class="choice"><input type="radio" name="merchQty" value="500–2.000 sản phẩm"><span data-i18n="f10Sub2">500 – 2.000 sản phẩm</span></label>
+            <label class="choice"><input type="radio" name="merchQty" value="Trên 2.000 sản phẩm"><span data-i18n="f10Sub3">Trên 2.000 sản phẩm</span></label>
           </div>
         </div>
       </div>
 
       <div class="field">
-        <div class="field-label"><span class="field-num">11</span> Thông tin liên hệ</div>
+        <div class="field-label"><span class="field-num">11</span> <span data-i18n="f11Label">Thông tin liên hệ</span></div>
         <div class="contact-grid">
           <div>
-            <label class="field-note mono" style="display:block; margin-bottom:8px;">Tên / đơn vị *</label>
+            <label class="field-note mono" style="display:block; margin-bottom:8px;" data-i18n="f11Name">Tên / đơn vị *</label>
             <input class="text-field" type="text" name="contactName" required>
           </div>
           <div>
-            <label class="field-note mono" style="display:block; margin-bottom:8px;">Email hoặc số điện thoại *</label>
+            <label class="field-note mono" style="display:block; margin-bottom:8px;" data-i18n="f11Contact">Email hoặc số điện thoại *</label>
             <input class="text-field" type="text" name="contactInfo" required>
           </div>
           <div>
-            <label class="field-note mono" style="display:block; margin-bottom:8px;">Ngày sự kiện dự kiến (nếu có)</label>
+            <label class="field-note mono" style="display:block; margin-bottom:8px;" data-i18n="f11Date">Ngày sự kiện dự kiến (nếu có)</label>
             <input class="text-field" type="date" name="eventDate">
           </div>
         </div>
       </div>
 
-      <button type="submit" class="btn-primary form-submit">Gửi Thông Tin</button>
+      <button type="submit" class="btn-primary form-submit" data-i18n="submitBtn">Gửi Thông Tin</button>
     </form>
 
     <div class="confirm-state" id="confirmState" hidden>
       <div class="check">✓</div>
-      <h2>Đã nhận, cảm ơn — PakGud sẽ liên hệ trong 24 giờ làm việc.</h2>
-      <p>Nếu cần trao đổi ngay, bạn có thể liên hệ trực tiếp qua hello@pakgud.co hoặc +84 32 8721486 (Ms. Minh).</p>
+      <h2 data-i18n="confirmH2">Đã nhận, cảm ơn — PakGud sẽ liên hệ trong 24 giờ làm việc.</h2>
+      <p data-i18n="confirmP">Nếu cần trao đổi ngay, bạn có thể liên hệ trực tiếp qua hello@pakgud.co hoặc +84 32 8721486 (Ms. Minh).</p>
     </div>
 
   </div>
@@ -234,17 +239,17 @@
   <div class="wrap foot-grid">
     <div>
       <div class="foot-logo"><span class="dot"></span>PakGud</div>
-      <p>PakGud được vận hành bởi đội ngũ <a href="https://www.noheadliner.co/" target="_blank" rel="noopener noreferrer">No Headliner</a>, với kinh nghiệm tổ chức các chương trình âm nhạc và sự kiện nghệ sĩ tại Việt Nam.</p>
+      <p data-i18n="footTagline">PakGud được vận hành bởi đội ngũ <a href="https://www.noheadliner.co/" target="_blank" rel="noopener noreferrer">No Headliner</a>, với kinh nghiệm tổ chức các chương trình âm nhạc và sự kiện nghệ sĩ tại Việt Nam.</p>
     </div>
     <div class="foot-col">
-      <h4>Điều Hướng</h4>
-      <a href="index.html">Trang Chủ</a>
-      <a href="faq.html">FAQ</a>
-      <a href="lien-he.html">Liên Hệ</a>
-      <a href="calculator.html" class="foot-calc">Ước Tính Chi Phí</a>
+      <h4 data-i18n="footNavHeading">Điều Hướng</h4>
+      <a href="index.html" data-i18n="navHome">Trang Chủ</a>
+      <a href="faq.html" data-i18n="navFaq">FAQ</a>
+      <a href="lien-he.html" data-i18n="navContact">Liên Hệ</a>
+      <a href="calculator.html" class="foot-calc" data-i18n="footCalc">Ước Tính Chi Phí</a>
     </div>
     <div class="foot-col">
-      <h4>Liên Hệ</h4>
+      <h4 data-i18n="navContact">Liên Hệ</h4>
       <a href="mailto:hello@pakgud.co">hello@pakgud.co</a>
       <a href="tel:+84328721486">+84 32 8721486 (Ms. Minh)</a>
     </div>
@@ -255,6 +260,59 @@
   </div>
 </footer>
 
+<script>
+  window.PAGE_DICT = {
+    inquiryH1: { vi: "Kể cho PakGud nghe về sự kiện của bạn", en: "Tell PakGud About Your Event" },
+    inquiryLede: { vi: "Chưa chắc mình cần gì cũng không sao — trả lời vài câu hỏi, PakGud sẽ giúp bạn hình dung rõ hơn về quy mô vận hành phù hợp.", en: "Not sure what you need? That’s fine — answer a few questions and PakGud will help you get a clearer picture of the right operational scale." },
+    f1Label: { vi: "Loại hình sự kiện", en: "Event Type" },
+    f1o1: { vi: "Fansign / Fanmeeting nhỏ", en: "Small Fansign / Fanmeeting" },
+    f1o2: { vi: "Fanmeeting đầy đủ", en: "Full Fanmeeting" },
+    f1o3: { vi: "Fancon / Concert", en: "Fancon / Concert" },
+    f1o4: { vi: "Pop-up / Activation / Triển lãm", en: "Pop-up / Activation / Exhibition" },
+    f2Label: { vi: "Dự kiến số lượng khách", en: "Expected Audience Size" },
+    f2o1: { vi: "Dưới 300", en: "Under 300" },
+    f2o3: { vi: "700 – 1.500", en: "700 – 1,500" },
+    f2o4: { vi: "1.500 – 3.000", en: "1,500 – 3,000" },
+    f3Label: { vi: "Đã có địa điểm chưa", en: "Do You Have a Venue?" },
+    f3o1: { vi: "Đã có", en: "Yes" },
+    f3o2: { vi: "Cần PakGud tìm &amp; thuê", en: "Need PakGud to Find &amp; Rent One" },
+    f4Label: { vi: "Số ngày sử dụng địa điểm", en: "Number of Venue Days" },
+    f4o1: { vi: "1 ngày", en: "1 day" },
+    f4o2: { vi: "2 ngày", en: "2 days" },
+    f4o3: { vi: "3+ ngày", en: "3+ days" },
+    f5Label: { vi: "Nghệ sĩ đến từ đâu", en: "Where Is the Artist From?" },
+    f5o1: { vi: "Việt Nam", en: "Vietnam" },
+    f5o2: { vi: "Hàn Quốc, nước ngoài", en: "Korea, International" },
+    f5o3: { vi: "Không có nghệ sĩ", en: "No Artist" },
+    f6Label: { vi: "Có hoạt động tiếp xúc gần với nghệ sĩ không", en: "Will There Be Close Artist Interaction?" },
+    optYes: { vi: "Có", en: "Yes" },
+    optNo: { vi: "Không", en: "No" },
+    f7Label: { vi: "Mức độ kiểm soát vào cửa", en: "Entry Control Level" },
+    f7o1: { vi: "Soát vé đơn giản", en: "Basic Ticket Check" },
+    f7o2: { vi: "Check-in + vòng tay phân khu", en: "Check-in + Zoned Wristbands" },
+    f7o3: { vi: "Check-in + vòng tay + đổi quà tại chỗ", en: "Check-in + Wristbands + On-site Benefit Redemption" },
+    f8Label: { vi: "Có quầy bán merch tại sự kiện không", en: "Will There Be a Merch Booth at the Event?" },
+    f9Label: { vi: "Địa bàn tổ chức", en: "Event Location" },
+    f9o1: { vi: "Hà Nội / TP.HCM", en: "Hanoi / Ho Chi Minh City" },
+    f9o2: { vi: "Tỉnh thành khác", en: "Other Provinces / Cities" },
+    f10Label: { vi: "Hạng mục bổ sung", en: "Additional Services" },
+    f10Note: { vi: "(có thể chọn nhiều)", en: "(Select All That Apply)" },
+    f10o1: { vi: "Chụp ảnh &amp; quay phim", en: "Photography &amp; Videography" },
+    f10o5: { vi: "Điều phối dự án fan", en: "Fan Project Coordination" },
+    f10o6: { vi: "Fulfillment merch", en: "Merch Fulfillment" },
+    f10SubLabel: { vi: "Số lượng merch cần fulfillment", en: "Merch Fulfillment Quantity" },
+    f10Sub1: { vi: "Dưới 500 sản phẩm", en: "Under 500 items" },
+    f10Sub2: { vi: "500 – 2.000 sản phẩm", en: "500 – 2,000 items" },
+    f10Sub3: { vi: "Trên 2.000 sản phẩm", en: "Over 2,000 items" },
+    f11Label: { vi: "Thông tin liên hệ", en: "Contact Information" },
+    f11Name: { vi: "Tên / đơn vị *", en: "Name / Organization *" },
+    f11Contact: { vi: "Email hoặc số điện thoại *", en: "Email or Phone Number *" },
+    f11Date: { vi: "Ngày sự kiện dự kiến (nếu có)", en: "Expected Event Date (if available)" },
+    submitBtn: { vi: "Gửi Thông Tin", en: "Submit" },
+    confirmH2: { vi: "Đã nhận, cảm ơn — PakGud sẽ liên hệ trong 24 giờ làm việc.", en: "Received, thank you — PakGud will be in touch within 24 business hours." },
+    confirmP: { vi: "Nếu cần trao đổi ngay, bạn có thể liên hệ trực tiếp qua hello@pakgud.co hoặc +84 32 8721486 (Ms. Minh).", en: "If you need to speak with us right away, you can contact us directly at hello@pakgud.co or +84 32 8721486 (Ms. Minh)." }
+  };
+</script>
 <script src="main.js"></script>
 <script>
 (function(){
