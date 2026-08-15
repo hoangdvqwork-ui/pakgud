@@ -45,6 +45,28 @@
     .faq-slide{padding:96px 0 56px;}
     .faq-hint{display:none;}
   }
+
+  /* ---------- CTA ---------- */
+  .cta-final{
+    position:relative; overflow:hidden; text-align:center;
+    background:linear-gradient(160deg, var(--case) 0%, var(--case) 32%, var(--accent) 145%);
+    color:var(--paper); scroll-snap-align:start;
+  }
+  .cta-final .wrap{position:relative; z-index:1;}
+  .cta-final h2{color:var(--paper); font-size:clamp(26px,3.6vw,44px); font-weight:600; max-width:840px; margin:0 auto; line-height:1.4; font-family:'Oswald', sans-serif; text-transform:none;}
+  .cta-final p{margin-top:22px; color:var(--steel-light); font-size:16px; line-height:1.75; max-width:640px; margin-left:auto; margin-right:auto;}
+  .cta-final .btn-primary{margin-top:34px; background:var(--accent); border-color:var(--accent);}
+  .cta-final .btn-primary:hover{background:var(--paper); color:var(--ink); border-color:var(--paper);}
+
+  /* ---------- CURSOR SPOTLIGHT (desktop only, clipped to the text glyphs) ---------- */
+  .glow-text{position:relative;}
+  .glow-text::after{
+    content:attr(data-text);
+    position:absolute; inset:0;
+    color:var(--accent);
+    clip-path:circle(150px at var(--mx, -9999px) var(--my, -9999px));
+    pointer-events:none;
+  }
 </style>
 </head>
 <body>
@@ -56,10 +78,10 @@
       <a href="index.html">Trang Chủ</a>
       <a href="faq.html">FAQ</a>
       <a href="lien-he.html">Liên Hệ</a>
-      <a href="lien-he.html" class="nav-links-cta">Tư Vấn &amp; Báo Giá</a>
+      <a href="lien-he.html" class="nav-links-cta">Nhận tư vấn</a>
     </div>
     <div style="display:flex; align-items:center; gap:16px;">
-      <a href="lien-he.html" class="nav-cta">Tư Vấn &amp; Báo Giá</a>
+      <a href="lien-he.html" class="nav-cta">Nhận tư vấn</a>
       <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">☰</button>
     </div>
   </nav>
@@ -97,18 +119,26 @@
   </div>
 </section>
 
+<section class="cta-final glow-section">
+  <div class="wrap">
+    <h2 class="glow-text reveal" data-text="PakGud không đơn giản là tổ chức sự kiện">PakGud không đơn giản là tổ chức sự kiện</h2>
+    <p class="reveal">PakGud muốn trở thành đội ngũ đứng phía sau, giúp nghệ sĩ xây dựng và bảo vệ mối quan hệ với những người đầu tiên đã lựa chọn đồng hành cùng họ.</p>
+    <a href="lien-he.html" class="btn-primary reveal">Nhận tư vấn</a>
+  </div>
+</section>
+
 <footer>
   <div class="wrap foot-grid">
     <div>
       <div class="foot-logo"><span class="dot"></span>PakGud</div>
-      <p>Đơn vị tổ chức sự kiện và vận hành fan fulfillment cho nghệ sĩ và nhà sáng tạo, với quy mô từ 100 đến 1.000 khán giả, được thực hiện bởi Công ty cổ phần No Headliner.<br><a href="https://www.noheadliner.co/" target="_blank" rel="noopener noreferrer">Xem các dự án của No Headliner tại đây</a></p>
+      <p>PakGud được vận hành bởi đội ngũ <a href="https://www.noheadliner.co/" target="_blank" rel="noopener noreferrer">No Headliner</a>, với kinh nghiệm tổ chức các chương trình âm nhạc và sự kiện nghệ sĩ tại Việt Nam.</p>
     </div>
     <div class="foot-col">
       <h4>Điều Hướng</h4>
       <a href="index.html">Trang Chủ</a>
       <a href="faq.html">FAQ</a>
       <a href="lien-he.html">Liên Hệ</a>
-      <a href="du-toan.html" class="foot-calc">Ước tính chi phí</a>
+      <a href="calculator.html" class="foot-calc">Ước Tính Chi Phí</a>
     </div>
     <div class="foot-col">
       <h4>Liên Hệ</h4>
@@ -117,8 +147,8 @@
     </div>
   </div>
   <div class="wrap foot-bottom">
-    <span>© 2026 PakGud. All rights reserved.</span>
-    <span>Powered by No Headliner</span>
+    <span>© 2026 No Headliner Joint Stock Company. All rights reserved.</span>
+    <span>This site is designed by 5430 & Co.</span>
   </div>
 </footer>
 
