@@ -232,6 +232,11 @@
       <p data-i18n="confirmP">Nếu cần trao đổi ngay, bạn có thể liên hệ trực tiếp qua hello@pakgud.co hoặc +84 32 8721486 (Ms. Minh).</p>
     </div>
 
+    <div class="confirm-state" id="errorState" hidden>
+      <h2 data-i18n="errorH2">Có lỗi xảy ra, thông tin chưa được gửi.</h2>
+      <p data-i18n="errorP">Vui lòng thử lại, hoặc liên hệ trực tiếp qua hello@pakgud.co hoặc +84 32 8721486 (Ms. Minh).</p>
+    </div>
+
   </div>
 </section>
 
@@ -309,8 +314,11 @@
     f11Contact: { vi: "Email hoặc số điện thoại *", en: "Email or Phone Number *" },
     f11Date: { vi: "Ngày sự kiện dự kiến (nếu có)", en: "Expected Event Date (if available)" },
     submitBtn: { vi: "Gửi Thông Tin", en: "Submit" },
+    submitBtnSending: { vi: "Đang gửi...", en: "Sending..." },
     confirmH2: { vi: "Đã nhận, cảm ơn — PakGud sẽ liên hệ trong 24 giờ làm việc.", en: "Received, thank you — PakGud will be in touch within 24 business hours." },
-    confirmP: { vi: "Nếu cần trao đổi ngay, bạn có thể liên hệ trực tiếp qua hello@pakgud.co hoặc +84 32 8721486 (Ms. Minh).", en: "If you need to speak with us right away, you can contact us directly at hello@pakgud.co or +84 32 8721486 (Ms. Minh)." }
+    confirmP: { vi: "Nếu cần trao đổi ngay, bạn có thể liên hệ trực tiếp qua hello@pakgud.co hoặc +84 32 8721486 (Ms. Minh).", en: "If you need to speak with us right away, you can contact us directly at hello@pakgud.co or +84 32 8721486 (Ms. Minh)." },
+    errorH2: { vi: "Có lỗi xảy ra, thông tin chưa được gửi.", en: "Something went wrong, your information wasn't sent." },
+    errorP: { vi: "Vui lòng thử lại, hoặc liên hệ trực tiếp qua hello@pakgud.co hoặc +84 32 8721486 (Ms. Minh).", en: "Please try again, or contact us directly at hello@pakgud.co or +84 32 8721486 (Ms. Minh)." }
   };
 </script>
 <script src="main.js"></script>
@@ -324,21 +332,62 @@
 
   var form = document.getElementById('inquiryForm');
   var confirmState = document.getElementById('confirmState');
+  var errorState = document.getElementById('errorState');
+  var submitBtn = form.querySelector('.form-submit');
+
+  function collectFormData(){
+    var fd = new FormData(form);
+    return {
+      lang: window.pakgudLang || 'vi',
+      eventType: fd.get('eventType') || '',
+      guestCount: fd.get('guestCount') || '',
+      venueStatus: fd.get('venueStatus') || '',
+      venueDays: fd.get('venueDays') || '',
+      artistOrigin: fd.get('artistOrigin') || '',
+      closeContact: fd.get('closeContact') || '',
+      entryControl: fd.get('entryControl') || '',
+      merchBooth: fd.get('merchBooth') || '',
+      region: fd.get('region') || '',
+      addons: fd.getAll('addons'),
+      merchQty: fd.get('merchQty') || '',
+      contactName: (fd.get('contactName') || '').trim(),
+      contactInfo: (fd.get('contactInfo') || '').trim(),
+      eventDate: fd.get('eventDate') || '',
+      pageUrl: window.location.href
+    };
+  }
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
     if(!form.checkValidity()){
       form.reportValidity();
       return;
     }
-    // NOTE: no backend is wired up yet — this only swaps in a confirmation
-    // state client-side. Connect a form endpoint (e.g. Formspree, a Sheets
-    // webhook, or your own API) here to actually receive submissions.
-    if(typeof gtag === 'function'){
-      gtag('event', 'inquiry_submitted');
-    }
-    form.hidden = true;
-    confirmState.hidden = false;
-    confirmState.scrollIntoView({behavior:'smooth', block:'start'});
+
+    errorState.hidden = true;
+    submitBtn.disabled = true;
+    var sendingText = (window.PAGE_DICT.submitBtnSending || {})[window.pakgudLang] || 'Sending...';
+    var originalText = submitBtn.textContent;
+    submitBtn.textContent = sendingText;
+
+    fetch('/api/submit-inquiry', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(collectFormData())
+    }).then(function(res){
+      if(!res.ok){ throw new Error('submit failed'); }
+      if(typeof gtag === 'function'){
+        gtag('event', 'inquiry_submitted');
+      }
+      form.hidden = true;
+      confirmState.hidden = false;
+      confirmState.scrollIntoView({behavior:'smooth', block:'start'});
+    }).catch(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+      errorState.hidden = false;
+      errorState.scrollIntoView({behavior:'smooth', block:'start'});
+    });
   });
 })();
 </script>
